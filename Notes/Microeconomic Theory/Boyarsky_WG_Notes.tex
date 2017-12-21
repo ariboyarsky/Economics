@@ -1,0 +1,80 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumerate}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand\inner[2]{\langle #1, #2 \rangle}
+\newcommand\norm[1]{\| #1 \|}
+
+\let\oldforall\forall
+\let\forall\undefined
+\DeclareMathOperator{\forall}{\,\oldforall\,}
+
+\let\oldexists\exists
+\let\exists\undefined
+\DeclareMathOperator{\exists}{\,\oldexists\,}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+
+\begin{document}
+
+\title{Notes from MWG's \emph{Microeconomic Theory}} %replace X with the appropriate number
+\author{Ariel Boyarsky\\ aboyarsky@uchciago.edu} %if necessary, replace with your course title
+ 
+\maketitle
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+\section*{Ch. 1 Preference and Choice}
+\subsection{Preference Relations}
+Axioms of Preference:
+\begin{enumerate}[i.]
+	\item $x \succ y$. x is "strictly" preffered to y \emph{if and only if (iff)} $x \succeq y$ but $y \not\succeq x$. 
+	\emph{Note:} $x \succeq y$ is an atleast as good as relation. That is, x is at least as good as y. 
+	\item $x \sim y$. Then,  x is indifferent to y. Thus,  $x \succeq y$ and $y \succeq x$.
+\end{enumerate}
+
+\textbf{Definition:} We call a relation \emph{rational} if it is both \textbf{complete} and \textbf{transitive}.
+
+Consider the set of goods, $X$.
+\begin{enumerate}[i.]
+	\item Completeness: $\forall x,y \in X$ either $x \succeq y$ or $y \succeq x$ or both.
+	\item Transitivity: $\forall x,y,z \in X$ if $x \succeq y$ and $y \succeq z$ then $x \succeq z$.
+\end{enumerate}
+
+\textbf{Proposition:} It follows, that if $\succeq$ is rational then:
+\begin{enumerate}[i.]
+\item $\succ$ is irreflexive
+\end{enumerate}
+\section*{Ch. 2 Consumer Choice}
+Walrasian budget set, $X = \R_+^L$
+
+
+
+% ---------------------------------------------------------------
+\end{document}
+% ---------------------------------------------------------------
