@@ -38,6 +38,9 @@
 \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
  
+% Change Abstract Name
+\renewcommand{\abstractname}{Brief Introduction}
+
 
 \begin{document}
 
@@ -49,12 +52,19 @@
 % --------------------------------------------------------------
 %                         Start here
 % --------------------------------------------------------------
+
+\begin{abstract}
+The following are select notes from \emph{Micoreconomic Theory} by Mas-Colell, Whinston, and Green. I have tried to synthesize these into the key axioms, theorems, propositions, and proofs introduced in the text. Examples and notes are provided where needed. Some proofs are my own work and thus prone to error. Notice this is an individual effort and very much a work in progress. It should not be viewed as a replacement for the original work. 
+
+Please send comments or concerns to aboyarsky [at] uchicago [dot] edu.
+\end{abstract}
+
 \section*{Ch. 1 Preference and Choice}
 \subsection{Preference Relations}
 Axioms of Preference:
 \begin{enumerate}[i.]
-	\item $x \succ y$. x is "strictly" preffered to y \emph{if and only if (iff)} $x \succeq y$ but $y \not\succeq x$. 
-	\emph{Note:} $x \succeq y$ is an atleast as good as relation. That is, x is at least as good as y. 
+	\item $x \succ y$. x is "strictly" preferred to y \emph{if and only if (iff)} $x \succeq y$ but $y \not\succeq x$. 
+	\emph{Note:} $x \succeq y$ is an at least as good as relation. That is, x is at least as good as y. 
 	\item $x \sim y$. Then,  x is indifferent to y. Thus,  $x \succeq y$ and $y \succeq x$.
 \end{enumerate}
 
@@ -66,10 +76,23 @@ Consider the set of goods, $X$.
 	\item Transitivity: $\forall x,y,z \in X$ if $x \succeq y$ and $y \succeq z$ then $x \succeq z$.
 \end{enumerate}
 
-\textbf{Proposition:} It follows, that if $\succeq$ is rational then:
+\textbf{Proposition 1.B.1:} It follows that if $\succeq$ is rational then:
 \begin{enumerate}[i.]
-\item $\succ$ is irreflexive
+\item $\succ$ is irreflexive and transitive
+\item $\sim$ is reflexive and transitive
+\item If $x \succ y \succeq z$ then $x \succ z$
 \end{enumerate}
+
+
+\begin{proof} \textbf{Proposition 1.B.1}
+\\ Consider the set of goods X. Then take $x,y,z \in X$. 
+\\Let $\succeq$ be rational so it is both complete and transitive.
+\begin{enumerate}[i.]
+\item Suppose by contradiction that $x \succ x$. Then, since $x \succeq x$ and $x \not\succeq x$. Both these facts cannot be true by the def of a strict pref relation. relation, so $\succ$ is irreflexive. Furthermore, consider $x \succ y$ and $y \succ x$. Then, $ x \succeq y$ and $y \not\succeq x$. Also, $ y \succeq z$ and $z \not\succeq y$. So, since $\succeq$ is rational, by transitivity we have $x \succ z$.
+\item Consider $x \sim x$. Then,  $x \succeq x$ and $x \succeq x$. If condition one holds than condition two must hold. So, $\sim$ is reflexive. Also, if $x \sim y$ and $y \sim z$ then, $x \succeq y$ and $y \succeq x$, and $z \succeq y$ and $y \succeq z$. So, by transitivity $x \sim z$.
+\item If $x \succ y $ then $x \succeq y$ and $y \not\succeq x$. Also, $y \succeq z$. Then, by transitivity $x \succeq z$. But, since $y \not\succeq x$ then by transitivity $z \not\succeq x$. So, $x \succ z$.
+\end{enumerate}
+\end{proof}
 \section*{Ch. 2 Consumer Choice}
 Walrasian budget set, $X = \R_+^L$
 
