@@ -19,6 +19,9 @@
 
 \let\oldforall\forall
 \let\forall\undefined
+
+\let\bf\oldbf
+\let\bf\textbf
 \DeclareMathOperator{\forall}{\,\oldforall\,}
 
 \let\oldexists\exists
@@ -37,6 +40,11 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\makeatletter
+\renewcommand\thesection{}
+\renewcommand\thesubsection{\@arabic\c@section.\@arabic\c@subsection}
+\makeatother
  
 % Change Abstract Name
 \renewcommand{\abstractname}{Brief Introduction}
@@ -54,12 +62,11 @@
 % --------------------------------------------------------------
 
 \begin{abstract}
-The following are select notes from \emph{Micoreconomic Theory} by Mas-Colell, Whinston, and Green. I have tried to synthesize these into the key axioms, theorems, propositions, and proofs introduced in the text. Examples and notes are provided where needed. Some proofs are my own work and thus prone to error. Notice this is an individual effort and very much a work in progress. It should not be viewed as a replacement for the original text. 
+The following are select notes from \emph{Micoreconomic Theory} by Mas-Colell, Whinston, and Green. I have tried to synthesize these into the key axioms, theorems, propositions, and proofs introduced in the text. Overall we mirror the Definition-Theorem-Proof style employed by MWG. Examples and notes are provided where needed. Some proofs are my own work and thus prone to error. Notice this is an individual effort and very much a work in progress. It should not be viewed as a replacement for the original text. 
 
 Please send comments or concerns to aboyarsky [at] uchicago [dot] edu.
 \end{abstract}
-
-\section*{Ch. 1 Preference and Choice}
+\section{Ch. 1 Preference and Choice}
 \subsection{Preference Relations}
 Axioms of Preference:
 \begin{enumerate}[i.]
@@ -93,15 +100,14 @@ Consider the set of goods, $X$.
 \item If $x \succ y $ then $x \succeq y$ and $y \not\succeq x$. Also, $y \succeq z$. Then, by transitivity $x \succeq z$. But, since $y \not\succeq x$ then by transitivity $z \not\succeq x$. So, $x \succ z$.
 \end{enumerate}
 \end{proof}
-
-If a relation is rational we can also represent it with a utility function:
-
-\textbf{Definition} $u: X \rightarrow \R$ is a utility function if $\forall x,y \in X$, $x\succeq y \; $ iff $ \; u(x) \geq u(y)$.
+\noindent
+If a relation is rational we can also represent it with a \textbf{utility function}:
+\\\textbf{\\Definition} $u: X \rightarrow \R$ is a utility function if $\forall x,y \in X$, $x\succeq y \; $ iff $ \; u(x) \geq u(y)$.
 Notice, that this map is not unique.
 
-\textbf{Proposition:} A preference relation must be rational to represent it with a utility function.
+\textbf{\\Proposition:} A preference relation must be rational to represent it with a utility function.
 
-\emph{Proof Sketch.} Since, $u(\cdot)$ is real-valued $\forall x,y \in X \; u(x) \geq u(y)$ or $u(y) \geq u(x)$. This implies completeness. Then, $\forall x,y,z \in X$ if $u(x) \geq u(y)$ and $u(y) \geq u(z)$ then, $u(x) \geq u(z)$. This implies transitivity. 
+\emph{\\Proof Sketch.} Since, $u(\cdot)$ is real-valued $\forall x,y \in X \; u(x) \geq u(y)$ or $u(y) \geq u(x)$. This implies completeness. Then, $\forall x,y,z \in X$ if $u(x) \geq u(y)$ and $u(y) \geq u(z)$ then, $u(x) \geq u(z)$. This implies transitivity. 
 
 \subsection{Choice}
 \textbf{Definitions}
@@ -134,13 +140,54 @@ $$C(B) = C^*(B, \succeq) \forall B \in \mathcal{B}$$.
 	\item the weak axiom is satisfied,
 	\item $\mathcal{B}$ includes all subsets of X up to three elements,
 \end{enumerate}
-then there exists a \underline{unique} rational preference relation $\succeq$ that rationalizes $C(\cdot)$ such that $C(B) = C^*(B, \succeq) \forall B\in \mathcal{B}$.
+then there exists a \underline{unique} rational preference relation $\succeq$ that rationalizes $C(\cdot)$ such that 
+$$C(B) = C^*(B, \succeq) \forall B\in \mathcal{B}$$
 \\ \emph{\\Proof Sketch:} To prove the above result we must (1) show $\succeq*$ is rational, (2) $\succeq*$ rationalizes $C(\cdot)$, and (3) the solution is unique (this falls from every binary pairing being included in $\mathcal{B}$).
 
-\section*{Ch. 2 Consumer Choice}
-Walrasian budget set, $X = \R_+^L$
+\section{Ch. 2 Consumer Choice}
+The consumer is the most basic decision unit in the economy. We assume a market economy where commodities (good and services) are traded and available for purchase.
 
+\subsection{Commodities}
+We assume a finite number of commodities, $L$.
+\\ The commodity vector lists amounts of each commodity:
+\\ $$x = \begin{bmatrix} 
+x_1 \\
+\vdots \\
+x_L 
+\end{bmatrix}$$
 
+\subsection{Consumption Set}
+The consumption set is an element of the commodity space, $X \subset \R^L$. 
+\\The consumption set represents an individuals conceivable consumption given particular constraints.
+\\ The consumption set is defined as $X = \R_+^L = \{x \in \R^L | x_l \geq 0 \forall 1,\dots,L\}$
+\\ It is a set of all nonnegative bundles of commodities.
+\\ Notice that $\R^L$ is convex. Take $x,x' \in \R^L$ then $x'' = \alpha x + (1-\alpha)x' \in \R^L \forall \alpha \in [0,1]$.
+\\ This design allows us to reflect physical constraints on the consumption bundle.
+
+\subsection{Budgets}
+We also add a monetary constraint to the consumption set.
+\\ We assume completeness or universality of markets and that consumers are price takers. 
+\\ Then we define the price vector as an element in $\R^L$
+$$p = \begin{bmatrix} 
+p_1 \\
+\vdots \\
+p_L 
+\end{bmatrix} \in \R^L$$
+\\ For simplicity we assume non-negativity of prices.
+\\ Finally, we introduce a consumers total wealth, $w$. That is,
+$$\bf{p}\cdot \bf{x} = p_1x_1 + \dots + p_Lx_L \leq w\footnote{Notice we use the dot product here.}$$
+\\The consumer problem is simply to choose a consumption bundle $x \in B_{\bf{p}, w}$.
+\\ \bf{\\Definition:} Since there are multiple consumption bundles that exhibit this property for a given price vector and wealth we define the \emph{Walrasian} budget set or \emph{competitive budget set} as:
+$$B_{\bf{p},w} = \{\bf{x} \in \R^L_+ \;|\; \bf{p}\cdot \bf{x} \leq w\}$$
+\\ \bf{\\Definition:} We define the budget hyperplane (or line in $L=2$) to be the set of consumption bundles defined by $\{\bf{x} \in \R^L_+ \;|\; \bf{p}\cdot \bf{x} = w\}$.
+\vspace{10pt}
+\\There are multiple interesting phenomena associated with the budget hyperplane. First, in $\R^2$ the slope of the line is $m = -\frac{(w/p_2)}{(w/p_1)} = -(p_1/p_2)$. Notice that the negativity of the slope reflects the budget constraint.
+\vspace{10pt}
+\\Furthermore, the price vector starting at any $x \in \{\bf{x} \in \R^L_+ \;|\; \bf{p}\cdot \bf{x} = w\}$ is orthogonal to any vector on the budget line. This is because $p\cdot x = p\cdot x' = w$. That is,
+$$p\cdot x - p \cdot x' = 0 $$
+$$ p(x - x') = 0$$
+$$p \cdot \Delta x = 0$$
+Furthermore, $B_{\bf{p}, w}$ is a convex set.
 
 % ---------------------------------------------------------------
 \end{document}
