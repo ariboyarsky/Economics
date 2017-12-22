@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.3)  21 DEC 2017 17:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.3)  21 DEC 2017 22:00
 entering extended mode
 **./Boyarsky_MWG_Notes.tex
 (Boyarsky_MWG_Notes.tex
@@ -514,30 +514,63 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 50.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] (Boyarsky_MWG_Notes.a
-ux) ) 
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 122--126
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 129--133
+
+ []
+
+
+Overfull \hbox (14.15994pt too wide) in paragraph at lines 129--133
+\OT1/cmr/m/n/12 tio-nal-iz-ing pref-er-ences: $\OMS/cmsy/m/n/12 B \OT1/cmr/m/n/
+12 = \OMS/cmsy/m/n/12 ff\OML/cmm/m/it/12 x; y\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12
+ ; \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 y; z\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12 ; 
+\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 z; x\OMS/cmsy/m/n/12 gg\OML/cmm/m/it/12 ;  C
+\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 x; y\OMS/cmsy/m/n/12 g\OT1/
+cmr/m/n/12 ) = \OML/cmm/m/it/12 x;  C\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 f\OML/cm
+m/m/it/12 y; z\OMS/cmsy/m/n/12 g\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 y;  C\OT1/
+cmr/m/n/12 (\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 z; x\OMS/cmsy/m/n/12 g\OT1/cmr/m
+/n/12 ) =
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--133
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--139
+
+ []
+
+[3] (Boyarsky_MWG_Notes.aux) ) 
 Here is how much of TeX's memory you used:
  2081 strings out of 493323
  24157 string characters out of 3140772
- 90357 words of memory out of 3000000
+ 92357 words of memory out of 3000000
  5614 multiletter control sequences out of 15000+200000
  14051 words of font info for 53 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  27i,6n,32p,491b,255s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pro
-gram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/c
-mr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/
-Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/s
-ymbols/msbm10.pfb>
-Output written on Boyarsky_MWG_Notes.pdf (2 pages, 134043 bytes).
+<C:/Program Files/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx1
+2.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Pr
+ogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+r8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/P
+rogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX/fonts/type1/publi
+c/amsfonts/symbols/msbm10.pfb>
+Output written on Boyarsky_MWG_Notes.pdf (3 pages, 155237 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
+ 64 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

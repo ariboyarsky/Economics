@@ -54,7 +54,7 @@
 % --------------------------------------------------------------
 
 \begin{abstract}
-The following are select notes from \emph{Micoreconomic Theory} by Mas-Colell, Whinston, and Green. I have tried to synthesize these into the key axioms, theorems, propositions, and proofs introduced in the text. Examples and notes are provided where needed. Some proofs are my own work and thus prone to error. Notice this is an individual effort and very much a work in progress. It should not be viewed as a replacement for the original work. 
+The following are select notes from \emph{Micoreconomic Theory} by Mas-Colell, Whinston, and Green. I have tried to synthesize these into the key axioms, theorems, propositions, and proofs introduced in the text. Examples and notes are provided where needed. Some proofs are my own work and thus prone to error. Notice this is an individual effort and very much a work in progress. It should not be viewed as a replacement for the original text. 
 
 Please send comments or concerns to aboyarsky [at] uchicago [dot] edu.
 \end{abstract}
@@ -85,7 +85,7 @@ Consider the set of goods, $X$.
 
 
 \begin{proof} \textbf{Proposition 1.B.1}
-\\ Consider the set of goods X. Then take $x,y,z \in X$. 
+\\Consider the set of goods X. Then take $x,y,z \in X$. 
 \\Let $\succeq$ be rational so it is both complete and transitive.
 \begin{enumerate}[i.]
 \item Suppose by contradiction that $x \succ x$. Then, since $x \succeq x$ and $x \not\succeq x$. Both these facts cannot be true by the def of a strict pref relation. relation, so $\succ$ is irreflexive. Furthermore, consider $x \succ y$ and $y \succ x$. Then, $ x \succeq y$ and $y \not\succeq x$. Also, $ y \succeq z$ and $z \not\succeq y$. So, since $\succeq$ is rational, by transitivity we have $x \succ z$.
@@ -93,6 +93,50 @@ Consider the set of goods, $X$.
 \item If $x \succ y $ then $x \succeq y$ and $y \not\succeq x$. Also, $y \succeq z$. Then, by transitivity $x \succeq z$. But, since $y \not\succeq x$ then by transitivity $z \not\succeq x$. So, $x \succ z$.
 \end{enumerate}
 \end{proof}
+
+If a relation is rational we can also represent it with a utility function:
+
+\textbf{Definition} $u: X \rightarrow \R$ is a utility function if $\forall x,y \in X$, $x\succeq y \; $ iff $ \; u(x) \geq u(y)$.
+Notice, that this map is not unique.
+
+\textbf{Proposition:} A preference relation must be rational to represent it with a utility function.
+
+\emph{Proof Sketch.} Since, $u(\cdot)$ is real-valued $\forall x,y \in X \; u(x) \geq u(y)$ or $u(y) \geq u(x)$. This implies completeness. Then, $\forall x,y,z \in X$ if $u(x) \geq u(y)$ and $u(y) \geq u(z)$ then, $u(x) \geq u(z)$. This implies transitivity. 
+
+\subsection{Choice}
+\textbf{Definitions}
+A choice structure is defined by $(\mathcal{B}, C(\cdot))$.
+\begin{enumerate}
+\item $\mathcal{B}$ is a family on nonempty subsets of X. That is, $B \in \mathcal{B}, B \subset X$. Intuitively, $\mathcal{B}$ is a family of comprehensive budget sets that that are possible in a society. However, it is not necessarily all possible subsets in X.
+\item $C(\cdot)$ is a choice rule. It assigns a nonempty set of chosen elements, $C(B) \subset B$. These are the decision makers chosen alternatives given a budget set.
+\end{enumerate}
+\textbf{Example:}
+$X = \{x,y,z\}, \mathcal{B} = \{\{x,y\}, \{x,z\}\}$ 
+\\Then one possible $C(\{x,y\}) = \{x\}$ and $C(\{x,z\}) = \{x, z\}$. 
+\\We can apply the weak axiom of revealed preference (Samuelson 1947) so that we may expect some consistency. We can formally write this as:
+\\\textbf{Definition of Weak Axiom of Revealed Preference:} Given $(\mathcal{B}, C(\cdot))$. The choice structure satisfies the weak axiom of revealed preference if $x,y \in B$ and $x \in C(B)$ then $\forall B' \in \mathcal{B} \; s.t. \; x,y \in B'$. If $y \in C(B')$ then, $x\in C(B')$.
+\\ Perhaps, a simpler yet equivalent statement is that x is revealed at least as good as y if and only if there is some budget set, B, where x is in C(B).
+\\ More formally, the \underline{weak axiom} states $x \succeq\star \; y \; \text{iff} \; B \in \mathcal{B} \; s.t. \; x,y \in B$ and $x \in C(B)$.
+\subsection{Interplay of Preference and Choice}
+
+Consider $C^*(B, \succeq) = \{x \in B | x \succeq y \forall y \in B\}$. This represents the most preferred good in the budget set (could be null in theory). We assume it is nonempty.
+\\Thus, we generate the choice structure $(\mathcal{B}, C^*(B, \succeq))$.
+\\ \textbf{\\Proposition:} $(\mathcal{B}, C^*(B, \succeq))$ satisfies the weak axiom of revealed preference if $\succeq$ is a rational preference relation.
+\begin{proof}
+Take $x \in C^*(B, \succeq)$ for some $x,y \in B \in \mathcal{B}$. Then, $x \succeq y$. Now consider by contradiction $x,y \in B'$ and $y \in C^*(B', \succeq)$. Then, $y \succeq z \forall z \in B'$. Then, this implies that $y \succeq x$ which contradicts our initial construction. Thus, if $y \in C^*(B', \succeq)$ then also $x \in C^*(B', \succeq)$. Thus, this relation satisfies the weak axiom. 
+\end{proof}
+\textbf{\\Definition:} Given a choice structure we say a rational preference relation \underline{rationalizes} $C(\cdot)$ relative to $\mathcal{B}$ if 
+$$C(B) = C^*(B, \succeq) \forall B \in \mathcal{B}$$. 
+\\That is, the rational preference relation $\succeq$ rationalizes the choice rule on $\mathcal{B}$ if it generates the same output as the preference maximizing choice rule ($C^*(\cdot, \succeq)$). We then call the choice maker a preference maximizer.
+\\\textbf{\\Example:} Notice that the following choice structure satisfies the weak axiom but is not rationalizing preferences: $\mathcal{B} = \{\{x,y\}, \{y,z\}, \{z,x\}\}, \; C(\{x,y\}) = x, \; C(\{y,z\}) = y, \; C(\{z,x\}) = z$.
+\\ \textbf{\\Proposition:} If $(\mathcal{B}, C(\cdot))$ is a choice structure such that:
+\begin{enumerate}[1.]
+	\item the weak axiom is satisfied,
+	\item $\mathcal{B}$ includes all subsets of X up to three elements,
+\end{enumerate}
+then there exists a \underline{unique} rational preference relation $\succeq$ that rationalizes $C(\cdot)$ such that $C(B) = C^*(B, \succeq) \forall B\in \mathcal{B}$.
+\\ \emph{\\Proof Sketch:} To prove the above result we must (1) show $\succeq*$ is rational, (2) $\succeq*$ rationalizes $C(\cdot)$, and (3) the solution is unique (this falls from every binary pairing being included in $\mathcal{B}$).
+
 \section*{Ch. 2 Consumer Choice}
 Walrasian budget set, $X = \R_+^L$
 
