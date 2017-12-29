@@ -63,7 +63,7 @@
 % --------------------------------------------------------------
 
 \begin{abstract}
-The following are select notes from \emph{Micoreconomic Theory} by Mas-Colell, Whinston, and Green. I have tried to synthesize these into the key axioms, theorems, propositions, and proofs introduced in the text. Overall we mirror the Definition-Theorem-Proof style employed by MWG. Examples and notes are provided where needed. Some proofs are my own work and thus prone to error. Notice this is an individual effort and very much a work in progress. It should not be viewed as a replacement for the original text. Additionally, in some areas we draw from the Microeconomic Theory notes of Noah Miller to add further context (\href{https://business.illinois.edu/nmiller/documents/notes/firsthalf.pdf}{\emph{available here}}).
+The following are select notes from \emph{Micoreconomic Theory} by Mas-Colell, Whinston, and Green. I have tried to synthesize these into the key axioms, theorems, propositions, and proofs introduced in the text. Overall we mirror the Definition-Theorem-Proof style employed by MWG. Examples and notes are provided where needed. Some proofs are my own work and thus prone to error. Additionally, I have attempted to explicit show steps and maintain strict notation, if you spot any issues with notation or other ambiguities, please let me know! Please remember this is an individual effort and very much a work in progress. It should not be viewed as a replacement for the original text. Additionally, in some areas we draw from the Microeconomic Theory notes of Noah Miller to add further context (\href{https://business.illinois.edu/nmiller/documents/notes/firsthalf.pdf}{\emph{available here}}).
 
 Please send comments or concerns to aboyarsky [at] uchicago [dot] edu.
 \end{abstract}
@@ -246,17 +246,53 @@ $$D_px(\bf{p}, w)p + D_wx(\bf{p}, w)w = 0$$
 
 \begin{proof}
 If the demand function is homogeneous of degree 0 then,
-$$x(\alpha\bf{p}, \alpha w) \equiv x(\bf{p}, w)$$
+$$x_l(\alpha\bf{p}, \alpha w) \equiv x_l(\bf{p}, w) \forall l, \alpha > 0$$
 Now we set $\bf{p} = \bf{p}*$, $w = w*$ and take the \emph{total} derivative with respect to $\alpha$,
-$$x(\alpha\bf{p}*, \alpha w*) \equiv x(\bf{p}*, w*)$$
-Set $\alpha = \bf{p}$
-$$\frac{\partial x(\alpha \bf{p}*, \alpha w*)}{\partial \bf{p}}\cdot\frac{\partial \bf{p}*}{\partial \alpha} + \frac{\partial x(\alpha \bf{p}*, \alpha w*)}{\partial w}\frac{\partial w*}{\partial \alpha} = 0$$
+$$x_l(\alpha\bf{p}*, \alpha w*) \equiv x_l(\bf{p}*, w*)$$
+$$\frac{\partial x_l(\alpha \bf{p}*, \alpha w*)}{\partial \bf{p}}\cdot\frac{\partial \bf{p}*}{\partial \alpha} + \frac{\partial x_l(\alpha \bf{p}*, \alpha w*)}{\partial w}\frac{\partial w*}{\partial \alpha} = 0$$
 Now, consider that $\alpha \bf{p}* = \bf{p}$ so, $\frac{\partial \bf{p}}{\partial \alpha} = p*$, similarly $\frac{\partial w}{\partial \alpha} = w*$. Substituting we get,
-$$\frac{\partial x(\alpha \bf{p}*, \alpha w*)}{\partial \bf{p}}\cdot \bf{p}*+ \frac{\partial x(\alpha p*, \alpha w*)}{\partial w}w* = 0$$
-Since, $p*$ is a vector of prices we can rewrite this in the form presented by \emph{MWG}:
-$$\sum^L_{l=1}p_l^*\frac{\partial x_l(\alpha \bf{p}*, \alpha w*)}{\partial \bf{p}} + \frac{\partial x(\alpha \bf{p}*, \alpha w*)}{\partial w}w* = 0\footnote{Notice, MWG drops the star notation.}$$
-\end{proof}
+$$\frac{\partial x_l(\alpha \bf{p}*, \alpha w*)}{\partial \bf{p}}\cdot \bf{p}*+ \frac{\partial x_l(\alpha p*, \alpha w*)}{\partial w}w* = 0$$
+Now, set $\alpha = 1$ and since $p*$ is a vector of prices we can rewrite this in the form presented by \emph{MWG}:\footnote{Notice, MWG drops the star notation.}
+\begin{equation}
+\sum^L_{j=1}\bf{p}_j^*\frac{\partial x_l( \bf{p}*, w*)}{\partial \bf{p}} + \frac{\partial x_l( \bf{p}*,  w*)}{\partial w}w* = 0
+\end{equation}
 
+\end{proof}
+From this equation we can all define elasticity of consumer demand:
+\\\bf{\\Definition:} We define elasticity of demand with respect to price and wealth respectively:
+$$\epsilon_{lp_j} = \frac{\%\Delta x_i}{\%\Delta p_j} = \frac{\partial x_l(\bf{p}, w)}{\partial p_j}\frac{p_j}{x_l(\bf{p}, w)}$$
+and
+$$\epsilon_{lw} = \frac{\partial x_l(\bf{p}, w)}{\partial w}\frac{w}{x_l(\bf{p}, w)}$$
+That is, the percent change in demand for good $l$ per percent change in price of good $j$. And percent change in demand for good $l$ per percent change in wealth. It is often to think of these as ($(\Delta x/x)/(\Delta w/w)$).
+\\ Returning to equation (1) we can divide by $x_l{\bf{p}, w}$ to get this equation in terms of elasticities. Resulting in:
+\begin{equation}\epsilon_{lw} + \sum^L_{j = 1}\epsilon_{lp_j} = 0\end{equation}
+This says that if we sum the \% change in consumer demand due to a \% percent change in wealth and prices across each good is 0. That is, there is no change in demand if prices and wealth change in proportion. This is given by homogeneity of degree zero. To quote MWG, "an equal percentage change in all prices and wealth leads to no change in demand."
+\\ \bf{\\Proposition:} If the Walrasian demand function satisfies Walras' law then,
+\begin{equation}
+\sum^L_{l=1}p_l\frac{\partial x_l(p,w)}{\partial p_k} + x_k(\bf{p}, w) = 0 \forall k = 1,\dots,L
+\end{equation}
+This is sometimes called the \emph{Cournot aggregation}. It states that if the price of good $k$ increases we must spend more of our wealth on it. Thus, we rearrange our demand for the other goods such that our total expenditure does not change. We prove the statement below:
+\begin{proof}
+Recall, $\bf{p}\cdot x(\bf{p}, w) \equiv w$ then,
+$$\sum^L_{l=1}p_lx_l(\bf{p},w) \equiv w$$
+$$\frac{\partial}{\partial p_k}\sum^L_{l=1}p_lx_l(\bf{p},w) \equiv \frac{\partial}{\partial p_k}w$$
+Consider that at some $l = k$ we can rewrite the above equation as:
+$$\frac{\partial}{\partial p_k}\sum^L_{l=1, l\not=k}p_lx_l(\bf{p},w) + \frac{\partial}{\partial p_k}p_kx_k(\bf{p},w)\equiv \frac{\partial}{\partial p_k}w$$
+Differentiating gives,
+$$x_k(\bf{p}, w) + p_k\frac{\partial x_k(\bf{p}, w)}{p_k} + \sum^L_{l=1, l\not= k}p_l\frac{\partial x_l(\bf{p},w)}{\partial p_k} \equiv 0$$
+We can combine terms to get,
+$$x_k(\bf{p}, w) + \sum^L_{l=1}p_l\frac{\partial x_l(\bf{p},w)}{\partial p_k} \equiv 0$$
+\end{proof}
+Similarly differentiating with respect to wealth provides us with a further implication of Walras' law:
+\\ \bf{Proposition:} If the Walrasian demand function satisfies Walrus' law then: 
+\begin{equation}\sum^L_{l=1}p_l\frac{\partial x_l(\bf{p}, w)}{\partial w} \equiv 1\end{equation}
+This is often called the \emph{Engel aggregation}. This simply states that if we increase consumer wealth by 1, expenditure will also increase by 1. That is, expenditure and wealth must change by equal amounts.
+\begin{proof}
+Recall, $\bf{p}\cdot x(\bf{p}, w) \equiv w$ then,
+$$\sum^L_{l=1}p_lx_l(\bf{p},w) \equiv w$$
+$$\frac{\partial}{\partial w}\sum^L_{l=1}p_lx_l(\bf{p},w) \equiv \frac{\partial}{\partial w}w$$
+$$\sum^L_{l=1}p_l\frac{\partial x_l(\bf{p}, w)}{\partial w} \equiv 1$$
+\end{proof}
 % ---------------------------------------------------------------
 \end{document}
 % ---------------------------------------------------------------
