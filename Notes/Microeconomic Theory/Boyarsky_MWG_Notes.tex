@@ -8,6 +8,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[margin=1in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb,amsfonts,enumerate}
+\usepackage[hidelinks]{hyperref}
+
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -52,7 +54,7 @@
 
 \begin{document}
 
-\title{Notes from MWG's \emph{Microeconomic Theory}} 
+\title{Notes from MWG's \emph{Microeconomic Theory \\ Draft 1}} 
 \author{Ariel Boyarsky\\ aboyarsky@uchciago.edu} 
 \maketitle
 
@@ -61,7 +63,7 @@
 % --------------------------------------------------------------
 
 \begin{abstract}
-The following are select notes from \emph{Micoreconomic Theory} by Mas-Colell, Whinston, and Green. I have tried to synthesize these into the key axioms, theorems, propositions, and proofs introduced in the text. Overall we mirror the Definition-Theorem-Proof style employed by MWG. Examples and notes are provided where needed. Some proofs are my own work and thus prone to error. Notice this is an individual effort and very much a work in progress. It should not be viewed as a replacement for the original text. 
+The following are select notes from \emph{Micoreconomic Theory} by Mas-Colell, Whinston, and Green. I have tried to synthesize these into the key axioms, theorems, propositions, and proofs introduced in the text. Overall we mirror the Definition-Theorem-Proof style employed by MWG. Examples and notes are provided where needed. Some proofs are my own work and thus prone to error. Notice this is an individual effort and very much a work in progress. It should not be viewed as a replacement for the original text. Additionally, in some areas we draw from the Microeconomic Theory notes of Noah Miller to add further context (\href{https://business.illinois.edu/nmiller/documents/notes/firsthalf.pdf}{\emph{available here}}).
 
 Please send comments or concerns to aboyarsky [at] uchicago [dot] edu.
 \end{abstract}
@@ -188,21 +190,33 @@ $$ p\cdot(x - x') = 0$$
 $$p \cdot \Delta x = 0$$
 Furthermore, $B_{\bf{p}, w}$ is a convex set. Consider $\bf{p} \cdot \bf{x}'' = \bf{p}\cdot \alpha \bf{x} + \bf{p} \cdot (1-\alpha)\bf{x}' \leq w$.\footnote{This is easily proven if we recall $\forall \bf{x} \in B_{\bf{p}, w}, \; \bf{p}\cdot \bf{x} \leq w$} 
 \subsection{Comparative Statics}
-$x(\bf{p}, w)$ defines a demand correspondence.
-\\ We assume the demand correspondence is \emph{homogeneous of degree zero} and satisfies \emph{Walrus' Law}.
-\\ \bf{Definition:} $x(\bf{p}, w)$ is homogeneous of degree zero if $x(\alpha\bf{p}, \alpha w) = x(\bf{p}, w) \forall \bf{p}, w, \alpha > 0$.
+\bf{Definition:} $x(\bf{p}, w)$ defines a Walrasian demand correspondence (also called a \bf{choice function}\footnote{In many ways this is interchangeable with the notion of an ordinary or Marshallian demand function that we study later.}). That is, given a price vector and consumer wealth, this function gives us the consumers choice of commodity bundle. Thus,
+
+$$x(\bf{p}, w): \R^{L+1}\rightarrow\R^L$$
+Notice, that $L + 1$ refers to number of prices (of goods, $L$) and the wealth argument, $w$.
+\vspace{10pt}
+\\ We assume the choice function is \emph{homogeneous of degree zero} and satisfies \emph{Walrus' Law}.
+\\ \bf{\\Definition:} $x(\bf{p}, w)$ is homogeneous of degree zero if $x(\alpha\bf{p}, \alpha w) = x(\bf{p}, w) \forall \bf{p}, w, \alpha > 0$.
 \\ That is, if price and wealth change in the same proportion there is no change since demand is based on feasibility. This entails that:
 $$B_{\alpha\bf{p}, \alpha w} = B_{\bf{p}, w}$$
 \bf{Definition:} $x(\bf{p}, w)$ satisfies Walrus' Law if $\forall p >> 0 $ and $w > 0$:
 $$\bf{p}\cdot\bf{x} = w \forall \bf{x} \in x(\bf{p}, w)$$
 Simply, this says that the consumer fully expends their wealth over a lifetime. 
-\\ We can write the demand function in matrix form with an entry for each good as such:
+\\ Also notice, that this defines a choice structure $(\mathcal{B}^w, x(\cdot))$ given $\mathcal{B}^w = \{B_{\bf{p}, w} | \bf{p} >> 0, w > 0 \}$.
+We can write the demand function in matrix form with an entry for each good as such:
 $$x(\bf{p}, w) = \begin{bmatrix} 
 x_1(\bf{p}, w) \\
 \vdots \\
 x_L(\bf{p}, w) 
-\end{bmatrix}$$
-Notice, that this defines a choice structure $(\mathcal{B}^w, x(\cdot))$ given $\mathcal{B}^w = \{B_{\bf{p}, w} | \bf{p} >> 0, w > 0 \}$.
+\end{bmatrix} \in \R^L$$
+Furthermore, it is useful to note that $\bf{p}\cdot x(\bf{p}, w) = w$ is more than an equality, it is an identity:\footnote{A key feature of an identity is that the equivalence still holds if we differentiate both sides. Consider 2a=1, if we differentiate both sides with respect to $a$ we get 2=0. But, if we convert this to $2a=z$ such that $a(z) =\frac{z}{2}$ and substitute such that $2a(z) \equiv z$ (now no matter what value of z we choose the relationship holds) and so, now we can differentiate both sides to get $2a'(z) = 1$ or $a'(z) = 1/2$. Thus, if we increase z by 1 we increase a(z) by 1/2.}
+$$\bf{p}\cdot x(p,w) \equiv w$$
+$$\sum^L_{l=1}p_lx_l(\bf{p}, w) \equiv w$$
+Thus, we can differentiate both sides:
+$$\frac{\partial}{\partial w}\sum^L_{l=1}p_lx_l(\bf{p}, w) = \frac{\partial}{\partial w}w$$
+$$\sum^L_{l=1}p_l\frac{\partial x_l(\bf{p}, w)}{\partial w} = \frac{d}{dw}w$$
+$$\sum^L_{l=1}p_l\frac{\partial x_l(\bf{p}, w)}{\partial w} = 1$$
+That is, if we increase wealth by 1, we also increase consumption by 1 which is a statement of Walrus' Law.
 \vspace{10pt}
 \\Comparative statics study choices under changes in various economic parameters such as wealth and price.
 \\\bf{\\Wealth Effects}
@@ -211,7 +225,7 @@ Notice, that this defines a choice structure $(\mathcal{B}^w, x(\cdot))$ given $
 \\ \bf{\\Definition:} The image of the Engel function, $E_{\bf{p}^*} = \{x(\bf{p}^*,w) \; | \; w > 0\}$, is called the \emph{wealth expansion function}.
 \\ \bf{\\Definition:} $\frac{\partial x_l(\bf{p},w)}{\partial w}$ is the \emph{wealth effect} for the $l$'th good.
 \\ \bf{\\Definition:} If $\frac{\partial x_l(\bf{p},w)}{\partial w} > 0$ then the good is \emph{normal} otherwise if $< 0$ it is \emph{inferior} at $(\bf{p}, w)$. Furthermore, if every good is normal we say demand is normal.
-\\ We can express the wealth effects at any $(\bf{p}, w)$ for goods using matrix notation:\footnote{We use the $D_xf(x,y)$ notation to denote the matrix of partial derivaties of $f$ with respect to x.}
+\\ We can express the wealth effects at any $(\bf{p}, w)$ for goods using matrix notation:\footnote{We use the $D_xf(x,y)$ notation to denote the matrix of partial derivatives of $f$ with respect to x.}
 $$D_wx(\bf{p}, w) = \begin{bmatrix} 
 \frac{\partial x_1(\bf{p},w)}{\partial w} \\
 \vdots \\
@@ -232,12 +246,17 @@ $$D_px(\bf{p}, w)p + D_wx(\bf{p}, w)w = 0$$
 
 \begin{proof}
 If the demand function is homogeneous of degree 0 then,
-$$x(\alpha\bf{p}, \alpha w) = x(\bf{p}, w)$$
-$$\frac{\alpha \partial x(\bf{p}, w)}{\partial\alpha} = 0$$
+$$x(\alpha\bf{p}, \alpha w) \equiv x(\bf{p}, w)$$
+Now we set $\bf{p} = \bf{p}*$, $w = w*$ and take the \emph{total} derivative with respect to $\alpha$,
+$$x(\alpha\bf{p}*, \alpha w*) \equiv x(\bf{p}*, w*)$$
 Set $\alpha = \bf{p}$
-$$\sum^L_{j=1} p_j \frac{\partial x(\bf{p}, w)}{\partial p_j} = 0$$
-The same follows for $\alpha = w$.
+$$\frac{\partial x(\alpha \bf{p}*, \alpha w*)}{\partial \bf{p}}\cdot\frac{\partial \bf{p}*}{\partial \alpha} + \frac{\partial x(\alpha \bf{p}*, \alpha w*)}{\partial w}\frac{\partial w*}{\partial \alpha} = 0$$
+Now, consider that $\alpha \bf{p}* = \bf{p}$ so, $\frac{\partial \bf{p}}{\partial \alpha} = p*$, similarly $\frac{\partial w}{\partial \alpha} = w*$. Substituting we get,
+$$\frac{\partial x(\alpha \bf{p}*, \alpha w*)}{\partial \bf{p}}\cdot \bf{p}*+ \frac{\partial x(\alpha p*, \alpha w*)}{\partial w}w* = 0$$
+Since, $p*$ is a vector of prices we can rewrite this in the form presented by \emph{MWG}:
+$$\sum^L_{l=1}p_l^*\frac{\partial x_l(\alpha \bf{p}*, \alpha w*)}{\partial \bf{p}} + \frac{\partial x(\alpha \bf{p}*, \alpha w*)}{\partial w}w* = 0\footnote{Notice, MWG drops the star notation.}$$
 \end{proof}
+
 % ---------------------------------------------------------------
 \end{document}
 % ---------------------------------------------------------------
