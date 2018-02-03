@@ -1,0 +1,108 @@
+\documentclass[dvips,11pt]{article}
+
+% Any percent sign marks a comment to the end of the line
+
+% Every latex document starts with a documentclass declaration like this
+% The option dvips allows for graphics, 12pt is the font size, and article
+%   is the style
+
+\usepackage[pdftex]{graphicx}
+\usepackage{url}
+\usepackage[superscript,biblabel]{cite}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumerate}
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\usepackage[pdftex,dvipsnames]{xcolor}  % Coloured text etc.
+\usepackage{mathtools}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\let\bf\oldbf
+\let\bf\textbf
+
+\let\oldforall\forall
+\let\forall\undefined
+\DeclareMathOperator{\forall}{\,\oldforall\,}
+
+\let\oldexists\exists
+\let\exists\undefined
+\DeclareMathOperator{\exists}{\,\oldexists\,}
+
+\DeclareMathOperator{\?}{\,?\,}
+
+
+\newcommand\inner[2]{\langle #1, #2 \rangle}
+\newcommand\norm[1]{\| #1 \|}
+\let\span\undefined
+\newcommand\span[1]{\text{span}(#1)}
+
+\usepackage{todonotes}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+
+\usepackage[english]{babel}
+ 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{claim}{Claim}[section]
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+% These are additional packages for "pdflatex", graphics, and to include
+% hyperlinks inside a document.
+
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{0in}
+\setlength{\textheight}{8.5in}
+
+
+% These force using more of the margins that is the default style
+
+\begin{document}
+
+% Everything after this becomes content
+% Replace the text between curly brackets with your own
+
+\title{Existence of Walrasian Equilibrium with Production\footnote{This proof follows the outline given by Jehle and Reny (2011). It relies heavily on insight derived from Prof. Reny's Price Theory II course at the University of Chicago. For educational purposes only.} \\ Price Theory II}
+\author{Ari Boyarsky \\ aboyarsky@uchicago.edu}
+
+% You can leave out "date" and it will be added automatically for today
+% You can change the "\today" date to any text you like
+\maketitle
+
+% -----------------------------------------------------------------------------
+% 									Begin
+% -----------------------------------------------------------------------------
+\section{Walrasian Equilibrium with Production}
+\begin{theorem}[\bf{Existence of WE with Production}]\hfill
+\\Let an economy, $\mathcal{E} = (u^i,\bf{e}^i, \boldsymbol{\theta}^{i,j}, Y^j)_{i\in\mathcal{I}, j \in \mathcal{J}}$. If each individual utility is continuous, strictly quasiconcave, and strongly increasing, and if the production possibilities set for each firm is closed and bounded, strongly convex, and $0 \in Y^j \subset \R^n$, and $y + \sum_{i\in\mathcal{I}}e^i >> 0$ for some $y \in \sum_{j \in \mathcal{J}}Y^j$ then there exists (atleast one and possibly many) a price vector $\bf{p}^* >> 0$ s.t. $z(\bf{p}^*) = 0$.
+\end{theorem}
+\begin{proof} We proceed by showing that under the conditions listed in the theorem, our excess demand function, $z(\cdot)$ satisifies the conditions for equilibrium. Recall, these conditions will allow us to utilize Brouwer's fixed point theorem. The first of these conditions is continuity,
+\begin{claim}\bf{$z(\cdot)$ is continuous}.
+\end{claim}
+Consider that $z(p) = \sum_{i \in \mathcal{I}}x^i(\textbf{p},m^i(\textbf{p}))-\sum_{i \in \mathcal{J}y^j(\textbf{p}) - \sum_{i\in\mathcal{I}}e^i}$. First notice that the summation of endowments is constant. Thus, we are concerned with our individual demand functions, and firm production plans.
+\\ Now, consider the production plan $y^j(\bf{p})$. Recall, that we assume that $Y^j$ is closed and bounded, and the firm chooses to maximize the convex set at $y^j(p)$ then, from the theory of the maximum we have that $y^j(p)$ is continuous. 
+\\ Now, consier $x^i(\textbf{p}, m^i(p))$. Consider that $m^i(p) = \sum\theta^{ij\Pi^j(p)}$. Again because we assume compactness and conevxity it is clear the profit function is continuous -- this is again by theory of the maximum. Then, since all the components of $x^i(\cdot)$ are continuous, and the demand function itself is continuous on $R^n_{++} x R^n_+$. We can establish the continuity of $z(\cdot)$ via each of it's components.
+
+\begin{claim}[\bf{Walras' Law}]
+$\bf p\cdot \bf z(\bf p) = 0, \; \forall \bf p >> \bf 0$
+\end{claim}
+To see this consider,
+$$pz(p) = p\sum_{\forall k}z_k(p) = p\sum_{\forall k}(\sum_{i \in \mathcal{I}}x^i(\textbf{p},m^i(\textbf{p}))-\sum_{i \in \mathcal{J}}y^j(\textbf{p}) - \sum_{i\in\mathcal{I}}e^i)$$
+$$ = p\sum_{\forall k}\sum_{i \in \mathcal{I}}x^i(\textbf{p},m^i(\textbf{p}))-p\sum_{\forall k}\sum_{i \in \mathcal{J}}y^j(\textbf{p}) - p\sum_{\forall k}\sum_{i\in\mathcal{I}}e^i$$
+Notice, we have just defined our profit function $\Pi^j(p) = \max y^j p$. And, $\sum_{i \in \mathcal{I}}\Pi^j(p) = \sum_{j \in \mathcal{J}}\sum_{i \in \mathcal{i}}\theta^{ij}\Pi^j$ Thus,
+$$ = p\sum_{\forall k}\sum_{i \in \mathcal{I}}x^i(\textbf{p},m^i(\textbf{p}))-p\sum_{\forall k}\sum_{i \in \mathcal{J}}y^j(\textbf{p}) - p\sum_{\forall k}\sum_{i\in\mathcal{I}}e^i$$
+\end{proof}
+\end{document}

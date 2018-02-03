@@ -1,0 +1,117 @@
+\documentclass[dvips,11pt]{article}
+
+% Any percent sign marks a comment to the end of the line
+
+% Every latex document starts with a documentclass declaration like this
+% The option dvips allows for graphics, 12pt is the font size, and article
+%   is the style
+
+\usepackage[pdftex]{graphicx}
+\usepackage{url}
+\usepackage[superscript,biblabel]{cite}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumerate,mathrsfs}
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\usepackage[pdftex,dvipsnames]{xcolor}  % Coloured text etc.
+\usepackage{mathtools}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\let\bf\oldbf
+\let\bf\textbf
+
+\let\oldforall\forall
+\let\forall\undefined
+\DeclareMathOperator{\forall}{\,\oldforall\,}
+
+\let\oldexists\exists
+\let\exists\undefined
+\DeclareMathOperator{\exists}{\,\oldexists\,}
+
+\DeclareMathOperator{\?}{\,?\,}
+
+
+\newcommand\inner[2]{\langle #1, #2 \rangle}
+\newcommand\norm[1]{\| #1 \|}
+\let\span\undefined
+\newcommand\span[1]{\text{span}(#1)}
+
+\usepackage{todonotes}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+
+ 
+\usepackage[english]{babel}
+ 
+\newtheorem{theorem}{Theorem}[section]
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{example}[2][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% These are additional packages for "pdflatex", graphics, and to include
+% hyperlinks inside a document.
+
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{0in}
+\setlength{\textheight}{8.5in}
+
+
+% These force using more of the margins that is the default style
+
+\begin{document}
+
+% Everything after this becomes content
+% Replace the text between curly brackets with your own
+
+\title{\vspace{-100pt}Social Chocie: Notes on Arrow, Rawls, and Gibbard-Satterwaithe\footnote{This note follows exposition given by Jehle and Reny (2011). It relies heavily on insight derived from Prof. Reny's Price Theory II course at the University of Chicago. For educational purposes only. Any mistakes are mine and mine alone.} \\ Price Theory II}
+\author{Ari Boyarsky \\ aboyarsky@uchicago.edu}
+
+% You can leave out "date" and it will be added automatically for today
+% You can change the "\today" date to any text you like
+\maketitle
+
+% -----------------------------------------------------------------------------
+% 									Begin
+% -----------------------------------------------------------------------------
+\section{Social Choice}
+First, we set up our model of social choice. Jehle and Reny tell us that while General Equilibrium theory allows us to measure the empricial outcomes associated with utility and profity maximization, social choice provides a framework to evaluate the "normative" good of these outcomes. 
+
+We begin by defining a social preference relation, $R$. Let $X$ denote the set of possible "social" states. X may be infintie or finite, we will detail this as required. Then, $R$ is a social preference relation \underline{iff} it is complete and transitive preference relation. Respectivley that is,
+
+$$\forall x,y \in X, xRy \text{ or } yRx$$
+$$\forall x,y,z \in X [xRy, \; yRz] \implies [xRz]$$
+\\\textbf{Example (Condorcet's Paradox).} Consider three individuals (N=3), and three goods (x,y,z), in a majoritarian system. We claim that this is not a a preference relation.
+\begin{proof}
+Let individual 1: $xRyRz$, 2: $yRzRx$, 3: $zRxRy$. Comapring pairwise implies that $xRy$, $yRz$, but, $zRy$
+\end{proof}
+Notice, that we can use Borda scoring to satisfy this relation. However, as we will see this will violate one of Arrow's impossibility conditions.
+
+One last remark:
+\\\textbf{Remark:} We use $P$ to denote the strict relation $R$, while use to denote an "as least as socially preffered as" relation. Also we use $R^i$ to denote individual preferences and $R$ to denote society's preferences.
+\\\textbf{Definition.}
+\\ (U) Unrestricted Domain: $f: \mathscr{R}^N \rightarrow \mathscr{R}$
+\\ (WP) Weak Pareto: $\forall x,y \in X \forall (R^1,\dots,R^N)\in\mathscr{R}^N$, if $xP^iy \forall i$ then $xRy$
+\\ (IIA) Independence of Irrelevant Alternatives: Given $x,y,z \in X$ and $xR^iy \forall i \implies xRy$ then $y\tilde{R}^ix \forall i \implies y\mathscr{R}x$. That is, I do not need to know about other states $z$.
+\\ (D) No Dictatorship: $\not\exists j \; s.t. \; \forall x,y \in X \forall (R^i, \dots, R^n) \in \mathscr{R}^n xP^iy \implies xRy$.
+
+Kenneth Arrow (in his doctoral thesis) tells us that if we have a society that satisfies the first three definitions, then this implies that this society is a dictatorship. We will give a diagrammatic proof of this. First more formally we have that,
+
+\begin{theorem}[\bf{Arrow's Impossibility Theorem}] If $|x| \geq 3$ then $\not\exists \text{ a social welfare function } f(\cdot)$ that satisfies all U, WP, IIA, D.
+\end{theorem}
+\begin{proof}\footnote{Notice, this is only a proof sketch, to see a more rigorous proof see Ch. 6 of Jehle and Reny, or Ch. 21 of MWG} We will follow the proof given in JR. To show this we will assume U, WP, and IIA, and show that implies D. First, consider $R = f(\{R^1,\dots,R^n\})$ such that $c \in X$ is ranked at the bottom $\implies \forall x\in X, x\neq c, xPc$. Now assume that we individually move $c$ to the top of each social preference. Notice, that then there will be a "first-time" that $c$ appears at the top of social preference. This then happens at the $n'th$ individual such that $\forall  x\in X, x\neq c, cP^nx$. We claim that $n$ is the dictator. To see this, by way of contradiction that $c$ has increased but not to the top. Instead, society still prefers $aPcPb$. Then change every individuals preferences such that $bPa$. Then by IIA, $bPa, cPb$, but then by transitivity $cPa$. But this violates IIA, so we must have that $c$ is now at the top of the preference relation. 
+Now, let us change $n$'s preferences such that $aP^ncP^nb$. For all $i\neq n$ let them vary their preferences of a and b such that they do not interfere with their ranking of c. Then, the ranking of a vs. c must  be the same as previous to moving c to the top. But that means $aPc$ since before we did anything $c$ was at the bottom. Furthermore every individuals choice of c vs. b should be the same as it was after moving c to the top, again by IIA. But this means that $cPb$, and $aPc$, and thusly $aPb$. Of course, this is the same as individual n's preference. Finally, consider that our choice of a,b,c are all arbitrary. We may redo this with a as c and so forth. Thus, n is a dictator. 
+\end{proof}
+\end{document}

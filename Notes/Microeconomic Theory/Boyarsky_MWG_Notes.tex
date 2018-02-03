@@ -293,6 +293,22 @@ $$\sum^L_{l=1}p_lx_l(\bf{p},w) \equiv w$$
 $$\frac{\partial}{\partial w}\sum^L_{l=1}p_lx_l(\bf{p},w) \equiv \frac{\partial}{\partial w}w$$
 $$\sum^L_{l=1}p_l\frac{\partial x_l(\bf{p}, w)}{\partial w} \equiv 1$$
 \end{proof}
+\subsection{Preference Relations and Demand}
+\bf{Definition:} The demand function $x(\bf{p},w)$ satisfies the Weak Axiom of Revealed Preference (WARP) if for $(p,w)$ and $(p',w')$:
+$$\text{If } \bf{p}\cdot x(\bf{p}',w') \leq w \text{ and } x(\bf{p}', w') \not= x(\bf{p}, w), \text{ then } \bf{p}'\cdot x(\bf{p}, w) \geq w'$$
+We can restate this as if $x(\bf{p}',w') \in B_{\bf{p}, w}$ then $x(\bf{p}, w)\not\in B_{\bf{p}', w'}$. That is, if we are given a budget set with restriction $(\bf{p}, w)$ and we choose $x(\bf{p}', w')$. Then, certainly when we are given the budget set with restrictions $(\bf{p}', w')$ we will still pick $x(\bf{p}', w')$. Since, we revealed a preference that $x(\bf{p}', w') \succ x(\bf{p}, w)$. This because in $B_{\bf{p},w}$ both were options and we stuck with $x(\bf{p}', w')$.
+
+Going back to our original definition we are saying that given these two consumption vectors both options were affordable at $(\bf{p},w)$ i.e. $\bf{p}\cdot x(\bf{p}',w') \leq w$, then if the consumer favors $x(\bf{p},w)$ this can only be if this is unaffordable at $(\bf{p}', w')$.
+\vspace{10pt} 
+\\This of course implies that we cannot have both $\bf{p}'\cdot x(\bf{p}'',w'') \leq w'$ and $\bf{p}''\cdot x(\bf{p}',w') \leq w''$. Since if one of these statements is true the consumer has revealed a preference for either $(\bf{p}', w')$ or $(\bf{p}'', w'')$ by selecting one when both were available.
+\\ \bf{\\Proposition: } If the Walrasian demand function $x(\bf{p}, w)$ is homogenous of degree zero and satisfies Walras' law. Then it also satisfies WARP iff:
+\begin{equation}(\bf{p}' - \bf{p})\cdot[x(\bf{p}', w') - x(\bf{p}, w)] \leq \end{equation}
+or
+$$\Delta\bf{p}\cdot\Delta \bf{x} \leq 0$$
+with strict inequality if $x(\bf{p}, w) \not= x(\bf{p}', w')$.
+\begin{proof} See MWG pg. 31-32
+\end{proof}
+Indeed, this is a more specific form of the law of demand stating that price and demand move in opposite directions. In this specific case this holds for compensated price changes. Hence, we call this the \emph{law of compensated demand}.
 % ---------------------------------------------------------------
 \end{document}
-% ---------------------------------------------------------------
+% ----------------------------------------------------------------
