@@ -1,4 +1,4 @@
-# Notes from my Studies in Economics
+# Notes from my studies in Economics
 
 A collection of notes and quasi-formal projects from coursework, research, and individual study. This repository is very much a work in progress.  
 
