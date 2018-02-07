@@ -1,0 +1,98 @@
+\documentclass[dvips,11pt]{article}
+
+% Any percent sign marks a comment to the end of the line
+
+% Every latex document starts with a documentclass declaration like this
+% The option dvips allows for graphics, 12pt is the font size, and article
+%   is the style
+
+\usepackage[pdftex]{graphicx}
+\usepackage{url}
+\usepackage[superscript,biblabel]{cite}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumerate,mathrsfs}
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\usepackage[pdftex,dvipsnames]{xcolor}  % Coloured text etc.
+\usepackage{mathtools}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\let\bf\oldbf
+\let\bf\textbf
+
+\let\oldforall\forall
+\let\forall\undefined
+\DeclareMathOperator{\forall}{\,\oldforall\,}
+
+\let\oldexists\exists
+\let\exists\undefined
+\DeclareMathOperator{\exists}{\,\oldexists\,}
+
+\DeclareMathOperator{\?}{\,?\,}
+
+
+\newcommand\inner[2]{\langle #1, #2 \rangle}
+\newcommand\norm[1]{\| #1 \|}
+\let\span\undefined
+\newcommand\span[1]{\text{span}(#1)}
+
+\usepackage{todonotes}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+
+ 
+\usepackage[english]{babel}
+ 
+\newtheorem{theorem}{Theorem}[section]
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{example}[2][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% These are additional packages for "pdflatex", graphics, and to include
+% hyperlinks inside a document.
+
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{0in}
+\setlength{\textheight}{8.5in}
+
+
+% These force using more of the margins that is the default style
+
+\begin{document}
+
+% Everything after this becomes content
+% Replace the text between curly brackets with your own
+
+\title{Introduction to Game Theory\footnote{This note follows the exposition given in Roger Myerson's Price Theory II course at the University of Chicago. For educational purposes only. Any mistakes are mine and mine alone. Please send any corrections to aboyarsky@uchicago.edu} \\ Price Theory II}
+\author{Ari Boyarsky \\ aboyarsky@uchicago.edu}
+
+% You can leave out "date" and it will be added automatically for today
+% You can change the "\today" date to any text you like
+\maketitle
+
+% -----------------------------------------------------------------------------
+% 									Begin
+% -----------------------------------------------------------------------------
+\section{Introduction to Game Theory}
+Previously, we have considered the rational decision maker. Game Theory focuses on the strategic decision maker. Broadly speaking, a decision maker is faced with a choice of between several alternatives based on her beliefs about the state of the world. Thusly, we define the utility of a decision maker (DM) as the real valued outcome of a choice and state. Formally, 
+$$C = \{\text{Choice Alts.}\}$$
+$$S = \{\text{States of the World}\}$$
+$$u: C \times S \rightarrow \R$$
+Then, $c \in C, s \in S$ we have $u(c,s) \in \R$.
+\\ Now consider that the our belief of what the state of the world is a probability. That is, we believe with some amount of certainty that world is such. Then,
+$$\Delta(S)  = \{\text{Probability Distribution of S}\} = \{q \in \R^s \mid q(s) \geq 0, \sum_{s\in S} q_s = 1\}$$
+It is worth noting that at the moment we suppose that $S$ and $C$ are finite.\footnote{Most economic games are finite, this is not necessarily so of all games. However, we do insist upon this simplifying assumption.} Furthermore, we borrow some notation from Myerson (1997) in that for $s \in S$ we let $[s]$ denote the probability that the state of the world is $s$.
+\end{document}
