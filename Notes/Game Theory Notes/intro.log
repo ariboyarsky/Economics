@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.3)  6 FEB 2018 18:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.3)  24 FEB 2018 21:15
 entering extended mode
 **./intro.tex
 (intro.tex
@@ -844,34 +844,35 @@ File: babel.def 2017/05/19 3.10 Babel common definitions
 \l@newzealand = a dialect from \language\l@british 
 ))
 \c@theorem=\count130
+\c@definition=\count131
  (intro.aux)
 \openout1 = `intro.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
 
 ("C:\Program Files\MiKTeX\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count131
+\scratchcounter=\count132
 \scratchdimen=\dimen178
 \scratchbox=\box39
-\nofMPsegments=\count132
-\nofMParguments=\count133
+\nofMPsegments=\count133
+\nofMParguments=\count134
 \everyMPshowfont=\toks46
-\MPscratchCnt=\count134
+\MPscratchCnt=\count135
 \MPscratchDim=\dimen179
-\MPnumerator=\count135
-\makeMPintoPDFobject=\count136
+\MPnumerator=\count136
+\makeMPintoPDFobject=\count137
 \everyMPtoPDFconversion=\toks47
 ) ("C:\Program Files\MiKTeX\tex\generic\oberdiek\pdftexcmds.sty"
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
@@ -949,58 +950,76 @@ G,.JBIG2,.JB2,.eps]
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 84.
+LaTeX Font Info:    Try loading font information for U+msa on input line 86.
 
 ("C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 84.
+LaTeX Font Info:    Try loading font information for U+msb on input line 86.
 
 ("C:\Program Files\MiKTeX\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 84.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 86.
 
 ("C:\Program Files\MiKTeX\tex\latex\jknappen\ursfs.fd"
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 84.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 86.
 
 ("C:\Program Files\MiKTeX\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 84.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 84.
- [1
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
+
+Overfull \vbox (1.3197pt too high) has occurred while \output is active []
+
+
+[1
 Non-PDF special ignored!
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(intro.aux) ) 
+[2]
+Overfull \hbox (47.7585pt too wide) in paragraph at lines 152--156
+\OT1/cmr/m/n/10.95 Following Nash, we de-fine $\OML/cmm/m/it/10.95 f\OT1/cmr/m/
+n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10.95 ) = (\OML/cmm/m/it/10.95 f[]\O
+T1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 
+; [] ; f[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10.95 ))$ to be
+ the N-tuple. Then, $\OML/cmm/m/it/10.95 f[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/1
+0.95 m\OT1/cmr/m/n/10.95 ) = (\OML/cmm/m/it/10.95 f[]\OT1/cmr/m/n/10.95 (\OML/c
+mm/m/it/10.95 m\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; [] ; f[]\OT1/cmr/m/n/1
+0.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10.95 ))$
+ []
+
+[3] (intro.aux) ) 
 Here is how much of TeX's memory you used:
- 15011 strings out of 493323
- 281800 string characters out of 3140772
- 345155 words of memory out of 3000000
- 18206 multiletter control sequences out of 15000+200000
- 15900 words of font info for 65 fonts, out of 3000000 for 9000
+ 15022 strings out of 493323
+ 281936 string characters out of 3140772
+ 348237 words of memory out of 3000000
+ 18215 multiletter control sequences out of 15000+200000
+ 16861 words of font info for 68 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,8n,56p,533b,245s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program
- Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.
-pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Progra
-m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmsy6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.p
-fb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on intro.pdf (1 page, 140349 bytes).
+<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10
+.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pro
+gram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/c
+mr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/
+Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+sy6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/P
+rogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files
+/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on intro.pdf (3 pages, 191362 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
+ 79 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

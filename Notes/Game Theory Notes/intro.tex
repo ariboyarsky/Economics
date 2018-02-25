@@ -48,6 +48,8 @@
 \usepackage[english]{babel}
  
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+
 \newenvironment{lemma}[2][Lemma]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
@@ -76,7 +78,7 @@
 % Everything after this becomes content
 % Replace the text between curly brackets with your own
 
-\title{Introduction to Game Theory\footnote{This note follows the exposition given in Roger Myerson's Price Theory II course at the University of Chicago. For educational purposes only. Any mistakes are mine and mine alone. Please send any corrections to aboyarsky@uchicago.edu} \\ Price Theory II}
+\title{A Brief Note on Game Theory\footnote{This note follows the exposition given in Roger Myerson's Price Theory II course at the University of Chicago. For educational purposes only. Any mistakes are mine and mine alone. Please send any corrections to aboyarsky@uchicago.edu} \\ Price Theory II}
 \author{Ari Boyarsky \\ aboyarsky@uchicago.edu}
 
 % You can leave out "date" and it will be added automatically for today
@@ -87,6 +89,7 @@
 % 									Begin
 % -----------------------------------------------------------------------------
 \section{Introduction to Game Theory}
+\subsection{Decision Theory}
 Previously, we have considered the rational decision maker. Game Theory focuses on the strategic decision maker. Broadly speaking, a decision maker is faced with a choice of between several alternatives based on her beliefs about the state of the world. Thusly, we define the utility of a decision maker (DM) as the real valued outcome of a choice and state. Formally, 
 $$C = \{\text{Choice Alts.}\}$$
 $$S = \{\text{States of the World}\}$$
@@ -94,5 +97,73 @@ $$u: C \times S \rightarrow \R$$
 Then, $c \in C, s \in S$ we have $u(c,s) \in \R$.
 \\ Now consider that the our belief of what the state of the world is a probability. That is, we believe with some amount of certainty that world is such. Then,
 $$\Delta(S)  = \{\text{Probability Distribution of S}\} = \{q \in \R^s \mid q(s) \geq 0, \sum_{s\in S} q_s = 1\}$$
-It is worth noting that at the moment we suppose that $S$ and $C$ are finite.\footnote{Most economic games are finite, this is not necessarily so of all games. However, we do insist upon this simplifying assumption.} Furthermore, we borrow some notation from Myerson (1997) in that for $s \in S$ we let $[s]$ denote the probability that the state of the world is $s$.
+It is worth noting that at the moment we suppose that $S$ and $C$ are finite.\footnote{Most economic games are finite, this is not necessarily so of all games. However, we do insist upon this simplifying assumption.} Furthermore, we borrow some notation from Myerson (1997) in that for $s \in S$ we let $[s]$ denote the probability that the state of the world is $s$. 
+
+Consider the following system: 
+\\$\mathcal{C} = \{T,M,B\}, \mathcal{S} = \{L,T\}$. Then consider the descion given by:
+$$\begin{tabular}{|l|l|l|}
+\hline
+ C/S & L & R \\
+ \hline
+T & 7 & 2 \\
+\hline
+M & 2 & 7 \\
+\hline
+B & 5 & 6 \\
+\hline
+\end{tabular}
+$$
+
+Then the DM must choose based make a choice based on some beliefs over what the state of the world is. Then applying the von Nuemann-Morgenstern expected utility theory we can draw some $\sigma \in \Delta(S)$ s.t. $\sigma(L) = p$ and thus, $\sigma{R} = 1-p$.
+
+Then the DM will assess the expected utility of their choice:
+$$E\mu(T) = 7p+(1-p)2$$
+$$E\mu(M) = 2p+(1-p)7$$
+$$E\mu(B) = 5p+(1-p)6$$
+Them clearly the decision maker will choose whatever choice maximizes their expected utility given their beliefs about the state of the world. Thus, we cans set up a system of inequalities and find that the DM will choose B whenever $3/4 \geq r \geq 2/3$.
+
+\subsection{Strong Domination Theory}
+We borrow Roger Myerson's presentation of the strong domination theorem as a duality theorem:
+\begin{theorem}
+Given, $\mu: CxS\rightarrow\R$ and $d\in C$. Then, exactly one of the following is true,
+\begin{enumerate}
+\item $\exists \sigma \in \Delta(C) \; s.t.\; \mu(d,s) < \sum\sigma(c)\mu(c,s) \forall s \in S$
+\item $\exists p \in \Delta(S) \; s.t. \; \sum_{s\in S}p(s)\mu(d,s) \geq \sum p(s)\mu(c,s) \forall c \in C$
+\end{enumerate}
+\end{theorem}
+
+The first condition tells us that the DM could derive more utility through some random strategy regardless of the state of the world, s. That is d is strongly dominated. The second condition says that action d is at least as good as any other action, c, given some beliefs about the state of the world.
+
+\subsection{Strategic Form Games}
+\section{Nash Equilibrium}
+The concept of Nash equilibrium is an innovation on top of Cournot's formulation of equilibrium. Essentially, it is a state in which each player is maximizing their expected utility with respect to what everyone else is doing.
+\begin{definition} A mixed strategy profile $\sigma^*_i$ is a Nash equilibrium if,
+$$\mu_i(\sigma^*_i, \sigma^*_-i) \geq \mu_i(s_i, \sigma^*_-i) \forall i, \forall s \in S$$
+\end{definition}
+The next theorem (introduced in Nash 1950a) shows us that NE apply in a large class of games. 
+\begin{theorem}
+Every finite, n-player, strategic form game has at least one Nash Equilibrium.
+\end{theorem}
+Nash provided two proofs in 1950a and 1950b using the Kakutani generalized fixed point theorem and  more directly using Brouwer fixed point theorem. We present the Brouwer version as depicted in Nash 1950b, and Jehle and Reny:
+\begin{proof}
+We show the result by defining a function in which the fixed points are equilibria, we then apply Brouwer. 
+\\ Let $M_i$ be the set of mixed strategies. Define $f:M\rightarrow M$ for $m\in M$, each player $i$, and each pure strategy $\alpha$,
+$$p_{i\alpha}(m) = \max\{0, u_i(\alpha,m_{-i})-u_i(m)\}$$
+$$f_{i\alpha}(m) = \frac{m_{i\alpha}+p_{i\alpha}(m)}{1+\sum^n_{\alpha'=1}p_{i\alpha'}(m)}$$
+Following Nash, we define $f(m) = (f_1(m),\dots,f_N(m))$ to be the N-tuple. Then, $f_{i}(m) = (f_{i,1}(m),\dots,f_{i,n}(m))$ where $\sum^n_{\alpha=1} f_{i\alpha} = 1 \forall i$.
+\\ Now notice that we have defined our numerator to be continuous, and the denominator is also continuous. Indeed, we add one so that we bound it away from 0. Our denominator will thus never be less than 1. Then, since M maps into itself, and is a compact convex set. We can apply Brouwer's fixed point theorem to conclude that there exists a fixed point $\hat{m}$.
+\\ Finally, we claim that $\hat{m}$ is a Nash Equilibrium. To see this notice that $f_{i\alpha}(\hat{m}) = \hat{m}$ such that,
+$$\hat{m}_{i\alpha} = \frac{\hat{m}_{i\alpha} + p_{i\alpha}(\hat{m})}{1 + \sum^n_{\alpha'=1}p_{i\alpha'}(\hat{m})}$$
+Simplifying we get,
+$$\hat{m}_{i\alpha} + \hat{m}_{i\alpha}\sum^n_{\alpha'=1}p_{i\alpha'}(\hat{m}) = \hat{m}_{i\alpha} + p_{i\alpha}(\hat{m})$$
+Multiplying by $u_i(\alpha,m_{-i})-u_i(m)$ and summing gives,
+$$ \sum_{\alpha=1}^n[u_i(\alpha,m_{-i})-u_i(m)]\hat{m}_{i\alpha}\sum^n_{\alpha'=1}p_{i\alpha'}(\hat{m})$$$$ =  \sum^n_{\alpha=1}[u_i(\alpha,m_{-i})-u_i(m)]p_{i\alpha}(\hat{m})
+$$
+But, the right hand side can be reduced to 0 since $\sum^n_{\alpha=1}m_{i\alpha}[u_i(\alpha,\hat{m}_{-1}-u_i(\hat{m}))] = \mu_i(\hat{m})-\mu_(\hat{m})$.
+So,
+$$\sum^n_{\alpha=1}[u_i(\alpha,m_{-i})-u_i(m)]p_{i\alpha}(\hat{m}) = 0$$
+$$\sum^n_{\alpha=1}u_i(\alpha,\hat{m}_{-i})-u_i(\hat{m}) = 0 \implies u_i(\hat{m})\geq u_i(\alpha, \hat{m}_{-i})$$
+This implies that no player can do better by deferring to a pure strategy and thus we have a Nash equilibrium. 
+\section{Extensive Form Games}
+\end{proof} 
 \end{document}
