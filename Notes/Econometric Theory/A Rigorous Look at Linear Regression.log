@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.3)  26 FEB 2018 11:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2018.4.10)  2 MAY 2018 18:57
 entering extended mode
-**./intro.tex
-(intro.tex
+**"./A Rigorous Look at Linear Regression.tex"
+("A Rigorous Look at Linear Regression.tex"
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Program Files\MiKTeX\tex\latex\base\article.cls"
@@ -492,10 +492,6 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \@enLab=\toks29
 )
-("C:\Program Files\MiKTeX\tex\latex\jknappen\mathrsfs.sty"
-Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
-\symrsfs=\mathgroup6
-)
 ("C:\Program Files\MiKTeX\tex\latex\xargs\xargs.sty"
 Package: xargs 2008/03/22 v1.1  extended macro definitions  (mpg)
 
@@ -567,6 +563,39 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen129
 \l_MT_below_shortintertext_sep=\dimen130
 )
+("C:\Program Files\MiKTeX\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count109
+\float@exts=\toks34
+\float@box=\box28
+\@float@everytoks=\toks35
+\@floatcapt=\box29
+)
+("C:\Program Files\MiKTeX\tex\latex\listings\listings.sty"
+\lst@mode=\count110
+\lst@gtempboxa=\box30
+\lst@token=\toks36
+\lst@length=\count111
+\lst@currlwidth=\dimen131
+\lst@column=\count112
+\lst@pos=\count113
+\lst@lostspace=\dimen132
+\lst@width=\dimen133
+\lst@newlines=\count114
+\lst@lineno=\count115
+\lst@maxwidth=\dimen134
+
+("C:\Program Files\MiKTeX\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count116
+\lst@skipnumbers=\count117
+\lst@framebox=\box31
+)
+("C:\Program Files\MiKTeX\tex\latex\listings\listings.cfg"
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
 ("C:\Program Files\MiKTeX\tex\latex\todonotes\todonotes.sty"
 Package: todonotes 2015/07/09 .dtx Todonotes source and documentation.
 Package: todonotes 2012/07/25
@@ -578,13 +607,13 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 ("C:\Program Files\MiKTeX\tex\latex\pgf\basiclayer\pgf.sty"
 ("C:\Program Files\MiKTeX\tex\latex\pgf\utilities\pgfrcs.sty"
 ("C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfutil-common.tex"
-\pgfutil@everybye=\toks34
-\pgfutil@tempdima=\dimen131
-\pgfutil@tempdimb=\dimen132
+\pgfutil@everybye=\toks37
+\pgfutil@tempdima=\dimen135
+\pgfutil@tempdimb=\dimen136
 
 ("C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfutil-common-lists.tex"))
 ("C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfutil-latex.def"
-\pgfutil@abb=\box28
+\pgfutil@abb=\box32
 
 ("C:\Program Files\MiKTeX\tex\latex\ms\everyshi.sty"
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
@@ -600,29 +629,29 @@ Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
 Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 
 ("C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfkeys.code.tex"
-\pgfkeys@pathtoks=\toks35
-\pgfkeys@temptoks=\toks36
+\pgfkeys@pathtoks=\toks38
+\pgfkeys@temptoks=\toks39
 
 ("C:\Program Files\MiKTeX\tex\generic\pgf\utilities\pgfkeysfiltered.code.tex"
-\pgfkeys@tmptoks=\toks37
+\pgfkeys@tmptoks=\toks40
 ))
-\pgf@x=\dimen133
-\pgf@y=\dimen134
-\pgf@xa=\dimen135
-\pgf@ya=\dimen136
-\pgf@xb=\dimen137
-\pgf@yb=\dimen138
-\pgf@xc=\dimen139
-\pgf@yc=\dimen140
+\pgf@x=\dimen137
+\pgf@y=\dimen138
+\pgf@xa=\dimen139
+\pgf@ya=\dimen140
+\pgf@xb=\dimen141
+\pgf@yb=\dimen142
+\pgf@xc=\dimen143
+\pgf@yc=\dimen144
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
-\c@pgf@counta=\count109
-\c@pgf@countb=\count110
-\c@pgf@countc=\count111
-\c@pgf@countd=\count112
-\t@pgf@toka=\toks38
-\t@pgf@tokb=\toks39
-\t@pgf@tokc=\toks40
+\c@pgf@counta=\count118
+\c@pgf@countb=\count119
+\c@pgf@countc=\count120
+\c@pgf@countd=\count121
+\t@pgf@toka=\toks41
+\t@pgf@tokb=\toks42
+\t@pgf@tokc=\toks43
 ("C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgf.cfg"
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
 )
@@ -636,8 +665,8 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 ))) ("C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.t
 ex"
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count113
-\pgfsyssoftpath@bigbuffer@items=\count114
+\pgfsyssoftpath@smallbuffer@items=\count122
+\pgfsyssoftpath@bigbuffer@items=\count123
 ) ("C:\Program Files\MiKTeX\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
 "
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
@@ -648,12 +677,12 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 ("C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathcalc.code.tex"
 ("C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathutil.code.tex")
 ("C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathparser.code.tex"
-\pgfmath@dimen=\dimen141
-\pgfmath@count=\count115
-\pgfmath@box=\box29
-\pgfmath@toks=\toks41
-\pgfmath@stack@operand=\toks42
-\pgfmath@stack@operation=\toks43
+\pgfmath@dimen=\dimen145
+\pgfmath@count=\count124
+\pgfmath@box=\box33
+\pgfmath@toks=\toks44
+\pgfmath@stack@operand=\toks45
+\pgfmath@stack@operation=\toks46
 )
 ("C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.code.tex"
 ("C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.basic.code.tex"
@@ -671,53 +700,53 @@ ode.tex")
 ("C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfunctions.integerarithmet
 ics.code.tex")))
 ("C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmathfloat.code.tex"
-\c@pgfmathroundto@lastzeros=\count116
+\c@pgfmathroundto@lastzeros=\count125
 ))
 ("C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex"
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
-\pgf@picminx=\dimen142
-\pgf@picmaxx=\dimen143
-\pgf@picminy=\dimen144
-\pgf@picmaxy=\dimen145
-\pgf@pathminx=\dimen146
-\pgf@pathmaxx=\dimen147
-\pgf@pathminy=\dimen148
-\pgf@pathmaxy=\dimen149
-\pgf@xx=\dimen150
-\pgf@xy=\dimen151
-\pgf@yx=\dimen152
-\pgf@yy=\dimen153
-\pgf@zx=\dimen154
-\pgf@zy=\dimen155
+\pgf@picminx=\dimen146
+\pgf@picmaxx=\dimen147
+\pgf@picminy=\dimen148
+\pgf@picmaxy=\dimen149
+\pgf@pathminx=\dimen150
+\pgf@pathmaxx=\dimen151
+\pgf@pathminy=\dimen152
+\pgf@pathmaxy=\dimen153
+\pgf@xx=\dimen154
+\pgf@xy=\dimen155
+\pgf@yx=\dimen156
+\pgf@yy=\dimen157
+\pgf@zx=\dimen158
+\pgf@zy=\dimen159
 )
 ("C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepathconstruct.code.
 tex"
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
-\pgf@path@lastx=\dimen156
-\pgf@path@lasty=\dimen157
+\pgf@path@lastx=\dimen160
+\pgf@path@lasty=\dimen161
 )
 ("C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorepathusage.code.tex"
 File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
-\pgf@shorten@end@additional=\dimen158
-\pgf@shorten@start@additional=\dimen159
+\pgf@shorten@end@additional=\dimen162
+\pgf@shorten@start@additional=\dimen163
 ) ("C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex"
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
-\pgfpic=\box30
-\pgf@hbox=\box31
-\pgf@layerbox@main=\box32
-\pgf@picture@serial@count=\count117
+\pgfpic=\box34
+\pgf@hbox=\box35
+\pgf@layerbox@main=\box36
+\pgf@picture@serial@count=\count126
 )
 ("C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoregraphicstate.code.t
 ex"
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
-\pgflinewidth=\dimen160
+\pgflinewidth=\dimen164
 )
 ("C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoretransformations.cod
 e.tex"
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
-\pgf@pt@x=\dimen161
-\pgf@pt@y=\dimen162
-\pgf@pt@temp=\dimen163
+\pgf@pt@x=\dimen165
+\pgf@pt@y=\dimen166
+\pgf@pt@temp=\dimen167
 )
 ("C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorequick.code.tex"
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
@@ -731,19 +760,19 @@ File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 )
 ("C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorearrows.code.tex"
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
-\pgfarrowsep=\dimen164
+\pgfarrowsep=\dimen168
 )
 ("C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex"
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
-\pgf@max=\dimen165
-\pgf@sys@shading@range@num=\count118
+\pgf@max=\dimen169
+\pgf@sys@shading@range@num=\count127
 )
 ("C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoreimage.code.tex"
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 
 ("C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcoreexternal.code.tex"
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
-\pgfexternal@startupbox=\box33
+\pgfexternal@startupbox=\box37
 )) ("C:\Program Files\MiKTeX\tex\generic\pgf\basiclayer\pgfcorelayers.code.tex"
 File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
 )
@@ -755,14 +784,14 @@ File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
 File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 ))) ("C:\Program Files\MiKTeX\tex\generic\pgf\modules\pgfmoduleshapes.code.tex"
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
-\pgfnodeparttextbox=\box34
+\pgfnodeparttextbox=\box38
 ) ("C:\Program Files\MiKTeX\tex\generic\pgf\modules\pgfmoduleplot.code.tex"
 File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 )
 ("C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty"
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen166
-\pgf@nodesepend=\dimen167
+\pgf@nodesepstart=\dimen170
+\pgf@nodesepend=\dimen171
 ) ("C:\Program Files\MiKTeX\tex\latex\pgf\compatibility\pgfcomp-version-1-18.st
 y"
 Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
@@ -775,10 +804,10 @@ Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
 Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
 ("C:\Program Files\MiKTeX\tex\generic\pgf\math\pgfmath.code.tex")
-\pgffor@iter=\dimen168
-\pgffor@skip=\dimen169
-\pgffor@stack=\toks44
-\pgffor@toks=\toks45
+\pgffor@iter=\dimen172
+\pgffor@skip=\dimen173
+\pgffor@stack=\toks47
+\pgffor@toks=\toks48
 ))
 ("C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex"
 Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
@@ -786,31 +815,31 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 ("C:\Program Files\MiKTeX\tex\generic\pgf\libraries\pgflibraryplothandlers.code
 .tex"
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count119
-\pgfplotmarksize=\dimen170
+\pgf@plot@mark@count=\count128
+\pgfplotmarksize=\dimen174
 )
-\tikz@lastx=\dimen171
-\tikz@lasty=\dimen172
-\tikz@lastxsaved=\dimen173
-\tikz@lastysaved=\dimen174
-\tikzleveldistance=\dimen175
-\tikzsiblingdistance=\dimen176
-\tikz@figbox=\box35
-\tikz@figbox@bg=\box36
-\tikz@tempbox=\box37
-\tikz@tempbox@bg=\box38
-\tikztreelevel=\count120
-\tikznumberofchildren=\count121
-\tikznumberofcurrentchild=\count122
-\tikz@fig@count=\count123
+\tikz@lastx=\dimen175
+\tikz@lasty=\dimen176
+\tikz@lastxsaved=\dimen177
+\tikz@lastysaved=\dimen178
+\tikzleveldistance=\dimen179
+\tikzsiblingdistance=\dimen180
+\tikz@figbox=\box39
+\tikz@figbox@bg=\box40
+\tikz@tempbox=\box41
+\tikz@tempbox@bg=\box42
+\tikztreelevel=\count129
+\tikznumberofchildren=\count130
+\tikznumberofcurrentchild=\count131
+\tikz@fig@count=\count132
 
 ("C:\Program Files\MiKTeX\tex\generic\pgf\modules\pgfmodulematrix.code.tex"
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count124
-\pgfmatrixcurrentcolumn=\count125
-\pgf@matrix@numberofcolumns=\count126
+\pgfmatrixcurrentrow=\count133
+\pgfmatrixcurrentcolumn=\count134
+\pgf@matrix@numberofcolumns=\count135
 )
-\tikz@expandcount=\count127
+\tikz@expandcount=\count136
 
 ("C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibr
 arytopaths.code.tex"
@@ -820,60 +849,36 @@ File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 arypositioning.code.tex"
 File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
 )
-\c@@todonotes@numberoftodonotes=\count128
-) ("C:\Program Files\MiKTeX\tex\generic\babel\babel.sty"
-Package: babel 2017/05/19 3.10 The Babel package
+\c@@todonotes@numberoftodonotes=\count137
+) ("A Rigorous Look at Linear Regression.aux")
+\openout1 = `"A Rigorous Look at Linear Regression.aux"'.
 
-*************************************
-* Local config file bblopts.cfg used
-*
-("C:\Program Files\MiKTeX\tex\latex\arabi\bblopts.cfg"
-File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
- babel
-)
-("C:\Program Files\MiKTeX\tex\latex\babel-english\english.ldf"
-Language: english 2017/01/24 v3.3q English support from the babel system
-
-("C:\Program Files\MiKTeX\tex\generic\babel\babel.def"
-File: babel.def 2017/05/19 3.10 Babel common definitions
-\babel@savecnt=\count129
-\U@D=\dimen177
-)
-\l@canadian = a dialect from \language\l@american 
-\l@australian = a dialect from \language\l@british 
-\l@newzealand = a dialect from \language\l@british 
-))
-\c@theorem=\count130
-\c@definition=\count131
- (intro.aux)
-\openout1 = `intro.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 92.
+LaTeX Font Info:    ... okay on input line 92.
 
 ("C:\Program Files\MiKTeX\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count132
-\scratchdimen=\dimen178
-\scratchbox=\box39
-\nofMPsegments=\count133
-\nofMParguments=\count134
-\everyMPshowfont=\toks46
-\MPscratchCnt=\count135
-\MPscratchDim=\dimen179
-\MPnumerator=\count136
-\makeMPintoPDFobject=\count137
-\everyMPtoPDFconversion=\toks47
+\scratchcounter=\count138
+\scratchdimen=\dimen181
+\scratchbox=\box43
+\nofMPsegments=\count139
+\nofMParguments=\count140
+\everyMPshowfont=\toks49
+\MPscratchCnt=\count141
+\MPscratchDim=\dimen182
+\MPnumerator=\count142
+\makeMPintoPDFobject=\count143
+\everyMPtoPDFconversion=\toks50
 ) ("C:\Program Files\MiKTeX\tex\generic\oberdiek\pdftexcmds.sty"
 Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -949,77 +954,63 @@ G,.JBIG2,.JB2,.eps]
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+\c@lstlisting=\count144
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 86.
+LaTeX Font Info:    Try loading font information for U+msa on input line 105.
 
 ("C:\Program Files\MiKTeX\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 86.
+LaTeX Font Info:    Try loading font information for U+msb on input line 105.
 
 ("C:\Program Files\MiKTeX\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 86.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 105.
 
-("C:\Program Files\MiKTeX\tex\latex\jknappen\ursfs.fd"
-File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-)
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 86.
 
 ("C:\Program Files\MiKTeX\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
-
-Overfull \vbox (1.3197pt too high) has occurred while \output is active []
-
-
-[1
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
+ [1
 Non-PDF special ignored!
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-[2]
-Overfull \hbox (47.7585pt too wide) in paragraph at lines 152--156
-\OT1/cmr/m/n/10.95 Following Nash, we de-fine $\OML/cmm/m/it/10.95 f\OT1/cmr/m/
-n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10.95 ) = (\OML/cmm/m/it/10.95 f[]\O
-T1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 
-; [] ; f[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10.95 ))$ to be
- the N-tuple. Then, $\OML/cmm/m/it/10.95 f[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/1
-0.95 m\OT1/cmr/m/n/10.95 ) = (\OML/cmm/m/it/10.95 f[]\OT1/cmr/m/n/10.95 (\OML/c
-mm/m/it/10.95 m\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; [] ; f[]\OT1/cmr/m/n/1
-0.95 (\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10.95 ))$
- []
-
-[3] (intro.aux) ) 
+[2] ("A Rigorous Look at Linear Regression.aux") ) 
 Here is how much of TeX's memory you used:
- 15022 strings out of 493323
- 281936 string characters out of 3140772
- 348237 words of memory out of 3000000
- 18215 multiletter control sequences out of 15000+200000
- 16861 words of font info for 68 fonts, out of 3000000 for 9000
+ 15958 strings out of 493323
+ 295754 string characters out of 3140772
+ 355750 words of memory out of 3000000
+ 19152 multiletter control sequences out of 15000+200000
+ 18005 words of font info for 68 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,8n,56p,533b,245s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10
-.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pro
-gram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/c
-mr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/
-Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cm
-sy6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/P
-rogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files
-/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on intro.pdf (3 pages, 191389 bytes).
+ 62i,11n,56p,566b,300s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX/font
+s/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program
+ Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17
+.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Progr
+am Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmsy6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Prog
+ram Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on "A Rigorous Look at Linear Regression.pdf" (2 pages, 189027 b
+ytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
+ 84 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

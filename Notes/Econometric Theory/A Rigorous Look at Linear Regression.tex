@@ -1,0 +1,167 @@
+\documentclass[dvips,11pt]{article}
+
+% Any percent sign marks a comment to the end of the line
+
+% Every latex document starts with a documentclass declaration like this
+% The option dvips allows for graphics, 12pt is the font size, and article
+%   is the style
+
+\usepackage[pdftex]{graphicx}
+\usepackage{url}
+\usepackage[superscript,biblabel]{cite}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumerate}
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\usepackage[pdftex,dvipsnames]{xcolor}  % Coloured text etc.
+\usepackage{mathtools}
+\usepackage{float}
+
+
+\usepackage{listings}
+\lstset{
+  basicstyle=\fontfamily{lmvtt}\selectfont\small\color{blue},
+  columns=fullflexible,
+}
+
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\let\bf\oldbf
+\let\bf\textbf
+
+\let\oldforall\forall
+\let\forall\undefined
+\DeclareMathOperator{\forall}{\,\oldforall\,}
+
+\let\oldexists\exists
+\let\exists\undefined
+\DeclareMathOperator{\exists}{\,\oldexists\,}
+
+\DeclareMathOperator{\?}{\,?\,}
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator*{\plim}{plim}
+
+
+
+\newcommand\inner[2]{\langle #1, #2 \rangle}
+\newcommand\norm[1]{\| #1 \|}
+\let\span\undefined
+\newcommand\span[1]{\text{span}(#1)}
+\newcommand\rank[1]{\text{rank}(#1)}
+
+\usepackage{todonotes}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+% \newenvironment{claim}[2][Claim]{\begin{trivlist}
+% \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1.}]}{\end{trivlist}}
+\newenvironment{claim}[1]{\par\noindent{\bfseries Claim.}\space#1}{}
+
+
+% These are additional packages for "pdflatex", graphics, and to include
+% hyperlinks inside a document.
+
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{0in}
+\setlength{\textheight}{8.5in}
+
+
+% These force using more of the margins that is the default style
+
+\begin{document}
+\delimitershortfall=-2pt
+
+% Everything after this becomes content
+% Replace the text between curly brackets with your own
+
+\title{\vspace{-50pt}A Rigorous Look at Linear Regression\thanks{These notes are based on classes taught by Azeem Shaikh, and Stephane Bonhome at the University of Chicago. All mistakes are my own.}}
+\author{Ari Boyarsky\footnote{aboyarsky@uchicago.edu}}
+\date{\today}
+
+
+% You can leave out "date" and it will be added automatically for today
+% You can change the "\today" date to any text you like
+\maketitle
+
+% -----------------------------------------------------------------------------
+% 									Begin
+% -----------------------------------------------------------------------------
+\section{The Model}
+Consider the classical OLS model:
+\begin{equation}
+y_i = x_i\beta + u_i
+\end{equation}
+Where $i \in \{1,\dots,N\}$.
+
+In this model we call $y_i$ our outcome/response/dependent variable, $x_i = (x_{i,1},\dots,x_{i,K})$ is our predictor/explanatory/independent/regressor variable. $u_i$ is our residual value. We attempt to estimate our coefficient, $\beta$. In matrix form,
+\begin{equation}\label{eq:2}
+\bf{y} = \bf{X}\boldsymbol{\beta} + \bf{u}\footnote{Forgive us if we do not always note our matricies in boldface.}
+\end{equation}
+In this case $X$ is $N\times K$, $\beta$ is $K\times1$, $u$ is $N\times1$, and $y$ is $N\times1$.
+
+\subsection{Ordinary Least Squares}
+ 
+ One process by which we estimate the $\beta$ terms is called ordinary least squares. To provide some motivation for this we will consider some interpretations of linear regression and return to the OLS estimator. 
+
+ \subsubsection{Linear Regression as a Conditional Expectation}
+ Let $\E[Y | X] = X'\beta$ then, $u = Y-E[Y|X]$. Notice, that this implies a linear relationship. If this the relationship is indeed linear and we satisfy the $\E[u|X] =0$ assumption then our "approximation" would be exact that is $\E[Xu] = 0$
+
+ \subsubsection{Linear Regression as a Linear Approximation}
+
+Suppose that we have moment existence. Then,
+\begin{equation}
+\hat\beta = \min_{\hat\beta \in \R^{k+1}} \E[([Y | X ] - X'\hat\beta)^2] \iff \min_{\hat\beta \in \R^{k+1}} \E[(Y - X'\hat\beta)^2] 
+\end{equation}
+
+\subsubsection{Linear Regression as a Causal Model}
+Let $Y = g(X,u)$, the effect of of $x$ on $y$ is given by $D_xg(X,u)$, if we add a $\beta_0$ term (sometimes denoted as $\alpha$) we can have that $\E[Xu] = 0$. Then, assuming the same context that we had before and assuming moment existence we can solve for $\beta$.
+
+To do this we need to make one more assumption that is $\E[X'X]$ is full rank, that is it is invertible. 
+
+\begin{claim}{(The OLS estimator)} Then, we claim that: \begin{equation}\beta=\E[X'X]^{-1}\E[XY]\end{equation}
+\end{claim}
+\begin{proof}
+Recall, by assumption $\E[X|u] = 0, u = Y-X'\beta$ such that:
+$$\E[X'Y] = \E[X'X]\beta \implies \beta = \E[X'X]^{-1}\E[X'Y]$$
+\end{proof}
+\begin{remark}{} Thus under the above assumptions, we are presented with the familiar OLS estimator. 
+\end{remark}
+Next, we present the proof of unbiasedness of the OLS estimator.
+
+\begin{claim} $\beta$ is unbiased. \end{claim}
+
+\begin{proof} 
+$$
+\begin{aligned}
+\E [\beta|X] &= \E[\E[X'X]^{-1}\E[X'Y]|X] \\
+& = \E[(\sum^N_{i=0}x_i'x_i)^{-1}\sum^N_{i=0}x_i'y_i | X] \\
+& = (\sum^N_{i=0}x_i'x_i)^{-1}\sum^N_{i=0}x_i'\E[y_i|X] \\
+& = (\sum^N_{i=0}x_i'x_i)^{-1}\sum^N_{i=0}x_i'x_i\beta = \beta
+\end{aligned}
+$$
+\end{proof}
+\begin{remark}For now, take notice of the assumptions that we made to arrive at the above result. First, we assume $\E[y_i|X]=X'\beta$ which implies $\E[u_i|x_i] = 0$. We also assume $\textbf{X'X}$ is invertible. We will further formalize these assumptions later.\end{remark}
+\end{document}
+
+
