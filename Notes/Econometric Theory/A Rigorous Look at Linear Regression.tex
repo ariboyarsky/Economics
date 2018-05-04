@@ -162,6 +162,44 @@ $$
 $$
 \end{proof}
 \begin{remark}For now, take notice of the assumptions that we made to arrive at the above result. First, we assume $\E[y_i|X]=X'\beta$ which implies $\E[u_i|x_i] = 0$. We also assume $\textbf{X'X}$ is invertible. We will further formalize these assumptions later.\end{remark}
+\pagebreak
+\subsubsection{Asymptotic Properties of OLS}
+\begin{claim} The OLS estimator is consistent.
+\end{claim}
+\begin{proof}
+$$
+\begin{aligned}
+\hat\beta &= (\frac{1}{N}\sum^N_{i=0}x_i'x_i)^{-1}\frac{1}{N}\sum^N_{i=0}x_i'y_i \\
+&= (\frac{1}{N}\sum^N_{i=0}x_i'x_i)^{-1}\frac{1}{N}\sum^N_{i=0}x_i'(x_i\beta+u_i) \\
+&= (\frac{1}{N}\sum^N_{i=0}x_i'x_i)^{-1}(\frac{1}{N}\sum^N_{i=0}x_i'x_i\beta+\frac{1}{N}\sum^N_{i=0}x_i'u_i)\\
+&= (\frac{1}{N}\sum^N_{i=0}x_i'x_i)^{-1}(\frac{1}{N}\sum^N_{i=0}x_i'u_i) + \beta
+\end{aligned}
+$$
+
+
+\begin{equation}\implies \sqrt{N}(\hat\beta - \beta) = (\frac{1}{N}\sum^N_{i=0}x_i'x_i)^{-1}(\frac{1}{\sqrt{N}}\sum^N_{i=0}x_i'u_i)\end{equation}
+
+
+Equation (5) allows us to consider the asymptotic consistency of our estimator, we expect of course that it goes to 0 as our sample grows. This falls from our assumption on the orthogonality of $x_i$ and $u_i$:
+
+$$
+\plim_{N\rightarrow\infty}\sqrt{N}(\hat\beta - \beta) \implies \frac{1}{\sqrt{N}}\sum^N_{i=0}x_i'u_i \rightarrow_p 0
+$$
+\end{proof}
+We can also consider the limiting distribution of the OLS estimator, since
+$$
+\plim_{N\rightarrow\infty}\sqrt{N}(\hat\beta - \beta) \implies \frac{1}{\sqrt{N}}\sum^N_{i=0}x_i'u_i \rightarrow_p 0
+$$
+Then using the Multivariate CLT, we see:
+$$
+\sqrt{N}(\hat\beta - \beta) \rightarrow_d \mathcal{N}(0, V)
+$$
+Now we can solve for $V$, notice, $V = Var(\sqrt{N}(\hat\beta - \beta)) = \E[\sqrt{N}(\hat\beta - \beta)^2] - \E[\sqrt{N}(\hat\beta - \beta)]^2 = \E[\sqrt{N}(\hat\beta - \beta)^2]$. Then,
+$$\E[\sqrt{N}(\hat\beta - \beta)^2] = (\frac{1}{N}\sum^N_{i=0}x_i'x_i)^{-2}(\frac{1}{\sqrt{N}}\sum^N_{i=0}x_i'u_i)^2$$
+Which we commonly right as (This is the famous White Formula):
+$$(\frac{1}{N}\sum^N_{i=0}x_i'x_i)^{-1}(\frac{1}{\sqrt{N}}\sum^N_{i=0}u_i^2x_i'x_i)(\frac{1}{N}\sum^N_{i=0}x_i'x_i)^{-1}$$
+In matrix form: $$(X'X)^{-1}X'\boldsymbol{\Sigma} X(X'X)^{-1}$$
+Notice, that this variance assumes heteroskedastic errors. 
 \end{document}
 
 
