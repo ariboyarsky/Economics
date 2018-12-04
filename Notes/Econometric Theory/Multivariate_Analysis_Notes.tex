@@ -1,0 +1,678 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+
+\usepackage{amsfonts,graphicx}
+\usepackage{mathtools}
+\usepackage[linewidth=0.5pt]{mdframed}
+
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+% \newcounter{section}
+\renewcommand{\thepage}{\arabic{page}}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   %\pagestyle{myheadings}
+   %\thispagestyle{plain}
+   \newpage
+   % \setcounter{lecnum}{#1}
+   % \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { { STAT 32940
+	\hfill Fall 2018} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Mutlivariate Analysis Overview  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Notes by: #3 \hfill}  }
+      \vspace{1mm} 
+       \hbox  { {\it Based on lectures by Dr. Lek-Heng Lim at the University of Chicago} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   %\markboth{Lecture #1: #2}{Lecture #1: #2}
+
+ 
+   \vspace*{4mm}
+}
+
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+
+
+\let\span\undefined
+\newcommand\span[1]{\text{span}(#1)}
+\newcommand\rank[1]{\text{rank}(#1)}
+\newcommand\im[1]{\text{im}(#1)}
+\newcommand\diag[1]{\text{diag}(#1)}
+\newcommand\tr[1]{\text{tr}#1}
+\newcommand\argmax[1]{\text{argmax}#1}
+
+
+\usepackage{etoolbox}
+\newcommand{\define}[4]{\expandafter#1\csname#3#4\endcsname{#2{#4}}}
+\forcsvlist{\define{\newcommand}{\mathbb}{}}{N,Z,Q,R,C,F,G,T,A,B,D,E}
+
+% Use these for theorems, lemmas, proofs, etc.
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\begin{document}
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\lecture{1}{August 28}{Ariel Boyarsky (aboyarsky@uchicago.edu)}
+
+\textbf{Preface}
+
+The following are a \underline{condensed} set of notes for a course in Multivariate Analysis. These notes are based on the handouts and lectures of Dr. Lek-Heng Lim. My additions are limited to some proofs and useful subject matters. Any mistakes are my own, please do not hesitate to email me if any are found. The material covers topics in advanced multivariate analysis also known as unsupervised learning. We omit a discussion of linear regression as we expect students will have already learned it. The only prerequisite is a standard course in linear algebra, though a course in real analysis would be helpful.
+
+\tableofcontents
+
+\clearpage
+
+\section{Basic Matrix Theory}
+We briefly review some familiar concepts that will be useful in the following sections.
+\subsection{Important Definitions}
+\begin{definition}(Orthogonality). Two vectors are said to be orthogonal iff $a\cdot b = 0$. That is perpendicular to each other.
+\end{definition}
+
+\begin{definition}(Mutual Orthogonality). A set of vectors, $V = \{v_1,\dots,v_n\}$, are said to be mutually orthogonal if $\forall \; a,b \in V$ we have $a\cdot b = 0$.
+\end{definition}
+
+\begin{definition}(Orthonormality). A set of vectors V is orthonormal if $\forall \; v \in V \; ||v||_2 = 1$ and the set if mutually orthogonal.
+\end{definition}
+
+\subsection{Norms}
+\begin{definition} A norm follows the following properties,
+\begin{enumerate}
+\item $||x|| \geq 0$ with equality $\iff x = 0$ (Positive Definiteness)
+\item $||ax|| = |a|||x||$ for $ a \in \R, x \in \R^n$ (Scalar)
+\item $||x+y||\leq||x||+||y||$ (Triangle Inequality)
+\end{enumerate}
+\end{definition}
+
+A very useful class of norms are the $L^p$ or p-norms.
+
+\begin{definition} Take $x \in \R^n$. The p-norm is defined as,
+$$||x||_p = (|x_1|^p+\dots+|x_n|^p)^{\frac{1}{p}}$$
+\end{definition} 
+
+The most famous of these norms is the $p=2$ norm, more commonly referred to as the euclidean norm or the $L^2$ norm, $$||x||_2 = (\sum^n_{i=1}|x_i|^2)^{1/2}$$
+
+A useful fact about the relationship of norms and inner products follows.
+
+\begin{lemma}$||x||^2_2 = x^Tx$.
+\end{lemma}
+
+
+
+\subsection{Matrix Norms}
+
+\begin{definition} A matrix norm will satisfy,
+\begin{enumerate}
+\item $||x|| \geq 0$ with equality $\iff x = 0$ (Positive Definiteness)
+\item $||ax|| = |a|||x||$ for $ a \in \R, x \in \R^n$ (Scalar)
+\item $||x+y||\leq||x||+||y||$ (Triangle Inequality) 
+\end{enumerate}
+And sometimes a further property of submultiplicativity ($||AB||\leq||A||||B||$).
+\end{definition}
+
+\begin{definition}(Matrix 2-Norm).
+$$||A||_2 = \max_{x\neq0}\frac{||Ax||_2}{||x||_2}$$
+\end{definition}
+
+\begin{definition}(Frobenius Norm).
+$$||A||_F = (\sum_i\sum_j|a_{ij}|^2)^{1/2}$$
+\end{definition}
+
+\begin{definition}(Operator Norms). A class of norms called is operator or induced norms defined as,
+$$||A||_{p,q} = \max_{x\neq0}\frac{||Ax||_p}{||x||_q} = \max\{||Ax||_p \; : \; ||x||_q \leq 1 \}$$
+\end{definition}
+
+\subsection{Eigenvalue Decomposition (EVD)}
+
+Recall that the generalized eigenvalue problem is defined as for $A \in \R^{n\times n}$,
+
+\begin{equation}
+Ax = \lambda Bx
+\end{equation}
+
+Setting, $B=I$ yields the familiar eigenvalue problem. Recall that we may find the eigenvalues using the characteristic polynomial: $$P(A) = det(A-\lambda I)$$
+
+ Where the eigenvalues are the roots of the polynomial. To calculate the eigenvectors simply compute teh solutions to the system given by,
+
+ $$(A-\lambda I)[x_1, \dots, x_n]^T = \textbf{0}$$
+
+ Plugging in the eigenvalue for $\lambda$.
+
+The eigenvalue decomposition takes the form,
+
+\begin{equation}
+A = Q\Lambda Q^{-1}
+\end{equation}
+
+ Where $\Lambda = \text{diag}(\lambda_1, \dots, \lambda_n)$
+
+\begin{theorem}{(Spectral Theorem for symmetric matrices).}
+
+Let $A\in\R^{n\times n}$ is symmetric ($A^T = A$) iff $$EVD(A) = V\Lambda V^T$$ where $V^T = V^{-1}$ that is $V$ is orthogonal.
+
+\begin{proof}
+Proof in book (not nesc).
+\end{proof}
+\end{theorem}
+
+\begin{lemma}
+This also implies that the eigenvalues of a real symmetric matrix are real.
+
+\begin{proof}
+$\lambda <v,\bar{v}> = <\lambda v,\bar{v}> = <Av,\bar{v}> = <v,\bar{Av}> = <v,\bar{\lambda}\bar{v}> = <v,\bar{v}>\bar{\lambda} \implies \lambda = \bar{\lambda}$
+\end{proof}
+\end{lemma}
+
+\subsection{Singular Value Decomposition (SVD)}
+
+The singular value decomposition of a matrix $A\in\R^{n \times p}$ is defined as,
+
+\begin{equation}
+A = U \Sigma V^T
+\end{equation}
+
+Where, $U \in \R^{n\times n}$ are the left singular values and $V\in\R^{p \times p}$ are the right singular values. And $\Sigma$ is a diagonal matrix of singular values that is $\text{diag}(\sigma_1,\sigma_r)$ where $r = \rank{A}$. There is also the condensed SVD where we remove the 0 columns and rows.
+
+In condensed SVD we can write,
+
+$$A = \sum_i^r\sigma_{i}\textbf{u}_{i}\textbf{v}_{i}$$ 
+
+\begin{theorem}{(Existence of SVD).}
+
+Every matrix has a condensed SVD.
+\end{theorem}
+\begin{proof}
+Take $A \in \R^{n \times p}$. Then define,
+
+$$W = \begin{bmatrix}0 & A \\ A^T & 0\end{bmatrix} \in \R^{(n+p)\times(p+n)}$$
+Notice this matrix is symmetric ($W=W^T$) as such by the spectral theorem for Hermitian matricies we have that,
+$$W = Z\Lambda Z^T$$
+Furthermore write,
+$$W[x,y]^T = \sigma [x,y]^T \implies Ay = \sigma x, A^Tx = \sigma y$$
+Notice, if we apply W to z where we negate y we get,
+$$W\begin{bmatrix}x \\ -y\end{bmatrix} = \begin{bmatrix}-Ay \\ A^Tx \end{bmatrix} =  \begin{bmatrix}-\sigma x \\ \sigma y \end{bmatrix} = -\sigma  \begin{bmatrix}-x \\ -y \end{bmatrix}$$
+Thus, $-\sigma$ is also an eigenvalue and $\Lambda = \text{diag}(\sigma_1,\dots,\sigma_r,-\sigma_1,\dots,-\sigma_r,0,\dots,0)$. Since, eigenvectors are orthogonal (W is symmetric). Then if we scale such that $z^Tz=2$ we get the system,
+$$x^Tx + y^y = 2, x^Tx - y^Ty = 0 \implies x^Tx = y^Ty = 1$$
+Now represent the Z matrix of normalized eigenvectors as,
+$$\tilde{Z} = \frac{1}{\sqrt{2}}\begin{bmatrix}X&X//Y&-Y\end{bmatrix} \implies Z\Lambda Z^T = \tilde{Z}\Lambda\tilde{Z^T}$$
+Now set $\tilde{\Lambda}$ such that we remove 0 diagonals. Then we can write,
+$$\begin{aligned}W &= Z\Lambda Z^T = \tilde{Z}\tilde{\Lambda}\tilde{Z}^T 
+\\&=\frac{1}{2}\begin{bmatrix}X&X\\Y&-Y\end{bmatrix}\begin{bmatrix}\Sigma_r&0\\0&-\Sigma_r\end{bmatrix}\begin{bmatrix}X&X\\Y&-Y\end{bmatrix}^T
+\\& = \begin{bmatrix}0&X\Sigma_rY^T\\Y\Sigma_rX^T&0\end{bmatrix}
+\end{aligned}$$
+As such, $A = X\Sigma_rY^T$ and $A^T = Y\Sigma_rX^T$ as well as the fact this implies orthonormality of the columns yields the SVD. 
+\end{proof}
+
+A useful fact in helping calculate SVD by hand is a consequence of the above proof.
+
+\begin{lemma} The square of the singular values of $A$ are the eigenvalues of $AA^T$ and $A^TA$. Simmilarly, the left singular values are given by the eigenvectors of $AA^T$ and the right singular values are given by the eigenvectors of $A^TA$. 
+\end{lemma}
+\begin{proof} Let $A = U\Sigma V^T$. Then, $AA^T = U\Sigma V^T V \Sigma U^T = U \Sigma^2 U^T = U \Sigma^2 U^{-1} \underset{(EVD)}= AA^T$. \\ The other way is analogous.
+\end{proof}
+
+
+\begin{lemma}EVD  is equivalent to SVD in symmetric positive definite matrices.
+\end{lemma}
+
+\begin{proof} $$A = A^{1/2}A^{T\frac{1}{2}} = U\Sigma^{1/2} V^T V \Sigma^{1/2} U^T = U\Sigma U^T$$
+Thus, $A = Q\Lambda Q^T$, so, $U=Q=V$ and $\Lambda = \Sigma$.
+\end{proof}
+
+\subsection{Subspaces}
+
+There are 4 fundamental subspaces. They are,
+
+\begin{enumerate}
+  \item $\ker{(A)} = \{x\in\R^n \;|\; Ax = 0\}$
+  \item $\im{A} = \{y\in\R^n \;|\; A = y\}$
+  \item $\ker{(A^T)}$
+  \item $\im{A^T}$
+\end{enumerate}
+
+Notice, $\ker(A^T) = \im{A}^\perp$ and $\im{A^T} = \ker{(A)}^\perp$. 
+\\To see this take $y\in\im{A^T}, x \in \ker{(A)}, y = A^Tu \implies x^Ty = x^T(A^Tu) = (Ax)^Tu=0 \implies \im{A^T}\subset\ker{(A)}^\perp$.
+
+ Furthermore, $\R^p = \im{A^T} \; \oplus\;\ker{A}$ and $\R^n = \im{A} \; \oplus\;\ker{A^T}$ 
+
+\begin{lemma}SVD may be used to get these subspaces. Such that,
+\begin{itemize}
+\item $\ker{(A)} = \span{v_{r+1},\dots,v_p}$
+\item $\im{A} = \span{u_{1},\dots,v_r}$
+\item $\ker{(A^T)} = \span{u_{r+1},\dots,u_p}$
+\item $\im{A^T} = \span{v_{1},\dots,v_r}$
+\end{itemize}
+\end{lemma}
+
+\subsection{Moore-Penrose Pseudo Inverse}
+\begin{theorem}(Moore-Penrose).
+$\forall \; A \in \R^{n\times p} \; \exists \; A^\dagger = X \in \R^{p\times n} \; s.t. \;$,
+\begin{enumerate}
+\item $(AX)^T = AX$
+\item $(XA)^T = XA$
+\item $AXA = A$
+\item $XAX = X$
+\end{enumerate}
+
+\end{theorem}
+
+If $A^{-1}$ exists then $A^\dagger = A^{-1}$. Just plug it in to see. However, $(AB)^\dagger\neq B^\dagger A^\dagger$ and $A^\dagger A \neq I$.
+
+A very useful fact is that if $D = \text{diag}(d_1,\dots,d_n)$ then $D^\dagger = \text{diag}(\delta_1, \dots, \delta_n)$ where $d_i \neq 0$ then $\delta_i = 1/d_i$ otherwise $\delta_i = 0$.
+
+This is nice because it means we can use SVD to easily calculate the psuedoinverse.
+
+\begin{lemma} Let $A = U\Sigma V^T$ then, $A^\dagger = V\Sigma^{-1}U^T$ where $\Sigma^{-1} = \diag{1/\sigma_1,\dots,1/\sigma_r,0,\dots,0}$.
+\end{lemma}
+
+Furthermore, if $A\in\R^{n\times p}$ then, $$\rank{A} = n \implies A^\dagger = A^T(AA^T)^{-1}$$ Or, $$\rank{A} = p \implies A^\dagger = (AA^T)^{-1}A^T$$
+
+\subsection{Projections}
+\begin{definition}(Projection Matrices). $P\in\R^{n\times n}$ is said to be a projection if it is idempotent ($P^2 = P$). 
+\end{definition}
+\begin{definition}(Orthogonal Projection Matrices). $P\in\R^{n\times n}$ is said to be an orthogonal projection if it is a projection, i.e. idempotent ($P^2 = P$), and symmetric ($P^T=P$). 
+\end{definition}
+
+Notice that if $P$ is a projection matrix then so is $I-P$. Furthermore, if $P$ is an orthogonal projection matrix then if $\im{P}=W$ and $\im{I-P}=W'$ implies that $\R^n = W\;\oplus\;W'$.
+
+Finally, we can show that $AA^\dagger$ is an orthogonal projection matrix.
+
+\section{Important Matrices in Multivariate Analysis}
+
+Before, we get into the methods of multivariate analysis. It is useful to review some basic statistical concepts and more specifically their matrix counterparts. We break these up into sample and population parameters.
+
+\subsection{Sample Mean Matrices} 
+
+\begin{definition}(Sample Mean Vector). 
+The sample mean vector  of $X \in \R^{n\times p}$ is defined as $\bar{x} = \frac{1}{n}X^T\textbf{1}$. Where $\textbf{1}\in\R^{n\times 1}$ a vector of all 1's. $\bar{x} \in \R^{p\times 1}$.
+\end{definition}
+
+\begin{definition}(Matrix of means). 
+The sample mean matrix  of $X \in \R^{n\times p}$ is defined as $\textbf{1}\bar{x}^T = \frac{1}{n}\textbf{1}\textbf{1}^TX$. Where $\textbf{1}\in\R^{n\times 1}$ a vector of all 1's. $\textbf{1}\bar{x} \in \R^{n\times p}$.
+\end{definition}
+
+\begin{definition}(Demeaning Matrix). 
+The demeaning matrix demeans (mean centers) a data matrix by the means of the columns i.e. $X - \textbf{1}\bar{x}^T$. It is defined as $H := I - \frac{1}{n}\textbf{1}\textbf{1}^T$
+\end{definition}
+
+\subsection{Sample Covariance Matrices} 
+
+\begin{definition}(Sample Covariance Matrix). 
+The sample covariance matrix is defined as $S_n := \frac{1}{n}(X-\textbf{1}\bar{x})^T(X-\textbf{1}\bar{x}^T) = X^THX$
+\end{definition}
+
+\begin{definition}(Sample Variance Matrix). 
+The sample variance matrix is defined as $D := \diag{S_n}$. That is $S_n$'s diagonal elements.
+\end{definition}
+
+\begin{definition}(Sample Standard Deviations Matrix). 
+The sample SD matrix is defined as $D^{1/2}$.
+\end{definition}
+
+Which of course implies,
+
+\begin{definition}(Sample Correlation Matrix). 
+The sample Variance matrix is defined as $R := D^{-1/2}S_nD^{-1/2}$.
+\end{definition}
+
+Notice, that if we have a small sample size and care about unbiased estimates we may switch $\frac{1}{n}$ to $\frac{1}{n-1}$.
+
+\subsection{Population Matrices}
+
+In the previous section we introduced sample parameter matrices. It is useful to review the difference between sample and population. Specifically, we may regard the sample as drawn from the population variables. Indeed, we often think of the population in terms of random variables. 
+
+\begin{definition}(Random Variable).
+Recall, that a random variable, X, is a \underline{measurable function} from the sample space to $\R$. That is,
+
+$$X: \Omega \rightarrow \R$$
+\end{definition}
+
+As such, samples are simply realization of the random variable of the form $X(\omega)$ where $\omega\in\Omega$.
+
+When we deal with populations we use the expectation with respect to the Lebesgue measure,\footnote{For this course it is not important to know the details of Lebesgue integration.}
+
+$$\E(X) = \int_\Omega X(\omega)P(d\omega)$$
+
+We can use this to define the population mean matrix.
+
+\begin{definition}(Population Mean Vector).
+Let $X = [X_1,X_2,\dots,X_p]^T$ be a random matrix. Then,
+
+$$\E[X] = \begin{bmatrix}\E[X_1]\\\E[X_2]\\\vdots\\\E[X_p]\end{bmatrix} = \begin{bmatrix}\mu_1\\\mu_2\\\vdots\\\mu_p\end{bmatrix}=\mu \in\R^p $$
+
+\end{definition}
+
+Using this we can define the population covariance matrix. 
+
+\begin{definition}(Population Covariance Matrix).
+Let $X = [X_1,X_2,\dots,X_p]^T$ be a random matrix. Then, the population covariance matrix is given by $Cov(X) = \E[(X-\mu)(X-\mu)^T]$
+
+\end{definition}
+
+Now let's recall some useful facts.
+
+\begin{enumerate}
+\item $\E[aX]=a\E[X]$
+\item $Var(aX) = a^TCov(X)a$
+\item $Cov(a^TX, b^TX) = a^TCov(X)b$
+\end{enumerate}
+
+
+\section{Procrustes Analysis}
+
+We now move on to studying the applications of the theory we built above specifically the applications of it to the tools of multivariate analysis. These tools are also sometimes called unsupervised learning in the Machine Learning literature.
+
+The goal of Procrustes analysis is to find a Q matrix that will minimize the distance between two matrices. There are several versions.
+
+\subsection{Orthogonal Procrustes Analysis}
+
+\begin{equation}
+\min_{Q\in O(p)} ||A-BQ||_F
+\end{equation} 
+
+Where $O(p)$ denotes the class of orthogonal matrices. We can find the solution to this problem by expanding. That is,
+
+$$||A-BQ||_F^2 = \tr(A^TA) + \tr(B^TB)-2\tr(Q^TB^TA) $$ 
+
+Which implies we can solve this by solving for $Q = \argmax_Q \tr(Q^TB^TA)$.
+
+Then let $C = B^TA$ such that, $\tr(Q^TC) = \tr(Q^TU\Sigma V^T)=\tr(V^TQ^TU\Sigma)$. Then, since the trace of orthogonal matrices is bounded from above by 1 we have that 
+$$\max \tr(V^TQ^TU\Sigma ) = \sigma_{1}$$
+But, then we just want to pick Q such that $U$ and $V$ go away, i.e. $V^TQU = I$. Which in itself implies the solution,
+\begin{equation}
+Q = UV^T
+\end{equation}
+
+A special case arises if $B = I$, specifically, we can just take $A = U\Sigma V^T$ and still $Q=UV^T$.
+
+\subsection{Symmetric Procrustes Analysis}
+
+Here we can define the problem as,
+
+\begin{equation}
+\min_{X=X^T} ||A-X||_F
+\end{equation}
+
+In this case we can recall that we can write any matrix as a skew-symmetric matrix that is,
+
+$$A = \frac{1}{2}(A+A^T)+\frac{1}{2}(A-A^T)$$
+
+Thus, X will be the symmetric component, i.e. $X = \frac{1}{2}(A+A^T)$. 
+
+\subsection{Best Rank-r Approximation}
+
+Here want to approx A with a matrix of rank r. Notice, the problem is trivial ($X=A$) if $\rank(A)=r$. We define the optimization problem,
+
+\begin{equation} \label{eq:bestrank}
+\min_{\rank{X}\leq r} ||A-X||
+\end{equation}
+
+There is a nice solution to this whenever $||\cdot||$ is orthogonally invariant. That is, $||AQ||=||A||$ when $Q$ is an orthogonal matrix. The solution comes from the Eckart-Young theorem.
+
+\begin{theorem}
+Let $A = U\Sigma V^T$. Then, whenever $||\cdot||$ is orthogonally invariant, the argument solution to equation \ref{eq:bestrank} is given by,
+$$ X = U\Sigma_rV^T \text{ where } \Sigma_r = \diag{\sigma_1,\dots,\sigma_r,0,\dots,0}$$
+and if $||\cdot|| = ||\cdot||_2$ then the minimized value is $\sigma_{r+1}$. Notice, for F-norm it is $\sqrt{\sigma_{r+1}^2 +\dots+\sigma_{\rank{A}}^2}$.
+\end{theorem}
+
+\section{Principle Component Analysis (PCA)}
+
+\subsection{Population PCA}
+\begin{equation}
+a_k = \argmax\{Var(a^TX) \;|\; ||a||_2 = 1, Cov(a^TX,a_1^TX)=\dots=Cov(a^TX,a_{k-1}^TX)=0\}
+\end{equation}
+
+Notice that $a_k = q_k$ where $\Sigma = Cov(X)$ and $\Sigma = Q\Lambda Q^T$. The maximized value (i.e. the variance explained by the k'th PC) is given by $\lambda_k$ eigenvalue.
+
+\subsection{SVD Method for Sample PCA} 
+
+Let $X_c$ be the mean centered data matrix. Then, $X_c = U\Sigma V^T$ yields all the information.
+
+Notice that, $$S_n = \frac{1}{n-1}X_c^TX_c = \frac{1}{n-1}V\Sigma^2 V^T$$
+
+This implies that eigenvalues of the sample covariance matrix are given by $\sigma_k^2/(n-1)$. And $a_k = q_k = v_k$ are the PC vectors.
+
+This method also avoids floating point errors if there is a value in the mean centered matrix close to 0.
+
+\subsection{SVD Projections}
+To project data onto j-th and k-th PCs simply plot $(\sigma_ju_{ij}, \sigma_ku_{ik})$. Also there is no need to compute variable PCA. To plot variables onto PCs, simply plot $(\sigma_jv_{ij}, \sigma_kv_{ik})$.
+
+You can also do a biplot but then you need to decide which points to scale by singular values (you also don't have to and could just plot the u's and v's).
+
+Notice these methods work because,
+
+$$X_c = U\Sigma V^T = (U\sigma) V^T = \begin{bmatrix}\sigma_1 u_{11}&\dots\\\vdots&\ddots\end{bmatrix}[v_1,\dots,v_p]$$
+
+And recall we just want to project $P_wx = (x_i^Tq_j)q_j + (x_i^Tq_k)q_k$ such that with EVD we would plot $(x_i^Tq_j, x_i^Tq_k)$. This is of course much more expensive.
+
+\section{Factor Analysis}
+
+\subsection{The Model}
+In matrix form we write,
+$$X = \mu + LF + \epsilon$$
+We also make the following assumptions.
+
+\textbf{Assumptions}: 
+\begin{enumerate}
+\item $\E[\epsilon] = 0$
+\item $\E[\epsilon_i\epsilon_j] = 0$
+\item $\E[F_iF_j] = 0 \; (Cov(F) = I)$
+\item $\E[\epsilon F] = 0$
+\item $\E[F_i] = 0$
+\item $Var[F_i] = 1$
+\end{enumerate}
+
+\subsection{Some Intuition}
+In general there are too many free variables so finding L is impossible. So there are different ways to do it using approximations.
+
+In finance, X is usually returns of some asset. The u's are called alphas and measure risk. 
+\begin{enumerate}
+  \item $\mu > 0$: Risk is too high for return.
+  \item $\mu<0$: Risk is too low for return.
+  \item $\mu = 0$: Risk matches return properly.
+\end{enumerate}
+The L is a loading matrix of betas telling you about return correlation with the factors (F) which are usually macroeconomic variables (GDP, Interest Rates, etc.), Stat (i.e. Fama-French 3 factor model), or unobserved (i.e. innate ability). 
+
+\begin{enumerate}
+  \item $l > 1$: High direct correlation with factors.
+  \item $l < 0$: Inverse correlation with factors.
+  \item $l \in [0,1]$: Low correlation with factors.
+\end{enumerate}
+
+\subsection{PCA Approach}
+We can use PCA to satisfy the assumptions and approximate L.
+\subsubsection{Covariance Structure}
+First, we will derive covariance structure.
+
+$$\begin{aligned}Cov(X) &= \Sigma = \E[(X-\mu)(X-\mu)] =  \E[(LF + \epsilon)(LF + \epsilon)]
+\\& = \E[LL^TFF^T] + 2\E[LF\epsilon] + \E[\epsilon^T\epsilon]
+\\& = LL^T\E[F^TF] + \Psi
+\\& = LL^T + \Psi
+\end{aligned}$$
+Where $\Psi = \diag{Var(\epsilon_i)} \; \forall \; i = 1,\dots,n$.
+
+Furthermore, we see that
+
+$$Cov(X,F) = \E[(X-\mu)F] = \E[(LF+\epsilon)F^T] = \E[LFF^T]+\E[\epsilon F^T]=L$$
+
+As such we can see that the key formula is,
+\begin{equation}\Sigma = LL^T + \Psi\end{equation}
+
+\subsubsection{Solving for $L$}
+To solve, fix $m<p$. Then  $S = Q\Lambda Q^T$. Set $\Lambda_m = \diag{\lambda_i,\dots,\lambda_m}$ and $Q = [q_1,\dots,q_m]$.
+
+Then, 
+
+$$L = Q_m\Lambda_M^{1/2} = \sqrt{\lambda_i}q_i$$
+$$\Psi = \diag{S - LL^T}$$
+
+Notice, this is a rank-m approximation. Because, $LL^T = Q_m\Lambda_m^{1/2}\Lambda_m^{1/2}Q_m^T = Q_m\Lambda_mQ_m^T$ and SVD = EVD in the case of symmetric matrices. Because of this based on the norm you are using, you know the value of the minimization i.e. $||\cdot||_2 \implies \lambda_{m+1}$.
+
+The proportion of variability explained by each factor is given by $\lambda_i / \sum_i s_{ii}$. As always you can do this with correlation matrix and it would be equivalent to not only mean centering but also scaling the data by the inverse std. deviation.
+
+\section{Canonical Correlation Analysis (CCA)}
+
+This is very much like PCA except we care about correlation and we want to compare correlations of two data sets i.e. X and Y.
+
+We need a bit of setup. Let $W = [X,Y]^T$ and $Cov(W) = \begin{bmatrix}Cov(X)&Cov(XY)\\Cov(YX)&Cov(Y)\end{bmatrix}$.
+
+The canonical correlation variables are given by $U = a^TX$ and $V = b^TY$. The problem is defined as,
+
+\begin{equation}\begin{aligned}(U_k, V_k) &= \argmax\{Corr(U_k,V_k)\} 
+\\& s.t. \; Var(U_k) = Var(V_k) = 1
+\\& \;\;\;\;\;\; Cov(V_i, U_j) = Cov(V_i, V_j) = Cov(U_i, U_j) = 0\end{aligned}\end{equation}
+
+The value of the maximum is the canonical correlation $\rho_k$.
+
+\subsection{SVD Solution}
+
+First find, 
+\begin{equation}G_{XY} = \Sigma_x^{-1/2}\Sigma_{xy}\Sigma_{y}^{-1/2}\label{eq:CCA_G}\end{equation} Notice this is essentially the R matrix.
+
+Then, $G_{XY} = U\Sigma V^T$ which then gives us 
+$$U_k = u_k\Sigma_x^{-1/2}X$$
+And 
+$$V_k = v_k\Sigma_y^{-1/2}X$$
+
+And the canonical correlation for the k-th variable is given by the singular value, $\rho_k = \sigma_k$.
+\begin{theorem}(CCA Vector Relation).
+One property of CCA is that if $X'=MX+d$ and $Y' = NX+c$. Then, correlations are the same and the variables simply differ by $M^{-T}$ and $N^{-T}$. That is,
+
+$$\begin{aligned}a_k' = M^{-T}a_k && && b_k' = N^{-T}b_k\end{aligned}$$
+
+\end{theorem}
+
+The nice thing about this is that if you use correlation matrices instead of the $\Sigma$'s you can get the variables because $a'_{k, cor} = V^{-1/2}_Xa_{k, cov}$. The same is true for b just use $V_Y^{-1/2}$.
+
+\begin{mdframed}
+\textbf{Aside (Square Root Calculation).} You can calculate square roots by doing EVD and taking square roots of the eigenvalue matrix. Consider,
+$$A = Q\Lambda Q^{-1} \implies A^{1/2} = Q\Lambda^{1/2}Q^{-1}$$
+Where $\Lambda^{1/2} = \diag{\sqrt{\lambda_i}}$.
+\end{mdframed}
+
+\subsection{Alternative SVD Method}
+
+It is possible that $G_{XY}$ as defined in Equation \ref{eq:CCA_G} is not easily retrievable especially when doing this by hand. In this case simply use,
+
+
+$$H_{XY} = S_X^{-1/2}G_{XY}G^T{XY}S_{X}^{1/2} = S_X^{-1}S_{XY}S_{Y}^{-1}S_{YX}$$
+and 
+$$H_{YX} = S_Y^{-1/2}G_{XY}G^T{XY}S_{Y}^{1/2} = S_Y^{-1}S_{YX}S_{X}^{-1}S_{XY}$$
+
+
+Then, the eigenvalues of $H_{XY}$ will be the eigenvalues of $G_{XY}G_{XY}^T$ and the eigenvalues of $H_{YX}$ will be the eigenvalues of $G_{YX}G_{YX}^T$. Thus, there is no need to take square roots of matrices. Simply take the square root of the eigenvalues. Also notice that we can also do this with sample correlation matrices.
+
+\section{Linear Discriminant Analysis (LDA)}
+
+\textbf{Supervised vs. Unsupervised Learning}
+
+This method is a departure from the previous multivariate techniques in that this is an example of supervised learning. That is, instead of inferring information directly from the data (e.g. unsupervised learning), we split data into test and training data.
+
+\subsection{Preliminaries}
+
+First we need to define some matrices. Suppose that we have $g$ groups or classes.
+
+The group mean matrix is defined as, $$\bar{x}_i := \frac{1}{n_i}X_i^T1$$
+The total sum of squares matrix is defined as, $$T := X^THX$$
+The within group sum of squares matrix is defined as, $$W:=\sum_i^g X^THX$$
+The between group sum of squares matrix is defined as,$$B:=\sum_i^g n_i(\bar{x}_i-\bar{x})(\bar{x}_i-\bar{x})$$
+
+Notice that $T = B + W$.
+
+An alternate to the within group matrix is the pooled variance matrix defined as,
+$$S_{\text{pool}} := \frac{1}{n-g}\sum_i^g(n_i-1)S_i$$
+Where the group variance matrix is defined as,
+$$S_i := \frac{1}{n_i-1}(X_i - 1\bar{x}_i)(X_i - 1\bar{x}_i)$$
+
+Notice that $W = (n-g)S_{\text{pool}}$.
+
+\subsection{The Linear Discriminant Function}
+
+The linear discriminant function or Fischer discriminant function is defined as $f(a) = \frac{a^TBa}{a^TWa}$.\footnote{This is the same R.A. Fischer responsible for Fischer Information!} Using this function we can define the LDA optimization problem,
+
+\begin{equation}\max_{a\neq0}\{\frac{a^TBa}{a^TWa}\}\label{eq:lda_problem}\end{equation}
+
+\begin{theorem} The solution to Equation \ref{eq:lda_problem} is given by the principle eigenvector of $W^{-1}B$ such that $a = q_1$ and the value of the function will be $\lambda_{\max}(W^{-1}B)$.
+\end{theorem}
+
+\begin{proof} The proof of this is a simple constrained optimization problem.
+
+Notice that we can rewrite this as $$\max_{a\neq0} a^TBa \;s.t.\; a^TWa = 1$$
+Then write the Lagrangian for the problem,
+$$\mathcal{L} = a^TBa - \lambda(a^TWa - 1)$$
+Then the first order condition is,
+$$2Ba = 2\lambda Wa \implies Ba = \lambda Wa$$
+Notice, that what we have here is the generalized eigenvalue problem (Notice that if $W = I$ then we get the familiar eigenvalue problem). As such, notice we can solve this by inverting W.
+
+$$W^{-1}Ba = \lambda a$$
+
+Therefore we can satisfy the optimality condition by choosing $a$ to be an eigenvector yielding the corresponding eigenvalue as the maximal value. Furthermore, it is clear that if we choose the $a = q_1$ (the principle eigenvector where $\lambda_1>\dots>\lambda_n$) we will solve the maximization problem. This also yields the proof of the theorem. 
+
+\end{proof}
+
+\subsection{Classification Rule}
+
+So how do we classify new data? The classification rule is then given by (for a new vector $t$),
+
+$$i = \text{argmin}\{|q_1(t-\bar{x}_j)|\;:\;\forall j \in 1,\dots,g\}$$
+
+
+% **** THIS ENDS THE EXAMPLES. DON'T DELETE THE FOLLOWING LINE:
+\end{document}
+
+
+
+
+
