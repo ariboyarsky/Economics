@@ -32,3 +32,8 @@
 \contentsline {subsection}{\numberline {7.1}Preliminaries}{14}
 \contentsline {subsection}{\numberline {7.2}The Linear Discriminant Function}{15}
 \contentsline {subsection}{\numberline {7.3}Classification Rule}{16}
+\contentsline {subsubsection}{\numberline {7.3.1}Binary Classification}{16}
+\contentsline {section}{\numberline {8}Correspondence Analysis}{16}
+\contentsline {subsection}{\numberline {8.1}Application to HITS Algorithm}{17}
+\contentsline {subsection}{\numberline {8.2}Application to Information Retrieval}{17}
+\contentsline {section}{\numberline {9}Multidimensional Scaling}{17}

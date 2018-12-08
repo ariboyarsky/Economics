@@ -649,7 +649,7 @@ The linear discriminant function or Fischer discriminant function is defined as 
 
 \begin{proof} The proof of this is a simple constrained optimization problem.
 
-Notice that we can rewrite this as $$\max_{a\neq0} a^TBa \;s.t.\; a^TWa = 1$$
+Notice that we can rewrite this as $$\begin{aligned}& \max_{a\neq0} a^TBa & s.t. && a^TWa = 1\end{aligned}$$
 Then write the Lagrangian for the problem,
 $$\mathcal{L} = a^TBa - \lambda(a^TWa - 1)$$
 Then the first order condition is,
@@ -668,6 +668,53 @@ So how do we classify new data? The classification rule is then given by (for a 
 
 $$i = \text{argmin}\{|q_1(t-\bar{x}_j)|\;:\;\forall j \in 1,\dots,g\}$$
 
+\subsubsection{Binary Classification}
+
+There is a nice simplification of the above process in the case of binary classification.
+
+Consider that in a two group case we have,
+
+$$\begin{aligned}(q^T_1(t-\bar{x}_2)) - (q^T_1(t-\bar{x}_1)) &= 
+\\&= (q_1^T(t-\bar{x}_2) -q_1^T(t-\bar{x}_1)))(q_1^T(t-\bar{x}_2) + q_1^T(t-\bar{x}_1))
+\\&= [q_1^T(\bar{x}_1-\bar{x}_2)][q_1^T(2t - (\bar{x_1}+\bar{x_2}))]
+\\&= 2[q_1^T(\bar{x}_1-\bar{x}_2)][q_1^T(t-\frac{\bar{x}_1+\bar{x}_2}{2})]
+\end{aligned}$$
+Then notice that, $2[q_1^T(\bar{x}_1-\bar{x}_2)] = (W^{-1}d)^Td = d^TWd > 0$. Where we let $d=(\bar{x}_1-\bar{x}_2)$. Then we can write the classification rule as,
+
+\begin{equation}Class(t) = \begin{cases}1&(\bar{x}_1-\bar{x}_2)^TW^{-1}(t-\frac{\bar{x}_1+\bar{x}_2}{2}) > 0
+\\2&(\bar{x}_1-\bar{x}_2)^TW^{-1}(t-\frac{\bar{x}_1+\bar{x}_2}{2}) < 0
+\end{cases}\end{equation}
+
+Where in the binary case, $W = (n_1-1)S_1 + (n_2-1)S_2$
+
+\section{Correspondence Analysis}
+\emph{Todo}
+\subsection{Application to HITS Algorithm}
+\subsection{Application to Information Retrieval}
+\section{Multidimensional Scaling}
+
+\begin{definition}(Euclidean Distance Matrix) The EDM is a symmetric matrix $d_{ij} = [(x_i - x_j)^T(x_i-x_j)]^{1/2}$. Where $x_1,\dots,x_n \in \R^p$. As such we have,
+
+$$D = \begin{bmatrix}d_{11}&\hdots&d_{1p}\\\vdots&\ddots&\vdots\\d_{n1}&\hdots&d_{nn}\end{bmatrix}$$
+\end{definition}
+
+Notice, however that we need not use the euclidean distance and that we may define a distance matrix using any metric we wish.
+
+Furthermore, notice that the distance metric in invariant up to column wise translations. That is if each column is translated ($+$ or $-$) by some $c = [c_1,\dots,c_p]$ the EDM does not change. 
+
+As such we may define that the data and mean centered matrix are equal (i.e. that $\bar{x}=0$). 
+
+\begin{definition}(Gram Matrix) The Gram matrix (also known as the inner product matrix) is defined as, $$G = XX^T$$
+Such that $g_{ij}=x_i^Tx_j$
+\end{definition}
+
+\begin{theorem} Given a symmetric matrix $D = d_{ij} \in \R^{n\times m}$ define $$G=g_{ij} = -\frac{1}{2}(d_{ij}^2 - \frac{1}{n}\sum^n_{j=1}d_{ij}^2 - \frac{1}{n}\sum^n_{i=1}d_{ij}^2) + \frac{1}{n}\sum^n_{i=1}\sum^n_{j=1}d_{ij}^2)$$
+Then, D is a EDM iff G is positive semidefinite. And thus, G is the Gram matrix of X. 
+\end{theorem}
+
+In the case where the distance matrix is the EDM this means we can recover X. Notice,
+
+$$G = Q\Lambda Q^T = XX^T \implies X = Q\Lambda^{1/2}$$
 
 % **** THIS ENDS THE EXAMPLES. DON'T DELETE THE FOLLOWING LINE:
 \end{document}

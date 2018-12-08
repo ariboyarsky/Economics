@@ -1,0 +1,211 @@
+\documentclass[dvip,11pt]{article}
+
+% Any percent sign marks a comment to the end of the line
+
+% Every latex document starts with a documentclass declaration like this
+% The option dvips allows for graphics, 12pt is the font size, and article
+%   is the style
+
+\usepackage[pdftex]{graphicx}
+\usepackage{url}
+\usepackage[superscript,biblabel]{cite}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts,enumerate}
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+\usepackage[pdftex,dvipsnames]{xcolor}  % Coloured text etc.
+\usepackage{mathtools}
+\usepackage[colorinlistoftodos,prependcaption,textsize=small]{todonotes}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\Pr}{\mathbb{P}}
+
+\let\bf\oldbf
+\let\bf\textbf
+
+\let\oldforall\forall
+\let\forall\undefined
+\DeclareMathOperator{\forall}{\,\oldforall\,}
+
+\let\oldexists\exists
+\let\exists\undefined
+\DeclareMathOperator{\exists}{\,\oldexists\,}
+
+\DeclareMathOperator{\?}{\,?\,}
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator*{\plim}{plim}
+\let\para\P
+\let\P\undefined
+\DeclareMathOperator*{\P}{\mathbb{P}}
+
+
+
+\newcommand\inner[2]{\langle #1, #2 \rangle}
+\newcommand\norm[1]{\| #1 \|}
+\let\span\undefined
+\newcommand\span[1]{\text{span}(#1)}
+\newcommand\rank[1]{\text{rank}(#1)}
+
+\usepackage{todonotes}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+% These are additional packages for "pdflatex", graphics, and to include
+% hyperlinks inside a document.
+
+\setlength{\oddsidemargin}{0.25in}
+\setlength{\textwidth}{6in}
+\setlength{\topmargin}{0in}
+\setlength{\textheight}{8.5in}
+
+
+% These force using more of the margins that is the default style
+
+% some extras todos etc
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\setlength{\marginparwidth}{2.8cm}
+
+% Put table rows in itaics
+\usepackage{array}
+\usepackage{listings}
+\usepackage{xcolor, etoolbox, dcounter}
+\usepackage{hyperref}
+\hypersetup{
+    linkbordercolor=red,
+}
+\usepackage{amsmath}
+
+
+\newcounter{rowcnt}
+\newcommand\altshape{\ifnumodd{\value{rowcnt}}{\color{red}}{\itshape}}
+\newcolumntype{L}{ >{\altshape}l}
+
+\newcommand\setrow[1]{\gdef\rowmac{#1}#1\ignorespaces}
+\newcommand\clearrow{\global\let\rowmac\relax}
+
+
+\begin{document}
+
+% Everything after this becomes content
+% Replace the text between curly brackets with your own
+
+\title{\vspace{-100pt} Description of Replication and Results}
+\author{Ari Boyarsky \\ aboyarsky@uchicago.edu }
+\date{\today}
+
+% You can leave out "date" and it will be added automatically for today
+% You can change the "\today" date to any text you like
+\maketitle
+
+% -----------------------------------------------------------------------------
+% 									Begin
+% -----------------------------------------------------------------------------
+
+This code replicates the bounds found in Mogstad Torgovitsky (2018) Figure 4. I then alter the shape of the marginal treatment response functions (MTRs) by placing constraints on the  Bernstein polynomials (See \textit{Mogstad, Santos, and Torgovitsky 2018 Econometrica Supplement}) to recalculate the bounds under varying shape conditions. Notice this paper is based on the Mogstad, Santos, Torgovitsky 2018 Econometrica paper. The paper shows how the framework presented in Heckman and Vytlacil (2005) may be extended for partial identification of treatment effects by defining a linear programming problem. As such we calculate bounds for which the values of a particular treatment parameter may take on. I will use the package Gorubi which is freely available to researchers to solve the optimization problem.
+
+In this document I will first give a description of each file. Then, I provide a very brief overview of the method presented in Mogstad Torgovitsky (2018). This also serves as a description of exactly what the R code is doing (Notice, in the code integral are analytically calculated to avoid numerical instabilities). Finally, in the last section I present the results of the replication along with varying specifications for the shape of the MTRs. 
+
+\section{Sample Code File Structure}
+
+There are two file in the attached sample described below.
+
+\begin{enumerate}
+	\item 'MT\_functions.R': This file contains the functions used in the next file. These functions estimate the integrals of the Bernstein polynomials, calculate the $\gamma$ values and, $\beta_s$ values.
+	\item 'MT\_rep\_iv\_partial\_id.R': The file runs the above functions for every iteration of the specification. The file also contains the code to solve the linear programs using Gorubi thereby generating the partial identification bounds.
+\end{enumerate}
+
+
+\section{MT 2018 Method}
+
+The paper assumes that we can write the space of marginal treatment responses as a finite dimensional linear space where to calculate the bounds we need only find the coefficients $\theta = (\theta_0,\theta_1)\in\R^{K_{d=0}+K_{d=1}}$ such that they maximize and minimize the marginal treatment response subject to the constraints that we may attain observed treatment parameters such as the LATE.  
+
+Specifically, we assume the MTRs are given by,
+
+$$m_d(u,x) = \sum^{K_d}_{k=0}\theta_{dk}b_{dk} \forall d \in \{0,1\}$$
+
+Where d represents treatment. $b_{dk}$ is our basis function. We generalize this to use Bernstein polynomials. Mogstad and Torgovitsky show we can write this as function weights, $\omega^*(\cdot)$, given the treatment parameter that we seek (in our case the average treatment on the treated (ATT)). This is analogous to the weights used by Heckman and Vytlacil. As such we solve,
+
+
+\begin{equation}\label{eq:lp}\begin{aligned}
+\bar\beta^* &= \max_{\theta\in\Theta}\sum_{d\in\{0,1\}}\sum_k^{K_d}\gamma^*_{dk}\theta_{dk} \text{ subject to } \sum_{d\in\{0,1\}}\sum_k^{K_d}\gamma_{sdk}\theta_{dk} = \beta_s \text{ for all } s
+\\
+\underline{\beta}^* &= \min_{\theta\in\Theta}\sum_{d\in\{0,1\}}\sum_k^{K_d}\gamma^*_{dk}\theta_{dk}\text{ subject to } \sum_{d\in\{0,1\}}\sum_k^{K_d}\gamma_{sdk}\theta_{dk} = \beta_s \text{ for all } s
+\end{aligned}\end{equation}
+
+Where, 
+
+$$\gamma^*_{dk} = \E[\int_0^1b_{dk}(u,X)\omega_{d}^*(u,X,Z)du]$$
+
+and 
+
+$$\gamma_{sdk} = \E[\int_0^1b_{dk}(u,X)w_{ds}(u,X,Z)du]$$
+
+Here we use, $$\omega_{ds}(u,x,z) = s(d,x,z)\begin{cases}1[u>p(x,z)]&\text{ if } d = 0\\1[u\leq p(x,z)]&\text{ if } d = 1\end{cases}$$
+
+The propensity score is may be estimated from the data. While the $s$ function is an ivlike function defined by Mogstad, Santos, and Torgovitsky. In our case we use two $s$ functions as constraints specifically,
+
+$$s_{\text{IV Slope}} = \frac{z-\E[Z]}{Cov(D,Z)}$$
+and
+$$s_{\text{TSLS}} = e_j(\E[\tilde{X}\tilde{Z}]\E[\tilde{Z}\tilde{Z}]^{-1}\E[\tilde{Z}\tilde{X}])^{-1}\E[\tilde{X}\tilde{Z}]\E[\tilde{Z}\tilde{Z}]^{-1}Z$$
+\vspace{10pt}
+\\Where $\tilde{Z} = [1,X,Z]^T$ and $\tilde{X} = [1,D,X]^T$. Notice that each of these parameters may be estimated from the data.
+
+Finally, we must simply calculate $\beta_s$ which completes our constraints. We use the specification given in Mogstad Torgovitsky (2018) Section 2.4. Recall, that the paper seeks to understand the casual effect of purchasing a mosquito net on the prevention of malaria. As such, the instrument is a controlled subsidy on mosquito nets where the subsidy is binned into $z\in\{1,2,3,4\}$. Then the propensity score of purchasing a mosquito net given a particular subsidy, $p(z)$, is estimated from the data. We use the values given in Mogstad Torgovitsky (2018),
+
+	$$\begin{aligned}p(1) = 0.12, && p(2)=0.29, && p(3)=0.48, && p(4)=0.78\end{aligned}$$
+
+Additionally, to generate the distribution of outcomes, Mogstad Torgovitsky set the empirical marginal treatment response functions to be,
+	$$m_0(u) = 0.9-1.1u-0.3u^2$$
+	$$m_1(u) = 0.35-0.3u-0.05u^2$$
+
+Then we may estimate $\beta_s$ using these functions as our basis,
+
+$$\beta_s = \sum_{d\in\{0,1\}}\E[\int_0^1m_d(u,x)\omega_{ds}(u,X,Z)du]$$
+Now we simply use the Gorubi package to solve the problem described in Equation \ref{eq:lp}.
+
+\section{Results}
+
+\begin{enumerate}[a.]
+	\item \textbf{Initial Specification given in Mogstad Torgovitsky (2018)}
+	\\4-th Degree Bernstein polynomial basis
+	\\Using this specification we are able to replicate the bounds: $(-0.494, -0.073)$.
+	\\\textbf{As such we are able to successfully replicate the paper!}
+\end{enumerate}
+What follows is a sensitivity analysis of the bounds using a variety of shape parameters for the MTRs. This is accomplished using the Bernstein polynomials. 
+\begin{enumerate}[b.]
+	\item \textbf{2nd Degree Bernstein Polynomial Basis}
+	\\Using this specification we are able to replicate the bounds: $(-0.469, -0.256)$.
+	\\ In this case the bounds are smaller because the specification has less variability in it as the polynomial is only 2nd degree. So the specification is restrictive.
+	\item \textbf{6th Degree Bernstein Polynomial Basis}
+	\\Using this specification we are able to replicate the bounds: $(-0.516, -0.022)$.
+	\\ In this case the bounds are wider because the specification has more variability in it as the polynomial is now 6th degree. So the specification is looser.
+	\item \textbf{MTRs restricted to Decreasing}
+	\\Using this specification we are able to replicate the bounds: $(-0.438, -0.225)$.
+	\\ In this case the bounds are smaller because the specification has less variability in it as the polynomial is restricted to decreasing. So the specification is restrictive.
+	\item \textbf{MTRs restricted to Increasing}
+	\\Using this specification we are able to replicate the bounds: $(-0.438, -0.225)$.
+	\\ In this case the bounds are smaller because the specification has less variability in it as the polynomial is restricted to increasing. So the specification is restrictive. Notice, the bounds are intuitively the same as the previous bounds as all we have done is change the direction of the restriction (decreasing MTRs to increasing MTRs).
+	\item \textbf{Additional Wald Estimand for $Z_0 = 2 $ to $Z_1 = 3$ Constraint}
+	\\Using this specification we are able to replicate the bounds: $(-0.438, -0.299)$.
+	\\ In this case the bounds are smaller because the specification has less variability in it as we are using another constraint and matching another parameter. So the specification is restrictive.
+\end{enumerate}
+
+\end{document}
+
+
