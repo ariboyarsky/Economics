@@ -196,7 +196,7 @@ $$
 $$
 Now we can solve for $V$, notice, $V = Var(\sqrt{N}(\hat\beta - \beta)) = \E[\sqrt{N}(\hat\beta - \beta)^2] - \E[\sqrt{N}(\hat\beta - \beta)]^2 = \E[\sqrt{N}(\hat\beta - \beta)^2]$. Then,
 $$\E[\sqrt{N}(\hat\beta - \beta)^2] = (\frac{1}{N}\sum^N_{i=0}x_i'x_i)^{-2}(\frac{1}{\sqrt{N}}\sum^N_{i=0}x_i'u_i)^2$$
-Which we commonly right as (This is the famous White Formula):
+Which we commonly write as (This is the famous White Formula):
 $$(\frac{1}{N}\sum^N_{i=0}x_i'x_i)^{-1}(\frac{1}{\sqrt{N}}\sum^N_{i=0}u_i^2x_i'x_i)(\frac{1}{N}\sum^N_{i=0}x_i'x_i)^{-1}$$
 In matrix form: $$(X'X)^{-1}X'\boldsymbol{\Sigma} X(X'X)^{-1}$$
 Notice, that this variance implies heteroskedastic errors under the homoskedasticity assumption this simplifies to $(X'X)^{-1}\sigma^2$.

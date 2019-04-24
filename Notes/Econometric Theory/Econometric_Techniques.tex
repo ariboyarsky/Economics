@@ -14,6 +14,7 @@
 
 
 \usepackage{amsfonts,graphicx}
+\usepackage{bbm}
 \usepackage{mathtools}
 \usepackage[linewidth=0.5pt]{mdframed}
 
@@ -152,6 +153,43 @@ Where $X$ are the covariates of the product, $Y$ is the consumer income, and $u$
 
 Diewert (2003). Hedonic Regression: A Consumer Theory Approach.
 
+\section{Quantile Regression}
+
+Quantile regression is a tool used for retrieving the conditional quantile of an outcome variable. The problem is derived from the check loss function, 
+
+\begin{equation}\rho_\tau(y) = y(\tau - \mathbbm{1}\{y<0\})\label{eq:QR_check_loss} = \tau y_+ + (1-\tau)y_-\end{equation}  
+
+Where, $y_+ = max\{y,0\}$ and $y_- = max\{-y,0\}$ and $\tau \in [0,1]$. Then given data $(Y_i, X_i)_{i=1,\dots,n}$ quantile regression solves:
+
+\begin{equation}\min_\beta \sum^n_{i=1}\rho_\tau(Y_i-X_i^T\beta)\end{equation}
+
+Consider setting $\tau = 0.5$ then,
+
+$$\sum^n_{i=1}\rho_{0.5}(Y_i-X_i^T\beta) = \sum^n_{i=1}|Y_i-X_i^T\beta|$$
+
+Which is a median regression - under $L_1$ loss.
+
+
+
+
+\section{MCMC}
+
+Todo.
+
+\section{RCTs}
+
+ATE, ITT.
+
+Todo.
+
+\section{Causal Inference in Observational Studies}
+Todo. Include the estimation procedures and interpretation for:
+\subsection{Selection on Observables and Matching}
+\subsection{IV Approaches}
+\subsubsection{LATE}
+\subsubsection{MTE}
+\subsection{RDD}
+\subsection{DID}
 
 
 % **** END OF FILE **** %
