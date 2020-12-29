@@ -1,0 +1,156 @@
+%BeginFileInfo
+%%Publisher=
+%%Project= Sign of ATE in PSM
+%%Manuscript=ectaart.cls
+%%Stage=
+%%TID=Vytas
+%%Format=latex006
+%%Distribution=live4
+%%Destination=PDF
+%%PDF.Maker=vtex_tex_pdf
+%%DVI.Maker=vtex_tex_dvi
+%EndFileInfo
+
+\documentclass[final,pdftex]{ectaart}
+
+\RequirePackage[OT1]{fontenc}
+\RequirePackage{amsthm}
+\RequirePackage{amsmath}
+\RequirePackage{natbib}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\RequirePackage{hypernat}
+\usepackage{amsfonts,bbm}
+
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+
+% Math Notation
+% Probability theory commands
+\newcommand{\borel}[0]{\mathcal{B}(\mathbb{R})}
+\newcommand{\E}[0]{\mathbb{E}}
+\newcommand{\p}[0]{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+
+% \newcommand{\var}[0]{\mathbf{Var}}
+% \newcommand{\cov}[0]{\mathbf{Cov}}
+% \newcommand{\corr}[0]{\mathbf{Corr}}
+\newcommand{\var}[0]{\mathit{Var}}
+\newcommand{\cov}[0]{\mathit{Cov}}
+\newcommand{\corr}[0]{\mathit{Corr}}
+\newcommand\indep{\protect\mathpalette{\protect\indeP}{\perp}}
+\def\indeP#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+% General math commands
+\newcommand{\deldel}[2]{ \frac{ \partial #1}{\partial #2}}
+\newcommand{\dd}[2]{ \frac{d #1}{d #2}}
+\newcommand{\supp}[1]{\mathrm{supp}\left(#1\right)}
+\newcommand{\rank}[1]{\mathrm{rank}\left(#1\right)}
+\newcommand{\vstack}[1]{\mathbf{vec}\left(#1\right)}
+\newcommand{\super}[1]{\textsuperscript{#1}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\plim}{plim}
+\DeclareMathOperator*{\sgn}{sgn}
+\newcommand{\id}{\mathrm{id}}
+\DeclareMathOperator*{\ind}{\mathds{1}}
+\newtheorem{theorem}{Theorem}
+\usepackage{lipsum}
+
+
+
+% Math typeface shortcuts
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+
+
+\begin{document}
+
+\begin{frontmatter}
+\title{A Formal Treatment of Identification}
+\runtitle{Identification}
+%\thankstext{T1}{Footnote to the title with the `thankstext' command.}
+
+\begin{aug}
+\author{\fnms{Ariel} \snm{Boyarsky}\ead[label=e1]{ariel.boyarsky@yale.edu}}
+\footnote{This note is partially based on a course taught by Alexander Torgovitsky at the University of Chicago.}
+\address{\printead{e1}}
+% \author{\fnms{Second} \snm{Author}\thanksref{t3}\ead[label=e2]{second@somewhere.com}}
+%\and
+%\author{\fnms{Third} \snm{Author}
+%\ead[label=e3]{third@somewhere.com}
+%\ead[label=u1,url]{www.foo.com}}
+\end{aug}
+
+\begin{abstract}
+
+\end{abstract}
+
+% \begin{keyword}
+% \end{keyword}
+
+\end{frontmatter}
+
+\section{Introduction}
+
+Statistical inference is the process of extrapolating a sample to say something about the population. Identification on the other hand is what lets us go from the population to the parameters. More intuitively, it says that if we knew the population could we also learn the parameters. It is often seen as linking theory and data because identification often stands that we take a stance on the way the world works - in other words, we must make assumptions.
+
+\section{The Definition of Identification}
+
+Suppose we observe some random vector, $Y\in\R^{d_Y}$, that is distributed $G$. We have that $G\in\mathcal{G}$, a set of possible distributions on $\R^{d_Y}$.
+
+Now we want to recover some parameters of interest that describe $G$. We denote these parameters as $\theta$. Notice, that different parameters imply different distributions, $G$,
+$$\theta \mapsto G_\theta$$.
+In other words, we can think that identification implies the existence of a mapping, $\phi: \mathcal{G} \to \R^{d_\theta}$. Where $d_\theta$ is the dimension of the parameter. That is, we have some mapping that takes us from the population distribution to the parameter space -- having such a mapping is exactly equivalent to identification.
+
+We can now give a formal definition of identification via the set of parameters that can generate $G$,
+
+\begin{definition}[The Identified Set] We say that a parameter belongs to the identified set if, $\theta \in \Theta$ and $G_\theta = G$. Then we can characterize the identified set as,
+$$\Theta^\star(G) \equiv \{\theta \in \Theta : G_\theta = G\}$$
+\end{definition}
+
+The first condition, $\theta \in \Theta$ implies that the parameter obeys any assumptions that we place on the parameter space. The second condition, $G_\theta = G$ is observational equivalence. It says that we cannot tell apart the distribution of $Y$ from the distribution that is implied by $\theta \in \Theta^\star(G)$. This yields three possible cases,
+
+\begin{enumerate}
+\item Point Identification: $|\Theta^\star(G)|=1$
+\item Partial Identification: $|\Theta^\star(G)|>1$
+\item Misspecification: $|\Theta^\star(G)|=0$
+\end{enumerate}
+
+Notice that these variations of the identified set imply that the mapping, $\phi(\cdot)$, need not be well defined. That is, it could map us from a particular distribution to multiple $\theta$ or no $\theta$ at all. Often, as we will see in Example \ref{ex:linreg}, we only care about some function of $\theta$. We call this the target parameter, $\pi(\theta)$. In this case we may be interested in,
+
+$$\Pi^*(G)\equiv\{\pi(\theta):\theta \in \Theta^\star(G)\}$$
+
+This can sometimes be weaker than finding $\Theta^\star(G)$. Obviously, if we find the identified set we can determine $\Pi^\star(G)$. But sometimes we can find $\Pi^\star(G)$ without knowing all of $\Theta^\star(G)$. In this case our mapping is defined as, $\phi:\mathcal{G}\to\R^{d_{\pi(\theta)}}$.
+
+\section{Examples}
+
+It is useful to make some of these idea more concrete with some examples of identification in models.
+
+\begin{example}[Linear Regression]\label{ex:linreg}
+Suppose we observe, $(Y,X)_{i=1,\dots,n}$ with $Y\in\R$ and $X\in\R^p$. Furthermore suppose we are interested in $\beta$ such that,
+$$Y = X'\beta + U$$
+Then $\theta = (\beta, F) \in \Theta$ where $F$ is the joint distribution of $(X,U)$. Then, $\theta$ clearly implies a distribution for $(Y,X)$,
+$$G_\theta(y,x) = \text{$\Pr$}_{F}[X'\beta + U \leq y, X\leq x]$$
+Where $\Pr_F$ is the probability measure under the joint distribution $F$. Then we can make the typical assumptions for OLS to restrict the parameter space,
+$$\Theta \equiv \{\theta\equiv(\beta,F):\E_F[XU]\neq 0, \;\E_F[X'X]^{-1} \text{ exists}\}$$
+Furthermore, notice that we are typically satisfied with just finding $\beta$. Thus we can definite the target parameter as,
+$$\pi(\theta) = \beta$$
+Now that we have denoted the parameter space we can now characterize the identified set. In particular we make the usual argument for OLS. For any $(\beta, F)\in\Theta$ we must have that,
+$$\beta = \E_F[X'X]^{-1}\E_F[X(X'\beta + U)]$$
+Now suppose, $\beta \in \Pi^\star(G)$. This implies that there exists a joint distribution, $F$, such that $(\beta, F)\in\Theta^\star(G)$. Then $\theta$ must satisfy the above equation for $\beta$ and $G_{(\beta,F)}=G$ since solving the above equation must mean that we are observationally equivalent to $G$. This simply because the best linear predictor will yield residuals, $U$, and coefficients, $\beta$, such that $Y=X'\beta + U$. So it will be impossible to tell apart $G_{\theta}$ from G. But then this directly implies that we have constructed a mapping $\theta$ such that we have,
+ $$\beta = \E_F[X'X]^{-1}\E_F[X(X'\beta + U)] = \E_G[X'X]\E_G[X'Y]\equiv \phi(G)$$
+
+ Thus, we have identified a mapping of $G$ to the parameter space. Furthermore since $\phi(\cdot)$ is well defined we will be point identified.
+
+\end{example}
+
+\end{document}

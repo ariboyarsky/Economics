@@ -1,0 +1,3648 @@
+#LyX file created by tex2lyx 2.3
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin C:/Users/abrsk.000/Dropbox/My PC (Ari-ThinkPad)/Documents/Economics/Economics/Notes/Econometric Theory/
+\textclass article
+\begin_preamble
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+
+
+
+%
+% ADD PACKAGES here:
+%
+
+
+\usepackage{amsfonts}
+\usepackage{graphicx}\usepackage[linewidth=0.5pt]{mdframed}
+
+
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+% \newcounter{section}
+\renewcommand{\thepage}{\arabic{page}}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   %\pagestyle{myheadings}
+   %\thispagestyle{plain}
+   \newpage
+   % \setcounter{lecnum}{#1}
+   % \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { { STAT 32940
+	\hfill Fall 2018} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Mutlivariate Analysis Overview  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Notes by: #3 \hfill}  }
+      \vspace{1mm} 
+       \hbox  { {\it Based on lectures by Dr. Lek-Heng Lim at the University of Chicago} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   %\markboth{Lecture #1: #2}{Lecture #1: #2}
+
+ 
+   \vspace*{4mm}
+}
+
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+
+
+\let\span\undefined
+\newcommand{\span}[1]{\text{span}(#1)}
+\newcommand{\rank}[1]{\text{rank}(#1)}
+\newcommand{\im}[1]{\text{im}(#1)}
+\newcommand{\diag}[1]{\text{diag}(#1)}
+\newcommand{\tr}[1]{\text{tr}#1}
+\newcommand{\argmax}[1]{\text{argmax}#1}
+
+
+\usepackage{etoolbox}
+\newcommand{\define}[4]{\expandafter#1\csname#3#4\endcsname{#2{#4}}}
+\forcsvlist{\define{\newcommand{}}{\mathbb}{}}{N,Z,Q,R,C,F,G,T,A,B,D,E}
+
+% Use these for theorems, lemmas, proofs, etc.
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}\newtheorem{claim}[theorem]{Claim}\newtheorem{corollary}[theorem]{Corollary}\newtheorem{definition}[theorem]{Definition}\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 2
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip 0.1in
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%FILL IN THE RIGHT INFO.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+%
+\backslash
+lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+lecture{
+\end_layout
+
+\end_inset
+
+1
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}{
+\end_layout
+
+\end_inset
+
+August 28
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}{
+\end_layout
+
+\end_inset
+
+Ariel Boyarsky (aboyarsky@uchicago.edu)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Preface
+\series default
+
+\end_layout
+
+\begin_layout Standard
+The following are a 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+underline{condensed}
+\end_layout
+
+\end_inset
+
+ set of notes for a course in Multivariate Analysis. These notes are based on the handouts and lectures of Dr. Lek-Heng Lim. My additions are limited to some proofs and useful subject matters. Any mistakes are my own, please do not hesitate to email me if any are found. The material covers topics in advanced multivariate analysis also known as unsupervised learning. We omit a discussion of linear regression as we expect students will have already learned it. The only prerequisite is a standard course in linear algebra, though a course in real analysis would be helpful.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Basic Matrix Theory
+\end_layout
+
+\begin_layout Standard
+We briefly review some familiar concepts that will be useful in the following sections. 
+\end_layout
+
+\begin_layout Subsection
+Important Definitions
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Orthogonality). Two vectors are said to be orthogonal iff 
+\begin_inset Formula $a\cdot b = 0$
+\end_inset
+
+. That is perpendicular to each other. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Mutual Orthogonality). A set of vectors, 
+\begin_inset Formula $V = \{v_1,\dots,v_n\}$
+\end_inset
+
+, are said to be mutually orthogonal if 
+\begin_inset Formula $\forall \; a,b \in V$
+\end_inset
+
+ we have 
+\begin_inset Formula $a\cdot b = 0$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Orthonormality). A set of vectors V is orthonormal if 
+\begin_inset Formula $\forall \; v \in V \; ||v||_2 = 1$
+\end_inset
+
+ and the set if mutually orthogonal. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Norms
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+ A norm follows the following properties, 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $||x|| \geq 0$
+\end_inset
+
+ with equality 
+\begin_inset Formula $\iff x = 0$
+\end_inset
+
+ (Positive Definiteness) 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $||ax|| = |a|||x||$
+\end_inset
+
+ for 
+\begin_inset Formula $ a \in \R, x \in \R^n$
+\end_inset
+
+ (Scalar) 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $||x+y||\leq||x||+||y||$
+\end_inset
+
+ (Triangle Inequality) 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A very useful class of norms are the 
+\begin_inset Formula $L^p$
+\end_inset
+
+ or p-norms.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+ Take 
+\begin_inset Formula $x \in \R^n$
+\end_inset
+
+. The p-norm is defined as, 
+\begin_inset Formula \[||x||_p = (|x_1|^p+\dots+|x_n|^p)^{\frac{1}{p}}\]
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The most famous of these norms is the 
+\begin_inset Formula $p=2$
+\end_inset
+
+ norm, more commonly referred to as the euclidean norm or the 
+\begin_inset Formula $L^2$
+\end_inset
+
+ norm, 
+\begin_inset Formula \[||x||_2 = (\sum^n_{i=1}|x_i|^2)^{1/2}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A useful fact about the relationship of norms and inner products follows.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $||x||^2_2 = x^Tx$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Matrix Norms
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+ A matrix norm will satisfy, 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $||x|| \geq 0$
+\end_inset
+
+ with equality 
+\begin_inset Formula $\iff x = 0$
+\end_inset
+
+ (Positive Definiteness) 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $||ax|| = |a|||x||$
+\end_inset
+
+ for 
+\begin_inset Formula $ a \in \R, x \in \R^n$
+\end_inset
+
+ (Scalar) 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $||x+y||\leq||x||+||y||$
+\end_inset
+
+ (Triangle Inequality) 
+\end_layout
+
+\begin_layout Standard
+And sometimes a further property of submultiplicativity (
+\begin_inset Formula $||AB||\leq||A||||B||$
+\end_inset
+
+). 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Matrix 2-Norm). 
+\begin_inset Formula \[||A||_2 = \max_{x\neq0}\frac{||Ax||_2}{||x||_2}\]
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Frobenius Norm). 
+\begin_inset Formula \[||A||_F = (\sum_i\sum_j|a_{ij}|^2)^{1/2}\]
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Operator Norms). A class of norms called is operator or induced norms defined as, 
+\begin_inset Formula \[||A||_{p,q} = \max_{x\neq0}\frac{||Ax||_p}{||x||_q} = \max\{||Ax||_p \; : \; ||x||_q \leq 1 \}\]
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Eigenvalue Decomposition (EVD)
+\end_layout
+
+\begin_layout Standard
+Recall that the generalized eigenvalue problem is defined as for 
+\begin_inset Formula $A \in \R^{n\times n}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+Ax = \lambda Bx
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Setting, 
+\begin_inset Formula $B=I$
+\end_inset
+
+ yields the familiar eigenvalue problem. Recall that we may find the eigenvalues using the characteristic polynomial: 
+\begin_inset Formula \[P(A) = det(A-\lambda I)\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where the eigenvalues are the roots of the polynomial. To calculate the eigenvectors simply compute teh solutions to the system given by,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[(A-\lambda I)[x_1, \dots, x_n]^T = \textbf{0}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Plugging in the eigenvalue for 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The eigenvalue decomposition takes the form,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+A = Q\Lambda Q^{-1}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\Lambda = \text{diag}(\lambda_1, \dots, \lambda_n)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{theorem}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+(Spectral Theorem for symmetric matrices).
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A\in\R^{n\times n}$
+\end_inset
+
+ is symmetric (
+\begin_inset Formula $A^T = A$
+\end_inset
+
+) iff 
+\begin_inset Formula \[EVD(A) = V\Lambda V^T\]
+\end_inset
+
+where 
+\begin_inset Formula $V^T = V^{-1}$
+\end_inset
+
+ that is 
+\begin_inset Formula $V$
+\end_inset
+
+ is orthogonal.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+ Proof in book (not nesc). 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{theorem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+ This also implies that the eigenvalues of a real symmetric matrix are real.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\lambda <v,\bar{v}> = <\lambda v,\bar{v}> = <Av,\bar{v}> = <v,\bar{Av}> = <v,\bar{\lambda}\bar{v}> = <v,\bar{v}>\bar{\lambda} \implies \lambda = \bar{\lambda}$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Singular Value Decomposition (SVD)
+\end_layout
+
+\begin_layout Standard
+The singular value decomposition of a matrix 
+\begin_inset Formula $A\in\R^{n \times p}$
+\end_inset
+
+ is defined as,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+A = U \Sigma V^T
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where, 
+\begin_inset Formula $U \in \R^{n\times n}$
+\end_inset
+
+ are the left singular values and 
+\begin_inset Formula $V\in\R^{p \times p}$
+\end_inset
+
+ are the right singular values. And 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ is a diagonal matrix of singular values that is 
+\begin_inset Formula $\text{diag}(\sigma_1,\sigma_r)$
+\end_inset
+
+ where 
+\begin_inset Formula $r = \rank{A}$
+\end_inset
+
+. There is also the condensed SVD where we remove the 0 columns and rows.
+\end_layout
+
+\begin_layout Standard
+In condensed SVD we can write,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[A = \sum_i^r\sigma_{i}\textbf{u}_{i}\textbf{v}_{i}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{theorem}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+(Existence of SVD).
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Every matrix has a condensed SVD. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{theorem}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+ Take 
+\begin_inset Formula $A \in \R^{n \times p}$
+\end_inset
+
+. Then define,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[W = \begin{bmatrix}0 & A \\ A^T & 0\end{bmatrix} \in \R^{(n+p)\times(p+n)}\]
+\end_inset
+
+Notice this matrix is symmetric (
+\begin_inset Formula $W=W^T$
+\end_inset
+
+) as such by the spectral theorem for Hermitian matricies we have that, 
+\begin_inset Formula \[W = Z\Lambda Z^T\]
+\end_inset
+
+Furthermore write, 
+\begin_inset Formula \[W[x,y]^T = \sigma [x,y]^T \implies Ay = \sigma x, A^Tx = \sigma y\]
+\end_inset
+
+Notice, if we apply W to z where we negate y we get, 
+\begin_inset Formula \[W\begin{bmatrix}x \\ -y\end{bmatrix} = \begin{bmatrix}-Ay \\ A^Tx \end{bmatrix} =  \begin{bmatrix}-\sigma x \\ \sigma y \end{bmatrix} = -\sigma  \begin{bmatrix}-x \\ -y \end{bmatrix}\]
+\end_inset
+
+Thus, 
+\begin_inset Formula $-\sigma$
+\end_inset
+
+ is also an eigenvalue and 
+\begin_inset Formula $\Lambda = \text{diag}(\sigma_1,\dots,\sigma_r,-\sigma_1,\dots,-\sigma_r,0,\dots,0)$
+\end_inset
+
+. Since, eigenvectors are orthogonal (W is symmetric). Then if we scale such that 
+\begin_inset Formula $z^Tz=2$
+\end_inset
+
+ we get the system, 
+\begin_inset Formula \[x^Tx + y^y = 2, x^Tx - y^Ty = 0 \implies x^Tx = y^Ty = 1\]
+\end_inset
+
+Now represent the Z matrix of normalized eigenvectors as, 
+\begin_inset Formula \[\tilde{Z} = \frac{1}{\sqrt{2}}\begin{bmatrix}X&X//Y&-Y\end{bmatrix} \implies Z\Lambda Z^T = \tilde{Z}\Lambda\tilde{Z^T}\]
+\end_inset
+
+Now set 
+\begin_inset Formula $\tilde{\Lambda}$
+\end_inset
+
+ such that we remove 0 diagonals. Then we can write, 
+\begin_inset Formula \[\begin{aligned}W &= Z\Lambda Z^T = \tilde{Z}\tilde{\Lambda}\tilde{Z}^T 
+\\&=\frac{1}{2}\begin{bmatrix}X&X\\Y&-Y\end{bmatrix}\begin{bmatrix}\Sigma_r&0\\0&-\Sigma_r\end{bmatrix}\begin{bmatrix}X&X\\Y&-Y\end{bmatrix}^T
+\\& = \begin{bmatrix}0&X\Sigma_rY^T\\Y\Sigma_rX^T&0\end{bmatrix}
+\end{aligned}\]
+\end_inset
+
+As such, 
+\begin_inset Formula $A = X\Sigma_rY^T$
+\end_inset
+
+ and 
+\begin_inset Formula $A^T = Y\Sigma_rX^T$
+\end_inset
+
+ as well as the fact this implies orthonormality of the columns yields the SVD. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A useful fact in helping calculate SVD by hand is a consequence of the above proof.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+ The square of the singular values of 
+\begin_inset Formula $A$
+\end_inset
+
+ are the eigenvalues of 
+\begin_inset Formula $AA^T$
+\end_inset
+
+ and 
+\begin_inset Formula $A^TA$
+\end_inset
+
+. Simmilarly, the left singular values are given by the eigenvectors of 
+\begin_inset Formula $AA^T$
+\end_inset
+
+ and the right singular values are given by the eigenvectors of 
+\begin_inset Formula $A^TA$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{lemma}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $A = U\Sigma V^T$
+\end_inset
+
+. Then, 
+\begin_inset Formula $AA^T = U\Sigma V^T V \Sigma U^T = U \Sigma^2 U^T = U \Sigma^2 U^{-1} \underset{(EVD)}= AA^T$
+\end_inset
+
+. 
+\begin_inset Newline newline
+\end_inset
+
+ The other way is analogous. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+EVD is equivalent to SVD in symmetric positive definite matrices. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula \[A = A^{1/2}A^{T\frac{1}{2}} = U\Sigma^{1/2} V^T V \Sigma^{1/2} U^T = U\Sigma U^T\]
+\end_inset
+
+Thus, 
+\begin_inset Formula $A = Q\Lambda Q^T$
+\end_inset
+
+, so, 
+\begin_inset Formula $U=Q=V$
+\end_inset
+
+ and 
+\begin_inset Formula $\Lambda = \Sigma$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Subspaces
+\end_layout
+
+\begin_layout Standard
+There are 4 fundamental subspaces. They are,
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\ker{(A)} = \{x\in\R^n \;|\; Ax = 0\}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\im{A} = \{y\in\R^n \;|\; A = y\}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\ker{(A^T)}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\im{A^T}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Notice, 
+\begin_inset Formula $\ker(A^T) = \im{A}^\perp$
+\end_inset
+
+ and 
+\begin_inset Formula $\im{A^T} = \ker{(A)}^\perp$
+\end_inset
+
+. 
+\begin_inset Newline newline
+\end_inset
+
+To see this take 
+\begin_inset Formula $y\in\im{A^T}, x \in \ker{(A)}, y = A^Tu \implies x^Ty = x^T(A^Tu) = (Ax)^Tu=0 \implies \im{A^T}\subset\ker{(A)}^\perp$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Furthermore, 
+\begin_inset Formula $\R^p = \im{A^T} \; \oplus\;\ker{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\R^n = \im{A} \; \oplus\;\ker{A^T}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+SVD may be used to get these subspaces. Such that, 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Formula $\ker{(A)} = \span{v_{r+1},\dots,v_p}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Formula $\im{A} = \span{u_{1},\dots,v_r}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Formula $\ker{(A^T)} = \span{u_{r+1},\dots,u_p}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\begin_inset Formula $\im{A^T} = \span{v_{1},\dots,v_r}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Moore-Penrose Pseudo Inverse
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{theorem}
+\end_layout
+
+\end_inset
+
+(Moore-Penrose). 
+\begin_inset Formula $\forall \; A \in \R^{n\times p} \; \exists \; A^\dagger = X \in \R^{p\times n} \; s.t. \;$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $(AX)^T = AX$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $(XA)^T = XA$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $AXA = A$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $XAX = X$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{theorem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ exists then 
+\begin_inset Formula $A^\dagger = A^{-1}$
+\end_inset
+
+. Just plug it in to see. However, 
+\begin_inset Formula $(AB)^\dagger\neq B^\dagger A^\dagger$
+\end_inset
+
+ and 
+\begin_inset Formula $A^\dagger A \neq I$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A very useful fact is that if 
+\begin_inset Formula $D = \text{diag}(d_1,\dots,d_n)$
+\end_inset
+
+ then 
+\begin_inset Formula $D^\dagger = \text{diag}(\delta_1, \dots, \delta_n)$
+\end_inset
+
+ where 
+\begin_inset Formula $d_i \neq 0$
+\end_inset
+
+ then 
+\begin_inset Formula $\delta_i = 1/d_i$
+\end_inset
+
+ otherwise 
+\begin_inset Formula $\delta_i = 0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This is nice because it means we can use SVD to easily calculate the psuedoinverse.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{lemma}
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $A = U\Sigma V^T$
+\end_inset
+
+ then, 
+\begin_inset Formula $A^\dagger = V\Sigma^{-1}U^T$
+\end_inset
+
+ where 
+\begin_inset Formula $\Sigma^{-1} = \diag{1/\sigma_1,\dots,1/\sigma_r,0,\dots,0}$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{lemma}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Furthermore, if 
+\begin_inset Formula $A\in\R^{n\times p}$
+\end_inset
+
+ then, 
+\begin_inset Formula \[\rank{A} = n \implies A^\dagger = A^T(AA^T)^{-1}\]
+\end_inset
+
+Or, 
+\begin_inset Formula \[\rank{A} = p \implies A^\dagger = (AA^T)^{-1}A^T\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Projections
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Projection Matrices). 
+\begin_inset Formula $P\in\R^{n\times n}$
+\end_inset
+
+ is said to be a projection if it is idempotent (
+\begin_inset Formula $P^2 = P$
+\end_inset
+
+). 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Orthogonal Projection Matrices). 
+\begin_inset Formula $P\in\R^{n\times n}$
+\end_inset
+
+ is said to be an orthogonal projection if it is a projection, i.e. idempotent (
+\begin_inset Formula $P^2 = P$
+\end_inset
+
+), and symmetric (
+\begin_inset Formula $P^T=P$
+\end_inset
+
+). 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice that if 
+\begin_inset Formula $P$
+\end_inset
+
+ is a projection matrix then so is 
+\begin_inset Formula $I-P$
+\end_inset
+
+. Furthermore, if 
+\begin_inset Formula $P$
+\end_inset
+
+ is an orthogonal projection matrix then if 
+\begin_inset Formula $\im{P}=W$
+\end_inset
+
+ and 
+\begin_inset Formula $\im{I-P}=W'$
+\end_inset
+
+ implies that 
+\begin_inset Formula $\R^n = W\;\oplus\;W'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, we can show that 
+\begin_inset Formula $AA^\dagger$
+\end_inset
+
+ is an orthogonal projection matrix.
+\end_layout
+
+\begin_layout Section
+Important Matrices in Multivariate Analysis
+\end_layout
+
+\begin_layout Standard
+Before, we get into the methods of multivariate analysis. It is useful to review some basic statistical concepts and more specifically their matrix counterparts. We break these up into sample and population parameters.
+\end_layout
+
+\begin_layout Subsection
+Sample Mean Matrices
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Sample Mean Vector). The sample mean vector of 
+\begin_inset Formula $X \in \R^{n\times p}$
+\end_inset
+
+ is defined as 
+\begin_inset Formula $\bar{x} = \frac{1}{n}X^T\textbf{1}$
+\end_inset
+
+. Where 
+\begin_inset Formula $\textbf{1}\in\R^{n\times 1}$
+\end_inset
+
+ a vector of all 1's. 
+\begin_inset Formula $\bar{x} \in \R^{p\times 1}$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Matrix of means). The sample mean matrix of 
+\begin_inset Formula $X \in \R^{n\times p}$
+\end_inset
+
+ is defined as 
+\begin_inset Formula $\textbf{1}\bar{x}^T = \frac{1}{n}\textbf{1}\textbf{1}^TX$
+\end_inset
+
+. Where 
+\begin_inset Formula $\textbf{1}\in\R^{n\times 1}$
+\end_inset
+
+ a vector of all 1's. 
+\begin_inset Formula $\textbf{1}\bar{x} \in \R^{n\times p}$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Demeaning Matrix). The demeaning matrix demeans (mean centers) a data matrix by the means of the columns i.e. 
+\begin_inset Formula $X - \textbf{1}\bar{x}^T$
+\end_inset
+
+. It is defined as 
+\begin_inset Formula $H := I - \frac{1}{n}\textbf{1}\textbf{1}^T$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Sample Covariance Matrices
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Sample Covariance Matrix). The sample covariance matrix is defined as 
+\begin_inset Formula $S_n := \frac{1}{n}(X-\textbf{1}\bar{x})^T(X-\textbf{1}\bar{x}^T) = X^THX$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Sample Variance Matrix). The sample variance matrix is defined as 
+\begin_inset Formula $D := \diag{S_n}$
+\end_inset
+
+. That is 
+\begin_inset Formula $S_n$
+\end_inset
+
+'s diagonal elements. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Sample Standard Deviations Matrix). The sample SD matrix is defined as 
+\begin_inset Formula $D^{1/2}$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which of course implies,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Sample Correlation Matrix). The sample Variance matrix is defined as 
+\begin_inset Formula $R := D^{-1/2}S_nD^{-1/2}$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice, that if we have a small sample size and care about unbiased estimates we may switch 
+\begin_inset Formula $\frac{1}{n}$
+\end_inset
+
+ to 
+\begin_inset Formula $\frac{1}{n-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Population Matrices
+\end_layout
+
+\begin_layout Standard
+In the previous section we introduced sample parameter matrices. It is useful to review the difference between sample and population. Specifically, we may regard the sample as drawn from the population variables. Indeed, we often think of the population in terms of random variables.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Random Variable). Recall, that a random variable, X, is a 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+underline{measurable function}
+\end_layout
+
+\end_inset
+
+ from the sample space to 
+\begin_inset Formula $\R$
+\end_inset
+
+. That is,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[X: \Omega \rightarrow \R\]
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As such, samples are simply realization of the random variable of the form 
+\begin_inset Formula $X(\omega)$
+\end_inset
+
+ where 
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When we deal with populations we use the expectation with respect to the Lebesgue measure,
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+For this course it is not important to know the details of Lebesgue integration.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[\E(X) = \int_\Omega X(\omega)P(d\omega)\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can use this to define the population mean matrix.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Population Mean Vector). Let 
+\begin_inset Formula $X = [X_1,X_2,\dots,X_p]^T$
+\end_inset
+
+ be a random matrix. Then,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[\E[X] = \begin{bmatrix}\E[X_1]\\\E[X_2]\\\vdots\\\E[X_p]\end{bmatrix} = \begin{bmatrix}\mu_1\\\mu_2\\\vdots\\\mu_p\end{bmatrix}=\mu \in\R^p \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using this we can define the population covariance matrix.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Population Covariance Matrix). Let 
+\begin_inset Formula $X = [X_1,X_2,\dots,X_p]^T$
+\end_inset
+
+ be a random matrix. Then, the population covariance matrix is given by 
+\begin_inset Formula $Cov(X) = \E[(X-\mu)(X-\mu)^T]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now let's recall some useful facts.
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\E[aX]=a\E[X]$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $Var(aX) = a^TCov(X)a$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $Cov(a^TX, b^TX) = a^TCov(X)b$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+Procrustes Analysis
+\end_layout
+
+\begin_layout Standard
+We now move on to studying the applications of the theory we built above specifically the applications of it to the tools of multivariate analysis. These tools are also sometimes called unsupervised learning in the Machine Learning literature.
+\end_layout
+
+\begin_layout Standard
+The goal of Procrustes analysis is to find a Q matrix that will minimize the distance between two matrices. There are several versions.
+\end_layout
+
+\begin_layout Subsection
+Orthogonal Procrustes Analysis
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+\min_{Q\in O(p)} ||A-BQ||_F
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $O(p)$
+\end_inset
+
+ denotes the class of orthogonal matrices. We can find the solution to this problem by expanding. That is,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[||A-BQ||_F^2 = \tr(A^TA) + \tr(B^TB)-2\tr(Q^TB^TA) \]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which implies we can solve this by solving for 
+\begin_inset Formula $Q = \argmax_Q \tr(Q^TB^TA)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Then let 
+\begin_inset Formula $C = B^TA$
+\end_inset
+
+ such that, 
+\begin_inset Formula $\tr(Q^TC) = \tr(Q^TU\Sigma V^T)=\tr(V^TQ^TU\Sigma)$
+\end_inset
+
+. Then, since the trace of orthogonal matrices is bounded from above by 1 we have that 
+\begin_inset Formula \[\max \tr(V^TQ^TU\Sigma ) = \sigma_{1}\]
+\end_inset
+
+But, then we just want to pick Q such that 
+\begin_inset Formula $U$
+\end_inset
+
+ and 
+\begin_inset Formula $V$
+\end_inset
+
+ go away, i.e. 
+\begin_inset Formula $V^TQU = I$
+\end_inset
+
+. Which in itself implies the solution, 
+\begin_inset Formula \begin{equation}
+Q = UV^T
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A special case arises if 
+\begin_inset Formula $B = I$
+\end_inset
+
+, specifically, we can just take 
+\begin_inset Formula $A = U\Sigma V^T$
+\end_inset
+
+ and still 
+\begin_inset Formula $Q=UV^T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Symmetric Procrustes Analysis
+\end_layout
+
+\begin_layout Standard
+Here we can define the problem as,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+\min_{X=X^T} ||A-X||_F
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this case we can recall that we can write any matrix as a skew-symmetric matrix that is,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[A = \frac{1}{2}(A+A^T)+\frac{1}{2}(A-A^T)\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, X will be the symmetric component, i.e. 
+\begin_inset Formula $X = \frac{1}{2}(A+A^T)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Best Rank-r Approximation
+\end_layout
+
+\begin_layout Standard
+Here want to approx A with a matrix of rank r. Notice, the problem is trivial (
+\begin_inset Formula $X=A$
+\end_inset
+
+) if 
+\begin_inset Formula $\rank(A)=r$
+\end_inset
+
+. We define the optimization problem,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation} \label{eq:bestrank}
+\min_{\rank{X}\leq r} ||A-X||
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There is a nice solution to this whenever 
+\begin_inset Formula $||\cdot||$
+\end_inset
+
+ is orthogonally invariant. That is, 
+\begin_inset Formula $||AQ||=||A||$
+\end_inset
+
+ when 
+\begin_inset Formula $Q$
+\end_inset
+
+ is an orthogonal matrix. The solution comes from the Eckart-Young theorem.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{theorem}
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $A = U\Sigma V^T$
+\end_inset
+
+. Then, whenever 
+\begin_inset Formula $||\cdot||$
+\end_inset
+
+ is orthogonally invariant, the argument solution to equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bestrank"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is given by, 
+\begin_inset Formula \[ X = U\Sigma_rV^T \text{ where } \Sigma_r = \diag{\sigma_1,\dots,\sigma_r,0,\dots,0}\]
+\end_inset
+
+and if 
+\begin_inset Formula $||\cdot|| = ||\cdot||_2$
+\end_inset
+
+ then the minimized value is 
+\begin_inset Formula $\sigma_{r+1}$
+\end_inset
+
+. Notice, for F-norm it is 
+\begin_inset Formula $\sqrt{\sigma_{r+1}^2 +\dots+\sigma_{\rank{A}}^2}$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{theorem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Principle Component Analysis (PCA)
+\end_layout
+
+\begin_layout Subsection
+Population PCA
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}
+a_k = \argmax\{Var(a^TX) \;|\; ||a||_2 = 1, Cov(a^TX,a_1^TX)=\dots=Cov(a^TX,a_{k-1}^TX)=0\}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice that 
+\begin_inset Formula $a_k = q_k$
+\end_inset
+
+ where 
+\begin_inset Formula $\Sigma = Cov(X)$
+\end_inset
+
+ and 
+\begin_inset Formula $\Sigma = Q\Lambda Q^T$
+\end_inset
+
+. The maximized value (i.e. the variance explained by the k'th PC) is given by 
+\begin_inset Formula $\lambda_k$
+\end_inset
+
+ eigenvalue.
+\end_layout
+
+\begin_layout Subsection
+SVD Method for Sample PCA
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X_c$
+\end_inset
+
+ be the mean centered data matrix. Then, 
+\begin_inset Formula $X_c = U\Sigma V^T$
+\end_inset
+
+ yields all the information.
+\end_layout
+
+\begin_layout Standard
+Notice that, 
+\begin_inset Formula \[S_n = \frac{1}{n-1}X_c^TX_c = \frac{1}{n-1}V\Sigma^2 V^T\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This implies that eigenvalues of the sample covariance matrix are given by 
+\begin_inset Formula $\sigma_k^2/(n-1)$
+\end_inset
+
+. And 
+\begin_inset Formula $a_k = q_k = v_k$
+\end_inset
+
+ are the PC vectors.
+\end_layout
+
+\begin_layout Standard
+This method also avoids floating point errors if there is a value in the mean centered matrix close to 0.
+\end_layout
+
+\begin_layout Subsection
+SVD Projections
+\end_layout
+
+\begin_layout Standard
+To project data onto j-th and k-th PCs simply plot 
+\begin_inset Formula $(\sigma_ju_{ij}, \sigma_ku_{ik})$
+\end_inset
+
+. Also there is no need to compute variable PCA. To plot variables onto PCs, simply plot 
+\begin_inset Formula $(\sigma_jv_{ij}, \sigma_kv_{ik})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+You can also do a biplot but then you need to decide which points to scale by singular values (you also don't have to and could just plot the u's and v's).
+\end_layout
+
+\begin_layout Standard
+Notice these methods work because,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[X_c = U\Sigma V^T = (U\sigma) V^T = \begin{bmatrix}\sigma_1 u_{11}&\dots\\\vdots&\ddots\end{bmatrix}[v_1,\dots,v_p]\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And recall we just want to project 
+\begin_inset Formula $P_wx = (x_i^Tq_j)q_j + (x_i^Tq_k)q_k$
+\end_inset
+
+ such that with EVD we would plot 
+\begin_inset Formula $(x_i^Tq_j, x_i^Tq_k)$
+\end_inset
+
+. This is of course much more expensive.
+\end_layout
+
+\begin_layout Section
+Factor Analysis
+\end_layout
+
+\begin_layout Subsection
+The Model
+\end_layout
+
+\begin_layout Standard
+In matrix form we write, 
+\begin_inset Formula \[X = \mu + LF + \epsilon\]
+\end_inset
+
+We also make the following assumptions.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Assumptions
+\series default
+: 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\E[\epsilon] = 0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\E[\epsilon_i\epsilon_j] = 0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\E[F_iF_j] = 0 \; (Cov(F) = I)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\E[\epsilon F] = 0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\E[F_i] = 0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $Var[F_i] = 1$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Some Intuition
+\end_layout
+
+\begin_layout Standard
+In general there are too many free variables so finding L is impossible. So there are different ways to do it using approximations.
+\end_layout
+
+\begin_layout Standard
+In finance, X is usually returns of some asset. The u's are called alphas and measure risk. 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\mu > 0$
+\end_inset
+
+: Risk is too high for return. 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\mu<0$
+\end_inset
+
+: Risk is too low for return. 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $\mu = 0$
+\end_inset
+
+: Risk matches return properly. 
+\end_layout
+
+\begin_layout Standard
+The L is a loading matrix of betas telling you about return correlation with the factors (F) which are usually macroeconomic variables (GDP, Interest Rates, etc.), Stat (i.e. Fama-French 3 factor model), or unobserved (i.e. innate ability).
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $l > 1$
+\end_inset
+
+: High direct correlation with factors. 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $l < 0$
+\end_inset
+
+: Inverse correlation with factors. 
+\end_layout
+
+\begin_layout Enumerate
+
+\begin_inset Formula $l \in [0,1]$
+\end_inset
+
+: Low correlation with factors. 
+\end_layout
+
+\begin_layout Subsection
+PCA Approach
+\end_layout
+
+\begin_layout Standard
+We can use PCA to satisfy the assumptions and approximate L. 
+\end_layout
+
+\begin_layout Subsubsection
+Covariance Structure
+\end_layout
+
+\begin_layout Standard
+First, we will derive covariance structure.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[\begin{aligned}Cov(X) &= \Sigma = \E[(X-\mu)(X-\mu)] =  \E[(LF + \epsilon)(LF + \epsilon)]
+\\& = \E[LL^TFF^T] + 2\E[LF\epsilon] + \E[\epsilon^T\epsilon]
+\\& = LL^T\E[F^TF] + \Psi
+\\& = LL^T + \Psi
+\end{aligned}\]
+\end_inset
+
+Where 
+\begin_inset Formula $\Psi = \diag{Var(\epsilon_i)} \; \forall \; i = 1,\dots,n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Furthermore, we see that
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[Cov(X,F) = \E[(X-\mu)F] = \E[(LF+\epsilon)F^T] = \E[LFF^T]+\E[\epsilon F^T]=L\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As such we can see that the key formula is, 
+\begin_inset Formula \begin{equation}\Sigma = LL^T + \Psi\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Solving for 
+\begin_inset Formula $L$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To solve, fix 
+\begin_inset Formula $m<p$
+\end_inset
+
+. Then 
+\begin_inset Formula $S = Q\Lambda Q^T$
+\end_inset
+
+. Set 
+\begin_inset Formula $\Lambda_m = \diag{\lambda_i,\dots,\lambda_m}$
+\end_inset
+
+ and 
+\begin_inset Formula $Q = [q_1,\dots,q_m]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Then,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[L = Q_m\Lambda_M^{1/2} = \sqrt{\lambda_i}q_i\]
+\end_inset
+
+
+\begin_inset Formula \[\Psi = \diag{S - LL^T}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice, this is a rank-m approximation. Because, 
+\begin_inset Formula $LL^T = Q_m\Lambda_m^{1/2}\Lambda_m^{1/2}Q_m^T = Q_m\Lambda_mQ_m^T$
+\end_inset
+
+ and SVD = EVD in the case of symmetric matrices. Because of this based on the norm you are using, you know the value of the minimization i.e. 
+\begin_inset Formula $||\cdot||_2 \implies \lambda_{m+1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The proportion of variability explained by each factor is given by 
+\begin_inset Formula $\lambda_i / \sum_i s_{ii}$
+\end_inset
+
+. As always you can do this with correlation matrix and it would be equivalent to not only mean centering but also scaling the data by the inverse std. deviation.
+\end_layout
+
+\begin_layout Section
+Canonical Correlation Analysis (CCA)
+\end_layout
+
+\begin_layout Standard
+This is very much like PCA except we care about correlation and we want to compare correlations of two data sets i.e. X and Y.
+\end_layout
+
+\begin_layout Standard
+We need a bit of setup. Let 
+\begin_inset Formula $W = [X,Y]^T$
+\end_inset
+
+ and 
+\begin_inset Formula $Cov(W) = \begin{bmatrix}Cov(X)&Cov(XY)\\Cov(YX)&Cov(Y)\end{bmatrix}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The canonical correlation variables are given by 
+\begin_inset Formula $U = a^TX$
+\end_inset
+
+ and 
+\begin_inset Formula $V = b^TY$
+\end_inset
+
+. The problem is defined as,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}\begin{aligned}(U_k, V_k) &= \argmax\{Corr(U_k,V_k)\} 
+\\& s.t. \; Var(U_k) = Var(V_k) = 1
+\\& \;\;\;\;\;\; Cov(V_i, U_j) = Cov(V_i, V_j) = Cov(U_i, U_j) = 0\end{aligned}\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The value of the maximum is the canonical correlation 
+\begin_inset Formula $\rho_k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+SVD Solution
+\end_layout
+
+\begin_layout Standard
+First find, 
+\begin_inset Formula \begin{equation}G_{XY} = \Sigma_x^{-1/2}\Sigma_{xy}\Sigma_{y}^{-1/2}\label{eq:CCA_G}\end{equation}
+\end_inset
+
+Notice this is essentially the R matrix.
+\end_layout
+
+\begin_layout Standard
+Then, 
+\begin_inset Formula $G_{XY} = U\Sigma V^T$
+\end_inset
+
+ which then gives us 
+\begin_inset Formula \[U_k = u_k\Sigma_x^{-1/2}X\]
+\end_inset
+
+And 
+\begin_inset Formula \[V_k = v_k\Sigma_y^{-1/2}X\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And the canonical correlation for the k-th variable is given by the singular value, 
+\begin_inset Formula $\rho_k = \sigma_k$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{theorem}
+\end_layout
+
+\end_inset
+
+(CCA Vector Relation). One property of CCA is that if 
+\begin_inset Formula $X'=MX+d$
+\end_inset
+
+ and 
+\begin_inset Formula $Y' = NX+c$
+\end_inset
+
+. Then, correlations are the same and the variables simply differ by 
+\begin_inset Formula $M^{-T}$
+\end_inset
+
+ and 
+\begin_inset Formula $N^{-T}$
+\end_inset
+
+. That is,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[\begin{aligned}a_k' = M^{-T}a_k && && b_k' = N^{-T}b_k\end{aligned}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{theorem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The nice thing about this is that if you use correlation matrices instead of the 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+'s you can get the variables because 
+\begin_inset Formula $a'_{k, cor} = V^{-1/2}_Xa_{k, cov}$
+\end_inset
+
+. The same is true for b just use 
+\begin_inset Formula $V_Y^{-1/2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{mdframed}
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Aside (Square Root Calculation).
+\series default
+ You can calculate square roots by doing EVD and taking square roots of the eigenvalue matrix. Consider, 
+\begin_inset Formula \[A = Q\Lambda Q^{-1} \implies A^{1/2} = Q\Lambda^{1/2}Q^{-1}\]
+\end_inset
+
+Where 
+\begin_inset Formula $\Lambda^{1/2} = \diag{\sqrt{\lambda_i}}$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{mdframed}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Alternative SVD Method
+\end_layout
+
+\begin_layout Standard
+It is possible that 
+\begin_inset Formula $G_{XY}$
+\end_inset
+
+ as defined in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CCA_G"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is not easily retrievable especially when doing this by hand. In this case simply use,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[H_{XY} = S_X^{-1/2}G_{XY}G^T{XY}S_{X}^{1/2} = S_X^{-1}S_{XY}S_{Y}^{-1}S_{YX}\]
+\end_inset
+
+and 
+\begin_inset Formula \[H_{YX} = S_Y^{-1/2}G_{XY}G^T{XY}S_{Y}^{1/2} = S_Y^{-1}S_{YX}S_{X}^{-1}S_{XY}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then, the eigenvalues of 
+\begin_inset Formula $H_{XY}$
+\end_inset
+
+ will be the eigenvalues of 
+\begin_inset Formula $G_{XY}G_{XY}^T$
+\end_inset
+
+ and the eigenvalues of 
+\begin_inset Formula $H_{YX}$
+\end_inset
+
+ will be the eigenvalues of 
+\begin_inset Formula $G_{YX}G_{YX}^T$
+\end_inset
+
+. Thus, there is no need to take square roots of matrices. Simply take the square root of the eigenvalues. Also notice that we can also do this with sample correlation matrices.
+\end_layout
+
+\begin_layout Section
+Linear Discriminant Analysis (LDA)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Supervised vs. Unsupervised Learning
+\series default
+
+\end_layout
+
+\begin_layout Standard
+This method is a departure from the previous multivariate techniques in that this is an example of supervised learning. That is, instead of inferring information directly from the data (e.g. unsupervised learning), we split data into test and training data.
+\end_layout
+
+\begin_layout Subsection
+Preliminaries
+\end_layout
+
+\begin_layout Standard
+First we need to define some matrices. Suppose that we have 
+\begin_inset Formula $g$
+\end_inset
+
+ groups or classes.
+\end_layout
+
+\begin_layout Standard
+The group mean matrix is defined as, 
+\begin_inset Formula \[\bar{x}_i := \frac{1}{n_i}X_i^T1\]
+\end_inset
+
+The total sum of squares matrix is defined as, 
+\begin_inset Formula \[T := X^THX\]
+\end_inset
+
+The within group sum of squares matrix is defined as, 
+\begin_inset Formula \[W:=\sum_i^g X^THX\]
+\end_inset
+
+The between group sum of squares matrix is defined as,
+\begin_inset Formula \[B:=\sum_i^g n_i(\bar{x}_i-\bar{x})(\bar{x}_i-\bar{x})\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice that 
+\begin_inset Formula $T = B + W$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+An alternate to the within group matrix is the pooled variance matrix defined as, 
+\begin_inset Formula \[S_{\text{pool}} := \frac{1}{n-g}\sum_i^g(n_i-1)S_i\]
+\end_inset
+
+Where the group variance matrix is defined as, 
+\begin_inset Formula \[S_i := \frac{1}{n_i-1}(X_i - 1\bar{x}_i)(X_i - 1\bar{x}_i)\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice that 
+\begin_inset Formula $W = (n-g)S_{\text{pool}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+The Linear Discriminant Function
+\end_layout
+
+\begin_layout Standard
+The linear discriminant function or Fischer discriminant function is defined as 
+\begin_inset Formula $f(a) = \frac{a^TBa}{a^TWa}$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+
+\begin_layout Standard
+This is the same R.A. Fischer responsible for Fischer Information!
+\end_layout
+
+\end_inset
+
+ Using this function we can define the LDA optimization problem,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}\max_{a\neq0}\{\frac{a^TBa}{a^TWa}\}\label{eq:lda_problem}\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{theorem}
+\end_layout
+
+\end_inset
+
+ The solution to Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lda_problem"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is given by the principle eigenvector of 
+\begin_inset Formula $W^{-1}B$
+\end_inset
+
+ such that 
+\begin_inset Formula $a = q_1$
+\end_inset
+
+ and the value of the function will be 
+\begin_inset Formula $\lambda_{\max}(W^{-1}B)$
+\end_inset
+
+. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{theorem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{proof}
+\end_layout
+
+\end_inset
+
+ The proof of this is a simple constrained optimization problem.
+\end_layout
+
+\begin_layout Standard
+Notice that we can rewrite this as 
+\begin_inset Formula \[\begin{aligned}& \max_{a\neq0} a^TBa & s.t. && a^TWa = 1\end{aligned}\]
+\end_inset
+
+Then write the Lagrangian for the problem, 
+\begin_inset Formula \[\mathcal{L} = a^TBa - \lambda(a^TWa - 1)\]
+\end_inset
+
+Then the first order condition is, 
+\begin_inset Formula \[2Ba = 2\lambda Wa \implies Ba = \lambda Wa\]
+\end_inset
+
+Notice, that what we have here is the generalized eigenvalue problem (Notice that if 
+\begin_inset Formula $W = I$
+\end_inset
+
+ then we get the familiar eigenvalue problem). As such, notice we can solve this by inverting W.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[W^{-1}Ba = \lambda a\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore we can satisfy the optimality condition by choosing 
+\begin_inset Formula $a$
+\end_inset
+
+ to be an eigenvector yielding the corresponding eigenvalue as the maximal value. Furthermore, it is clear that if we choose the 
+\begin_inset Formula $a = q_1$
+\end_inset
+
+ (the principle eigenvector where 
+\begin_inset Formula $\lambda_1>\dots>\lambda_n$
+\end_inset
+
+) we will solve the maximization problem. This also yields the proof of the theorem.
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{proof}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Classification Rule
+\end_layout
+
+\begin_layout Standard
+So how do we classify new data? The classification rule is then given by (for a new vector 
+\begin_inset Formula $t$
+\end_inset
+
+),
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[i = \text{argmin}\{|q_1(t-\bar{x}_j)|\;:\;\forall j \in 1,\dots,g\}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Binary Classification
+\end_layout
+
+\begin_layout Standard
+There is a nice simplification of the above process in the case of binary classification.
+\end_layout
+
+\begin_layout Standard
+Consider that in a two group case we have,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[\begin{aligned}(q^T_1(t-\bar{x}_2)) - (q^T_1(t-\bar{x}_1)) &= 
+\\&= (q_1^T(t-\bar{x}_2) -q_1^T(t-\bar{x}_1)))(q_1^T(t-\bar{x}_2) + q_1^T(t-\bar{x}_1))
+\\&= [q_1^T(\bar{x}_1-\bar{x}_2)][q_1^T(2t - (\bar{x_1}+\bar{x_2}))]
+\\&= 2[q_1^T(\bar{x}_1-\bar{x}_2)][q_1^T(t-\frac{\bar{x}_1+\bar{x}_2}{2})]
+\end{aligned}\]
+\end_inset
+
+Then notice that, 
+\begin_inset Formula $2[q_1^T(\bar{x}_1-\bar{x}_2)] = (W^{-1}d)^Td = d^TWd > 0$
+\end_inset
+
+. Where we let 
+\begin_inset Formula $d=(\bar{x}_1-\bar{x}_2)$
+\end_inset
+
+. Then we can write the classification rule as,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \begin{equation}Class(t) = \begin{cases}1&(\bar{x}_1-\bar{x}_2)^TW^{-1}(t-\frac{\bar{x}_1+\bar{x}_2}{2}) > 0
+\\2&(\bar{x}_1-\bar{x}_2)^TW^{-1}(t-\frac{\bar{x}_1+\bar{x}_2}{2}) < 0
+\end{cases}\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where in the binary case, 
+\begin_inset Formula $W = (n_1-1)S_1 + (n_2-1)S_2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Correspondence Analysis
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Todo
+\emph default
+ 
+\end_layout
+
+\begin_layout Subsection
+Application to HITS Algorithm
+\end_layout
+
+\begin_layout Subsection
+Application to Information Retrieval
+\end_layout
+
+\begin_layout Section
+Multidimensional Scaling
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Euclidean Distance Matrix) The EDM is a symmetric matrix 
+\begin_inset Formula $d_{ij} = [(x_i - x_j)^T(x_i-x_j)]^{1/2}$
+\end_inset
+
+. Where 
+\begin_inset Formula $x_1,\dots,x_n \in \R^p$
+\end_inset
+
+. As such we have,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[D = \begin{bmatrix}d_{11}&\hdots&d_{1p}\\\vdots&\ddots&\vdots\\d_{n1}&\hdots&d_{nn}\end{bmatrix}\]
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice, however that we need not use the euclidean distance and that we may define a distance matrix using any metric we wish.
+\end_layout
+
+\begin_layout Standard
+Furthermore, notice that the distance metric in invariant up to column wise translations. That is if each column is translated (
+\begin_inset Formula $+$
+\end_inset
+
+ or 
+\begin_inset Formula $-$
+\end_inset
+
+) by some 
+\begin_inset Formula $c = [c_1,\dots,c_p]$
+\end_inset
+
+ the EDM does not change.
+\end_layout
+
+\begin_layout Standard
+As such we may define that the data and mean centered matrix are equal (i.e. that 
+\begin_inset Formula $\bar{x}=0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{definition}
+\end_layout
+
+\end_inset
+
+(Gram Matrix) The Gram matrix (also known as the inner product matrix) is defined as, 
+\begin_inset Formula \[G = XX^T\]
+\end_inset
+
+Such that 
+\begin_inset Formula $g_{ij}=x_i^Tx_j$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{definition}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{theorem}
+\end_layout
+
+\end_inset
+
+ Given a symmetric matrix 
+\begin_inset Formula $D = d_{ij} \in \R^{n\times m}$
+\end_inset
+
+ define 
+\begin_inset Formula \[G=g_{ij} = -\frac{1}{2}(d_{ij}^2 - \frac{1}{n}\sum^n_{j=1}d_{ij}^2 - \frac{1}{n}\sum^n_{i=1}d_{ij}^2) + \frac{1}{n}\sum^n_{i=1}\sum^n_{j=1}d_{ij}^2)\]
+\end_inset
+
+Then, D is a EDM iff G is positive semidefinite. And thus, G is the Gram matrix of X. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{theorem}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the case where the distance matrix is the EDM this means we can recover X. Notice,
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset Formula \[G = Q\Lambda Q^T = XX^T \implies X = Q\Lambda^{1/2}\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+% **** THIS ENDS THE EXAMPLES. DON'T DELETE THE FOLLOWING LINE:
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
