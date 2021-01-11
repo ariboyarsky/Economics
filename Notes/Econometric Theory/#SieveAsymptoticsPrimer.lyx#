@@ -1,0 +1,2729 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams-bytype
+theorems-ams-extended-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+A Primer on the Large Sample Analysis of Sieve Estimation
+\end_layout
+
+\begin_layout Author
+Ariel Boyarsky
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+ariel.boyarsky@yale.edu.
+ This note is purely for educational purposes, all errors are my own.
+ For more sophisticated and thorough coverage see Chen (2007).
+ The main purpose of this note is to present the main ideas of the sieve
+ estimator, present the standard assumptions required, and elucidate how
+ asymptotic and inferential results are proven for newcomers to the literature.
+ This note is a work in progress.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Preface to Notes
+\end_layout
+
+\begin_layout Standard
+An immediate disclaimer, nothing in this note is original.
+ Rather, the purpose of this document is to collect several useful results
+ in the theory of sieve estimators.
+ Hopefully, this note will help future researchers quickly familiarize themselve
+s with the status of the current literature on sieves and learn the techniques
+ needed to make original contributions to the line of study.
+ One can think of this note as a slightly less intensive version of Chen
+ (2007) including some results omitted from that paper due to my own particular
+ interests.
+ Several researchers are to thank for the results exposited in this note.
+ An incomplete list of statisticians and econometricians whose work is represent
+ed here is: Chunrong Ai, Timothy Christensen, Ulf Grenander, Zhipeng Liao,
+ Demian Pouzo, Xiaotong Shen, Halbert White, Jeffrey Wooldridge, and especially
+ Xiaohong Chen.
+\end_layout
+
+\begin_layout Standard
+Assumptions abound classical data analysis.
+ Often these assumptions are not driven by subject-matter expertise or theory
+ but are rather made to simplify analysis.
+ To this end semi/nononparametric methods allow researchers to step away
+ from possibly unpalatable assumptions and allow the data to 
+\begin_inset Quotes eld
+\end_inset
+
+speak
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This way the researcher can be confident in the knowledge that their results
+ are driven by the empirical evidence and not a possibly mistaken assumption.
+ Sieve estimation techniques have been developed to subsume a large class
+ of semi/nonparametric methods, such as neural networks, series estimators,
+ nonparametric MLE, etc.
+ A particular benefit in the economic literature is the ability to estimate
+ structural models with nonparametric parameters.
+ Thus, results are driven by theory and data.
+\end_layout
+
+\begin_layout Section
+General Preliminaries of Sieve Estimation
+\end_layout
+
+\begin_layout Standard
+We begin by defining the sieve extremum estimator.
+ We will restrict ourselves to the simplest case with i.i.d.
+ data given by 
+\begin_inset Formula $Z=\left(Z_{1},\dots,Z_{n}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $Z_{i}\in\mathbb{R}^{d_{z}}$
+\end_inset
+
+, and a regular (
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+-estimable) functional 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ In the most general case, what we call
+\series bold
+ semi-nonparametric
+\series default
+, we are interested in estimating the parameter 
+\begin_inset Formula $\theta_{0}=\left(\beta_{0},h_{0}\right)\in B\times\mathcal{H}=\Theta$
+\end_inset
+
+.
+ Here 
+\begin_inset Formula $B\subset\mathbb{R}^{k}$
+\end_inset
+
+ and compact while 
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+ is some infinite-dimensional space.
+ First we need to define a 
+\series bold
+population criterion
+\series default
+,
+\begin_inset Formula 
+\[
+Q:\Theta\to\mathbb{R}
+\]
+
+\end_inset
+
+Then we can also define the 
+\series bold
+empirical criterion,
+\begin_inset Formula 
+\[
+\hat{Q}_{n}:\Theta\to\mathbb{R}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ is an infinite dimensional parameter is very difficult to maximize a function
+ over this space.
+ In fact, it is not a 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+-estimable problem (Shen 1997).
+ Thus, the innovation of sieve estimators is to maximize the criterion over
+ a finite-dimensional approximation of the full parameter space.
+ In this way, the analyst makes a 
+\begin_inset Quotes eld
+\end_inset
+
+promise
+\begin_inset Quotes erd
+\end_inset
+
+ that she will let the size of the parameter space slowly grow to infinite.
+ The finite dimensional spaces we maximize over are called sieves, 
+\begin_inset Formula $\Theta_{n}\subset\Theta_{n+1}\subset\cdots\subset\Theta$
+\end_inset
+
+, are typically (for nice results) compact, non-decreasing spaces.
+ We also need to assume there exists a projection 
+\begin_inset Formula $\pi_{n}:\Theta\to\Theta_{n}$
+\end_inset
+
+ that lets us project our infinite-dimensional parameters onto a finite-dimensio
+nal space.
+ In particular, we want that,
+\begin_inset Formula 
+\[
+d(\theta,\pi_{n}\theta)\to0\text{ as }n\to\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is also necessary to define 
+\begin_inset Formula $P_{n}(\theta)$
+\end_inset
+
+ as an extension of 
+\begin_inset Formula $\pi_{n}$
+\end_inset
+
+ to the full space.
+ So that 
+\begin_inset Formula $P_{n}\theta=\pi_{n}\theta$
+\end_inset
+
+ when 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally we can define the 
+\series bold
+approximate sieve extremum estimate
+\series default
+,
+\series bold
+ 
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+
+\series default
+,
+\series bold
+ 
+\series default
+as an approximate maximizer of the empirical criterion,
+\begin_inset Formula 
+\begin{equation}
+\hat{Q}_{n}(\hat{\theta}_{n})\geq\sup_{\theta\in\Theta_{n}}\hat{Q}_{n}(\theta)-O_{p}(\eta_{n})\text{ for }\eta_{n}\to0\text{ as }n\to\infty\label{eq:sieve extremum estimation}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $\eta_{n}=0$
+\end_inset
+
+ this is the 
+\series bold
+sieve extremum estimator
+\series default
+.
+\end_layout
+
+\begin_layout Subsection
+Identification
+\end_layout
+
+\begin_layout Standard
+Identification of 
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+ requires only mild assumptions.
+ Theorem 2.2 of White and Wooldridge shows that 
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+ is well defined and measurable under the following conditions.
+ First let 
+\begin_inset Formula $d(\cdot,\cdot)$
+\end_inset
+
+ be a distance metric on 
+\begin_inset Formula $\Theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Assumption
+\noindent
+(Sieve Identification)
+\begin_inset CommandInset label
+LatexCommand label
+name "assu:(well-defined)"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\noindent
+\begin_inset Formula $\hat{Q}_{n}(\theta)$
+\end_inset
+
+ is a measurable function of the data 
+\begin_inset Formula $\{Z_{ij}\}_{ij\in\mathbb{N}}\forall\;\theta\in\Theta_{k}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+The spaces 
+\begin_inset Formula $\Theta_{k}$
+\end_inset
+
+ are compact under 
+\begin_inset Formula $d(\cdot,\cdot)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+\begin_inset Formula $\hat{Q}_{n}(\theta)$
+\end_inset
+
+ is upper semi-continuous on the sieve spaces 
+\begin_inset Formula $\Theta_{k}$
+\end_inset
+
+ under 
+\begin_inset Formula $d(\cdot,\cdot)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+The next identification-type result is due to White and Wooldridge (1991)
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $\left(\Omega,\mathcal{F},\Pr\right)$
+\end_inset
+
+ be a complete probability space and let 
+\begin_inset Formula $\left(\Theta,d\right)$
+\end_inset
+
+ be a metric space.
+ Let 
+\begin_inset Formula $\hat{Q}_{n}:\mathcal{\Omega\times\Theta}_{n}\to\mathbb{R}$
+\end_inset
+
+ be 
+\begin_inset Formula $\mathcal{F}\times\mathcal{B}\left(\Theta_{n}\right)$
+\end_inset
+
+-measurable.
+ Then under Assumption 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "assu:(well-defined)"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ there exists a 
+\begin_inset Formula $\mathcal{F}\times\mathcal{B}\left(\Theta_{n}\right)$
+\end_inset
+
+-measurable sequence 
+\begin_inset Formula $\hat{\theta}_{n}:\Omega\to\Theta_{n}$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $\omega\in\Omega$
+\end_inset
+
+ we have,
+\begin_inset Formula 
+\[
+\hat{Q}_{n}(\omega,\hat{\theta}_{n}(\omega))=\inf_{\theta\in\Theta_{n}}\hat{Q}_{n}(\omega,\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+The proof is due to White and Wooldridge (1991) but relies on an earlier
+ result of Debreu (1967).
+ To see this result denote 
+\begin_inset Formula $v_{n}(\omega)=\inf_{\theta\in\Theta_{n}}\hat{Q}_{n}(\omega,\theta)$
+\end_inset
+
+ and consider the set 
+\begin_inset Formula $\left\{ \left(w,t\right)\in\Omega\times\Theta_{n}|\hat{Q}_{n}(w,t)=v_{n}(w)\right\} $
+\end_inset
+
+ is 
+\begin_inset Formula $\mathcal{F}\times\mathcal{B}\left(\Theta_{n}\right)$
+\end_inset
+
+-measurable.
+ Furthermore, 
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+ exists due to the Kuratowski and Ryll-Nardzewski measurable selection theorem
+ (introduced below) that there exists some 
+\begin_inset Formula $\hat{\theta}_{n}\in v_{n}(\omega)$
+\end_inset
+
+ that returns a single value and is 
+\begin_inset Formula $\mathcal{B}(\Theta_{n})$
+\end_inset
+
+-measurable.
+\end_layout
+
+\begin_layout Definition
+Suppose 
+\begin_inset Formula $F:X\to2^{Y}$
+\end_inset
+
+ be some mapping.
+ A 
+\series bold
+selection 
+\series default
+is some mapping 
+\begin_inset Formula $f:X\to Y$
+\end_inset
+
+ such that 
+\begin_inset Formula $f(x)\in F(x)$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\in X$
+\end_inset
+
+.
+ In particular, for a given input 
+\begin_inset Formula $x$
+\end_inset
+
+ 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ returns only a single value of 
+\begin_inset Formula $F(x)$
+\end_inset
+
+.
+ This is a special case of a 
+\shape italic
+choice function
+\shape default
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Kuratowski and Ryll-Nardzewski Measurable Selection Theorem (Theorem 6.9.3,
+ Bogachev, Measure Theory)
+\end_layout
+
+\end_inset
+
+Suppose 
+\begin_inset Formula $X$
+\end_inset
+
+ is a Banach space and that 
+\begin_inset Formula $\mathcal{B}(X)$
+\end_inset
+
+ is the Borel 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra on 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\left(\Omega,\mathcal{B},P\right)$
+\end_inset
+
+ be a measure space and suppose there exists 
+\begin_inset Formula $F:\Omega\to X$
+\end_inset
+
+.
+ Furthermore suppose that for any open set 
+\begin_inset Formula $U\subset X$
+\end_inset
+
+ we have,
+\begin_inset Formula 
+\[
+\left\{ \omega:F(\omega)\cap U\neq\varnothing\right\} \in\mathcal{B}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Then 
+\begin_inset Formula $F$
+\end_inset
+
+ has a selection 
+\begin_inset Formula $f$
+\end_inset
+
+ that is measurable with respect to 
+\begin_inset Formula $\mathcal{B}\times\mathcal{B}(X)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Sieve M-Estimation
+\end_layout
+
+\begin_layout Standard
+We say that an estimator is 
+\series bold
+Sieve M-Estimation 
+\series default
+if the empirical criterion is a sample average.
+ That is,,
+\begin_inset Formula 
+\[
+\hat{Q}_{n}(\theta,Z)=\frac{1}{n}\sum_{i=1}^{n}l(\theta,Z_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $l$
+\end_inset
+
+ is a sieve likelihood or a single observation criterion.
+ Notice that this may differ from the typical likelihood function in that
+ it need not define a density.
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Partially Linear Model
+\end_layout
+
+\end_inset
+
+ Consider the partially linear model,
+\end_layout
+
+\begin_layout Example
+\begin_inset Formula 
+\[
+y=h_{0}(x_{1})+x_{2}^{T}\beta+\epsilon
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbb{E}[y-\left(h_{0}(x_{1})+x_{2}^{T}\beta\right)|x,y]=\mathbb{E}\left[\epsilon|x,y\right]=0$
+\end_inset
+
+.
+ Then the empirical criterion is given by,
+\begin_inset Formula 
+\[
+\sup_{\theta\in\Theta_{n}}\hat{Q}_{n}=\sup_{\beta\in B,\:h\in\mathcal{H}_{n}}\frac{1}{n}\sum_{i=1}^{n}\left[y_{i}-h(x_{1})-x_{2}^{T}\beta\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The Sieve M-Estimator
+\end_layout
+
+\begin_layout Standard
+The estimator is given by,
+\begin_inset Formula 
+\[
+\hat{\theta}_{n}=\arg\max_{\theta\in\Theta_{n}}\frac{1}{n}\sum_{i=1}^{n}\log l(\theta,Z_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recall that 
+\begin_inset Formula $\Theta_{n}=B\times\mathcal{H}_{k(n)}$
+\end_inset
+
+.
+ We define 
+\begin_inset Formula $\mathcal{H}_{k(n)}$
+\end_inset
+
+ as a linear sieve space spanned by a 
+\begin_inset Formula $k(n)$
+\end_inset
+
+-dimensional basis,
+\begin_inset Formula 
+\[
+\mathcal{H}_{k(n)}=\left\{ h\in\mathcal{H}:h(\cdot)=\sum_{k=1}^{k(n)}\alpha_{k}p_{k}(\cdot)=\alpha'p^{k(n)}(\cdot)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\left\{ p_{k}\right\} _{k=1}^{k(n)}$
+\end_inset
+
+ are a sequence of known basis functions.
+ These could be wavelets, splines, Fourier series, polynomials, etc.
+ Furthermore, we let 
+\begin_inset Formula $k(n)\to\infty$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Large Sample Properties
+\end_layout
+
+\begin_layout Standard
+To begin the discussion of asymptotic properties we need to define several
+ more concepts.
+ First we write the Kullback-Leibler information as,
+\begin_inset Formula 
+\[
+K(\theta_{0},\theta)=\mathbb{E}_{0}\left[l(\theta_{0},Z)-l(\theta,Z)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also we define the empirical process indexed by 
+\begin_inset Formula $g$
+\end_inset
+
+ as,
+\begin_inset Formula 
+\[
+\mathbb{G}_{n}(g)=\frac{1}{n}\sum_{i=1}^{n}\left(g\left(Z_{i}\right)-\mathbb{E}_{0}\left[g(Z_{i})\right]\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Next we need to characterize the score-process of the estimator.
+ To this end we need to define the path-wise derivative of the likelihood.
+ Parameterize the path from 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ to 
+\begin_inset Formula $\theta$
+\end_inset
+
+ by 
+\begin_inset Formula $\theta(\theta_{0},t)\in\Theta$
+\end_inset
+
+ for 
+\begin_inset Formula $t\in[0,1]$
+\end_inset
+
+ such that 
+\begin_inset Formula $\theta(\theta_{0},0)=\theta_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta(\theta_{0},1)=\theta_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Assumption
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Pathwise Differentiability
+\end_layout
+
+\end_inset
+
+ Suppose that the pathwise derivative of 
+\begin_inset Formula $l(\theta(\theta_{0},t),Z)$
+\end_inset
+
+ exists at 
+\begin_inset Formula $t=0$
+\end_inset
+
+.
+ Define this by 
+\begin_inset Formula $l'_{\theta_{0}}[\theta-\theta_{0},Z]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Likelihood and Score Function Constructions
+\end_layout
+
+\begin_layout Standard
+An equivalent way to state this assumption is,
+\begin_inset Formula 
+\[
+\frac{\partial l(\theta_{0},Z)}{\partial(\theta)}\left[\theta-\theta_{0}\right]\equiv\lim_{t\to0}\frac{l(\theta_{0}+t[\theta-\theta_{0}],Z)-l(\theta_{0},Z)}{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Furthermore, we assume that 
+\begin_inset Formula $l'_{\theta_{0}}[\theta-\theta_{0},Z]-\mathbb{E}_{0}\left[l'_{\theta_{0}}[\theta-\theta_{0},Z]\right]$
+\end_inset
+
+ is linear in 
+\begin_inset Formula $\theta-\theta_{0}$
+\end_inset
+
+.
+ Next suppose that we approximate 
+\begin_inset Formula $l(\theta,Z)-l(\theta_{0},Z)$
+\end_inset
+
+ by it's pathwise derivative 
+\begin_inset Formula $l'_{\theta_{0}}[\theta-\theta_{0},Z]$
+\end_inset
+
+.
+ The remainder of this approximation is given by,
+\begin_inset Formula 
+\[
+r[\theta-\theta_{0},Z]=l(\theta,Z)-l(\theta_{0},Z)-l'_{\theta_{0}}[\theta-\theta_{0},Z]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Next define,
+\begin_inset Formula 
+\[
+V_{\theta_{0}}=\text{clspan}\left(\left\{ \theta-\theta_{0}:\theta\in\Theta\right\} \right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here we denotes 
+\shape italic
+clspan 
+\shape default
+as the completion of the linear span.
+ We choose the inner product on this space 
+\begin_inset Formula $\left\langle \cdot,\cdot\right\rangle $
+\end_inset
+
+ such that 
+\begin_inset Formula $Var_{0}\left(l'_{\theta_{0}}[\cdot,Z]\right)=\left|\left|\cdot\right|\right|^{2}$
+\end_inset
+
+.
+ An example of this is the Fisher inner product.
+ The norm for this inner product is,
+\begin_inset Formula 
+\[
+\left|\left|\theta-\theta_{0}\right|\right|^{2}=\mathbb{E}\left[\frac{\partial l(\theta_{0},Z)}{\partial\theta}\left[\theta-\theta_{0}\right]\right]^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that this implies 
+\begin_inset Formula $\left|\left|\theta\right|\right|$
+\end_inset
+
+ is the Fisher information at 
+\begin_inset Formula $\theta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Construction of Functional of Interest
+\end_layout
+
+\begin_layout Standard
+Recall that we are interested in a functional of the parameter, 
+\begin_inset Formula $f(\theta)$
+\end_inset
+
+.
+ Since we intend to conduct inference on this functional we need to apply
+ certain regularity conditions to this functional as well.
+\end_layout
+
+\begin_layout Standard
+Similar to the score function we assume that, 
+\begin_inset Formula $f'_{i}[\theta-\theta_{0}]$
+\end_inset
+
+ is linear in 
+\begin_inset Formula $\theta-\theta_{0}$
+\end_inset
+
+ and that
+\begin_inset Formula 
+\[
+\left|\left|f_{i}'\right|\right|=\sup_{\left\{ \theta\in\Theta:\left|\left|\theta-\theta_{0}\right|\right|>0\right\} }\frac{\left|f_{i}'\left[\theta-\theta_{0}\right]\right|}{\left|\left|\theta-\theta_{0}\right|\right|}<\infty
+\]
+
+\end_inset
+
+Then, it is necessary to assume that the functional of interest converges.
+\end_layout
+
+\begin_layout Assumption
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Convergent Functional
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left|f_{i}(\theta)-f_{i}\left(\theta_{0}\right)-f_{i}'\left[\theta-\theta_{0}\right]\right|\leq a_{n}\left|\left|\theta-\theta_{0}\right|\right|^{\omega}
+\]
+
+\end_inset
+
+as 
+\begin_inset Formula $\left|\left|\theta-\theta_{0}\right|\right|\to0$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Subsubsection
+Sieve Riesz Representation
+\end_layout
+
+\begin_layout Standard
+First let us recall the Riesz Representation Theorem for Hilbert Spaces.
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $T$
+\end_inset
+
+ be a bounded linear functional on a Hilbert space, 
+\begin_inset Formula $H$
+\end_inset
+
+, then there exists some 
+\begin_inset Formula $g\in H$
+\end_inset
+
+ such that for any 
+\begin_inset Formula $f\in H$
+\end_inset
+
+ we have,
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Representation:
+\begin_inset Formula 
+\[
+T(f)=\left\langle f,g\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Operator Norm:
+\begin_inset Formula 
+\[
+\left|\left|T\right|\right|_{op}=\sup_{v\in H,v\neq0}\frac{\left|\left|Tv\right|\right|}{\left|\left|v\right|\right|}=\sup_{v\in H,v\neq0}\frac{\left|\left|gv\right|\right|}{\left|\left|v\right|\right|}=\left|\left|g\right|\right|_{op}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+With this theorem established we can apply the Riesz representation theorem
+ for Hilbert spaces to find a sieve representor 
+\begin_inset Formula $v^{*}\in V_{\theta_{0}}$
+\end_inset
+
+such that 
+\begin_inset Formula $v^{*}=\left(v_{1}^{*},\dots,v_{n}^{*}\right)^{T}$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{equation}
+\left\langle \theta-\theta_{0},v_{i}^{*}\right\rangle =f_{i}'\left[\theta-\theta_{0}\right]\label{eq:sieve-riesz-rep}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Conditions for Asymptotic Consistency
+\end_layout
+
+\begin_layout Standard
+In this section we present the conditions necessary for consistency of the
+ Sieve extremum estimator allowing for a noncompact infinite-dimensional
+ parameter space for both well-posed and ill-posed problems.
+ The result is due to Chen (2007).
+ Begin by defining a psuedo metric on 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ denoted by 
+\begin_inset Formula $d(\cdot,\cdot)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Semi-nonparametric Problem
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $\Theta=B\times\mathcal{H}$
+\end_inset
+
+ and define,
+\begin_inset Formula 
+\[
+d(\theta,\theta')=\left|\left|\beta-\beta'\right|\right|_{l^{2}}+\left|\left|h-h'\right|\right|_{L^{2}}
+\]
+
+\end_inset
+
+Here the norm on the finite-dimensional parameter is simply the euclidean
+ norm and we use it's generalization to the Lebsegue integral for the functional
+ space, 
+\begin_inset Formula $\left|\left|h\right|\right|_{L^{2}}=\left(\int\left|h\right|^{2}\right)^{1/2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We then need the following conditions.
+ For clarity I repeat some of the assumptions already made above.
+ In particular, Assumption 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "assu:(well-defined)"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ will be restated so that it is clearer how each condition is required.
+\end_layout
+
+\begin_layout Condition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Identification
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:identification"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $Q(\theta_{0})>-\infty$
+\end_inset
+
+ and if 
+\begin_inset Formula $Q(\theta_{0})=\infty$
+\end_inset
+
+ then 
+\begin_inset Formula $Q(\theta)<\infty$
+\end_inset
+
+ for all other 
+\begin_inset Formula $\theta\in\Theta_{n}\backslash\left\{ \theta_{0}\right\} $
+\end_inset
+
+ for 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+There is a nonincreasing positive function 
+\begin_inset Formula $\delta$
+\end_inset
+
+ and a positive function 
+\begin_inset Formula $g$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+ and all 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+ we have,
+\begin_inset Formula 
+\[
+Q(\theta_{0})-\sup_{\left\{ \theta\in\Theta_{n}:d(\theta,\theta_{0})\geq\epsilon\right\} }Q(\theta)\geq\delta(k)g(\epsilon)>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Condition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Sieve spaces
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:sieve-spaces"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Theta_{n}\subset\Theta_{n+1}\subset\cdots\subset\Theta_{k(n)}\subset\Theta$
+\end_inset
+
+ for all 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Recall the projection, 
+\begin_inset Formula $\pi_{n}\theta_{0}\in\Theta_{k}$
+\end_inset
+
+.
+ Suppose that 
+\begin_inset Formula $d(\theta_{0},\pi_{n}\theta_{0})\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Condition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Continuity
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:continuity"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Suppose that for 
+\begin_inset Formula $n\geq1,$
+\end_inset
+
+
+\begin_inset Formula $Q(\theta)$
+\end_inset
+
+ is upper semi-continuous (e.s.c.) on 
+\begin_inset Formula $\Theta_{k}$
+\end_inset
+
+ under the metric 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ Recall that this means that for all 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ and some 
+\begin_inset Formula $\theta\in\Theta_{n}$
+\end_inset
+
+ there exists 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta'\in B_{\delta}(\theta)$
+\end_inset
+
+ such that 
+\begin_inset Formula $Q(\theta')<Q(\theta)+\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left|Q(\theta_{0})-Q(\pi_{k(n)}\theta_{0})\right|=o(\delta(k(n))$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Condition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Compactness
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:compactness"
+
+\end_inset
+
+The sieve spaces, 
+\begin_inset Formula $\Theta_{n},$
+\end_inset
+
+ are compact under 
+\begin_inset Formula $d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Condition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Uniform Convergence
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:uniform-conv"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For all 
+\begin_inset Formula $n\geq1$
+\end_inset
+
+ we have 
+\begin_inset Formula $\text{plim}_{n\to\infty}\sup_{\theta\in\Theta_{n}}\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sup_{\theta\in\Theta_{k(n)}}\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|=o_{p}(\delta(k(n))$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\eta_{k(n)}=o(\delta(k(n))$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Remark
+Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:identification"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is straightforward it is needed so that the true parameter maximizes the
+ criterion and is identifiable.
+ Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:sieve-spaces"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ defines the sieve spaces and ensure that as we increase the size of the
+ spaces the projection of the true parameter becomes arbitrarily close to
+ the true parameter.
+ Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:continuity"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is also needed so that we may identify the true parameter through maximizing
+ the criterion.
+ It further ensures that the criterion is continuous about the project of
+ the true parameter as it grows closer to the actual true parameter.
+ Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:compactness"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is a relaxation of the typical M-estimation assumption that the parameter
+ space be compact.
+ Instead, we maximize over compact sieve spaces that may be inside a non-compact
+ parameter space.
+ Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:uniform-conv"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is a uniform law of large numbers, ensuring that the empirical criterion
+ will converge uniformly to the true criterion in large samples.
+ Furthermore, it controls the rate at which the two coincide.
+\end_layout
+
+\begin_layout Theorem
+Suppose Conditions 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:identification"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:uniform-conv"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ hold.
+ Let 
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+ be the approximate sieve extremum estimator.
+ Then 
+\begin_inset Formula $d(\hat{\theta}_{n},\theta)\overset{p}{\rightarrow}0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Proof
+This proof is due to Chen (2007).
+ We have previously seen that 
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+ is well-defined and measurable.
+ For all 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+ we know that 
+\begin_inset Formula $\sup_{\left\{ \theta\in\Theta_{k(n)}:d(\theta,\theta_{n})\geq\epsilon\right\} }Q(\theta)$
+\end_inset
+
+ exists from the compactness of the sieve spaces and the upper semi-continuity
+ of the criterion.
+ Furthermore by the definition of the sieve extremum estimator we know,
+\begin_inset Formula 
+\begin{align}
+\Pr[d(\hat{\theta}_{n},\theta_{0})>\epsilon] & \leq\Pr[\sup_{\left\{ \theta\in\Theta_{k(n)}:d(\theta,\theta_{n})\geq\epsilon\right\} }\hat{Q}_{n}(\theta)\geq\hat{Q}_{n}(\pi_{k(n)}\theta_{0})-O(\eta_{k(n)})]\label{eq:consistency criterion}\\
+ & \leq P_{1}+P_{2}\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+where
+\begin_inset Formula 
+\begin{align*}
+P_{1} & \equiv\Pr\left[\sup_{\theta\in\Theta_{k(n)}:d(\theta,\theta_{0})\geq\epsilon}\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|>\sup_{\theta\in\Theta_{k(n)}}\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|\right]\\
+ & \leq\Pr\left[\sup_{\theta\in\Theta_{k(n)}}\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|>\sup_{\theta\in\Theta_{k(n)}}\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|\right]\\
+ & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+and
+\begin_inset Formula 
+\[
+P_{2}\equiv\Pr\left[\sup_{\theta\in\Theta_{k(n)}:d(\theta,\theta_{0})\geq\epsilon}Q(\theta)\geq Q(\pi_{k(n)}\theta_{0})-2\sup_{\theta\in\Theta_{k(n)}}\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|-O(\eta_{k(n)})\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+To see how 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ are defined notice that 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ is the probability that 
+\begin_inset Formula $\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|$
+\end_inset
+
+ are close within an 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+-ball of 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ Since we control the deviation of the empirical criterion from the true
+ criterion by 
+\begin_inset Formula $\sup_{\theta\in\Theta_{k(n)}}\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|$
+\end_inset
+
+ in 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ we simply take Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:consistency criterion"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and switch out the empirical criterion for the true criterion.
+ This is done twice and so we adjust for this by 
+\begin_inset Formula $2\sup_{\theta\in\Theta_{k(n)}}\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|$
+\end_inset
+
+.
+ Then surely the probability that Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:consistency criterion"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ holds is less than or equal to 
+\begin_inset Formula $P_{1}+P_{2}.$
+\end_inset
+
+ Furthermore, notice that the lower bound in 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ states that the supremum in a smaller space is greater than the supremum
+ in the full space.
+ Furthermore, by Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:uniform-conv"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we have that 
+\begin_inset Formula $\text{plim}_{n\to\infty}\sup_{\theta\in\Theta_{n}}\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|=0$
+\end_inset
+
+ and so 
+\begin_inset Formula $P_{1}=0$
+\end_inset
+
+ as shown.
+ Now let us consider 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ after rearranging,
+\begin_inset Formula 
+\begin{align*}
+P_{2} & =\Pr\left[2\sup_{\theta\in\Theta_{k(n)}}\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|+Q(\theta_{0})-Q(\pi_{k(n)}\theta_{0})+O(\eta_{k(n)})\geq Q(\theta_{0})-\sup_{\theta\in\Theta_{k(n)}:d(\theta,\theta_{0})\geq\epsilon}Q(\theta)\right]\\
+ & \geq\delta(k(n))g(\epsilon)\to0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+The inequality follows from Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:identification"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+that 
+\begin_inset Formula $Q(\theta_{0})-\sup_{\theta\in\Theta_{k(n)}:d(\theta,\theta_{0})\geq\epsilon}Q(\theta)\geq\delta(k)g(\epsilon)$
+\end_inset
+
+.
+ Which must go to 
+\begin_inset Formula $0$
+\end_inset
+
+ since the left hand side is bounded from above by Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:continuity"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ so that 
+\begin_inset Formula $Q(\theta_{0})-Q(\pi_{k(n)}\theta_{0})=o_{p}(\delta(k(n)))$
+\end_inset
+
+ and Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:uniform-conv"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ so that 
+\begin_inset Formula $\sup_{\theta\in\Theta_{k(n)}}\left|\hat{Q}_{n}(\theta)-Q(\theta)\right|=o_{p}(\delta(k(n)))$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Conditions for Asymptotic Normality
+\end_layout
+
+\begin_layout Standard
+With the main mechanisms established we will now present the conditions
+ necessary to establish asymptotic normality of the Sieve M-Estimator.
+ For clarity, I will restate some of the assumptions already used above.
+ In this section, I call these assumptions conditions to differentiate them
+ from previously discussed ideas.
+ These conditions are due to Shen (1997), Chen and Shen (1998), Shen et
+ al.
+ (2005), and Chen (2007).
+\end_layout
+
+\begin_layout Condition
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:conv-func"
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Convergent Functional
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left|f_{i}(\theta)-f_{i}\left(\theta_{0}\right)-f_{i}'\left[\theta-\theta_{0}\right]\right|\leq a_{n}\left|\left|\theta-\theta_{0}\right|\right|^{\omega}
+\]
+
+\end_inset
+
+as 
+\begin_inset Formula $\left|\left|\theta-\theta_{0}\right|\right|\to0$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Condition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Bounded Functional
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:bounded-func"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left|\left|f'\right|\right|<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Condition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Projection to Sieve Space
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:projection"
+
+\end_inset
+
+ Suppose there exists 
+\begin_inset Formula $\pi_{n}v^{*}\in\Theta_{n}$
+\end_inset
+
+ such that,
+\begin_inset Formula 
+\[
+\left|\left|\pi_{n}v^{*}-v^{*}\right|\right|\times\left|\left|\hat{\theta}_{n}-\theta_{0}\right|\right|=o_{p}(n^{-1/2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Condition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Stochastic Equicontinuity
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:stoch-equi"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sup_{\left\{ \theta\in\Theta_{n}:\left|\left|\theta-\theta_{0}\right|\right|\leq\delta_{n}\right\} }\mathbb{G}_{n}\left(r(\theta-\theta_{0},Z)-r[\pi_{n}\theta(\theta,\epsilon_{n})-\theta_{0},Z]\right)=O_{p}(\epsilon_{n}^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Condition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+KL Convergence
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:KL-conv"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\sup_{\left\{ \theta\in\Theta_{n}:\left|\left|\theta-\theta_{0}\right|\right|\leq\delta_{n}\right\} }\left[K(\theta_{0},\pi_{n}\theta\left(\theta,\epsilon_{n}\right))-K(\theta_{0},\theta)\right]\\
+-\frac{1}{2}\left[\left|\left|\theta(\theta,\epsilon_{n})-\theta_{0}\right|\right|^{2}-\left|\left|\theta_{0}-\theta\right|\right|^{2}\right] & =O(\epsilon_{n}^{2})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Condition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Projection Approximation Error
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:proj-error"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sup_{\left\{ \theta\in\Theta_{n}:\left|\left|\theta-\theta_{0}\right|\right|\leq\delta_{n}\right\} }\left|\left|\theta(\theta,\epsilon_{n})-\pi_{n}\theta(\theta,\epsilon_{n})\right|\right|=O(\epsilon_{n}\delta_{n}^{-1})
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+\sup_{\left\{ \theta\in\Theta_{n}:\left|\left|\theta-\theta_{0}\right|\right|\leq\delta_{n}\right\} }\mathbb{G}_{n}(l'_{\theta_{0}}[\theta(\theta,\epsilon_{n})-\pi_{n}(\theta(\theta,\epsilon_{n}),Z]=O_{p}(\epsilon_{n}^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Condition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Vanishing Gradient
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:vanishing-grad"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sup_{\left\{ \theta\in\Theta_{n}:\left|\left|\theta-\theta_{0}\right|\right|\leq\delta_{n}\right\} }\mathbb{G}_{n}(l'_{\theta_{0}}[\theta-\theta_{0},Z])=O_{p}(\epsilon_{n})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Condition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Gaussian Score Process
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "cond:gauss-score"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sqrt{n}\mathbb{G}_{n}(l'_{\theta_{0}}[v^{*},Z])\to\mathcal{N}(0,\sigma_{v^{*}}^{2})
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\sigma_{v^{*}}^{2}=\lim_{n\to\infty}\frac{1}{n}Var_{0}\left(\sum_{i=1}^{n}l'_{\theta_{0}}[v^{*},Z_{i}]\right)>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:stoch-equi"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ implies that remainder from the linear approximation of the criterion by
+ it's derivative satisfies stochastic equicontinuity.
+ Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:KL-conv"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ requires that the Kullback-Leibler divergence is equivalent to 
+\begin_inset Formula $\left|\left|\cdot\right|\right|^{2}.$
+\end_inset
+
+ This controls the quadratic behavior of the criterion.
+ Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:proj-error"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ ensures that 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ is in the interior of 
+\begin_inset Formula $\Theta$
+\end_inset
+
+.
+ Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:gauss-score"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is automatically implied when 
+\begin_inset Formula $Z$
+\end_inset
+
+ is i.i.d.
+ However, when data is not i.i.d.
+ it allows us to establish asymptotic normality of the Sieve M-estimator.
+\end_layout
+
+\begin_layout Theorem
+Under Conditions 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:conv-func"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:gauss-score"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we have that when 
+\begin_inset Formula $\left|\left|\hat{\theta}_{n}-\theta_{0}\right|\right|^{\omega}=o_{p}(\frac{1}{\sqrt{n}})$
+\end_inset
+
+.
+ Then,
+\begin_inset Formula 
+\[
+\sqrt{n}\left(f(\hat{\theta}_{n})-f(\theta_{0})\right)\to\mathcal{N}(0,\sigma_{v^{*}}^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+with 
+\begin_inset Formula $\sigma_{v^{*}}^{2}=\lim_{n\to\infty}\frac{1}{n}Var_{0}\left(\sum_{i=1}^{n}l'_{\theta_{0}}[v^{*},Z_{i}]\right)>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The idea of this proof follows Shen (1997), an extension to the weakly dependent
+ case can be found in Chen and Shen (1998).
+ We will strive to relate 
+\begin_inset Formula $Q(\hat{\theta}_{n})-Q(\theta_{0})$
+\end_inset
+
+ to 
+\begin_inset Formula $f(\hat{\theta}_{n})-f(\theta_{0})$
+\end_inset
+
+.
+ Using the sieve Riesz representor we can approximate 
+\begin_inset Formula $f(\hat{\theta}_{n})-f(\theta_{0})$
+\end_inset
+
+ by 
+\begin_inset Formula $\left\langle \hat{\theta}_{n}-\theta_{0},v^{*}\right\rangle $
+\end_inset
+
+ which itself can be approximated by 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}l'_{\theta_{0}}\left[v^{*},Z_{i}\right]$
+\end_inset
+
+.
+ Then the result will follow by a typical central limit theorem.
+\end_layout
+
+\begin_layout Proof
+This proof is originally due to Shen (1997) Theorem 1.
+ We assume the data is i.i.d.
+ and so condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:gauss-score"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is unneeded.
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+Step 1: Control the Criterion Loss
+\end_layout
+
+\begin_layout Proof
+Take 
+\begin_inset Formula $\pi_{n}\theta_{n}\in\left\{ \pi_{n}\theta_{n}\in\Theta_{n}:\left|\left|\pi_{n}\theta_{n}-\theta_{0}\right|\right|\leq\delta_{n}\right\} $
+\end_inset
+
+.
+ Then begin with,
+\begin_inset Formula 
+\[
+r[\pi_{n}\theta_{n}-\theta_{0},Z]=l(\pi_{n}\theta_{n},Z)-l(\theta_{0},Z)-l'_{\theta_{0}}[\pi_{n}\theta_{n}-\theta_{0},Z]
+\]
+
+\end_inset
+
+Summing yields,
+\begin_inset Formula 
+\[
+n^{-1}\sum_{i=1}^{n}r[\pi_{n}\theta_{n}-\theta_{0},Z]=\hat{Q}_{n}(\pi_{n}\theta_{n})-\hat{Q}_{n}(\theta_{0})-n^{-1}\sum_{i=1}^{n}l'_{\theta_{0}}[\pi_{n}\theta_{n}-\theta_{0},Z_{i}]
+\]
+
+\end_inset
+
+Rearranging,
+\begin_inset Formula 
+\[
+\hat{Q}_{n}(\pi_{n}\theta_{n})=\hat{Q}_{n}(\theta_{0})+n^{-1}\sum_{i=1}^{n}l'_{\theta_{0}}[\pi_{n}\theta_{n}-\theta_{0},Z_{i}]+n^{-1}\sum_{i=1}^{n}r[\pi_{n}\theta_{n}-\theta_{0},Z]
+\]
+
+\end_inset
+
+Next we add and subtract the expectation of the remainder and pathwise derivativ
+e,
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Just to be sure we have,
+\begin_inset Formula 
+\begin{align*}
+\mathbb{G}_{n}(g) & =\frac{1}{n}\sum_{i=1}^{n}\left(g-\mathbb{E}\left[g\right]\right)\\
+ & =\frac{1}{n}\sum_{i=1}^{n}g-\frac{1}{n}\sum_{i=1}^{n}\mathbb{E}\left[g\right]\\
+ & =\frac{1}{n}\sum_{i=1}^{n}g-\mathbb{E}\left[g\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\hat{Q}_{n}(\pi_{n}\theta_{n})= & \hat{Q}_{n}(\theta_{0})\\
+ & +n^{-1}\sum_{i=1}^{n}l'_{\theta_{0}}[\pi_{n}\theta_{n}-\theta_{0},Z_{i}]-\mathbb{E}_{0}\left[l'_{\theta_{0}}[\pi_{n}\theta_{n}-\theta_{0},Z]\right]\\
+ & +n^{-1}\sum_{i=1}^{n}r[\pi_{n}\theta_{n}-\theta_{0},Z_{i}]-\mathbb{E}_{0}\left[r[\pi_{n}\theta_{n}-\theta_{0},Z]\right]\\
+ & +\mathbb{E}_{0}\left[l'_{\theta_{0}}[\pi_{n}\theta_{n}-\theta_{0},Z_{i}]\right]+\mathbb{E}_{0}\left[r[\pi_{n}\theta_{n}-\theta_{0},Z]\right]
+\end{align*}
+
+\end_inset
+
+Using the notation for empirical processes we can rewrite this as,
+\begin_inset Formula 
+\begin{align*}
+\hat{Q}_{n}(\pi_{n}\theta_{n})= & \hat{Q}_{n}(\theta_{0})\\
+ & +\mathbb{G}_{n}(l'_{\theta_{0}}\left[\pi_{n}\theta_{n}-\theta_{0},Z\right])\\
+ & +\mathbb{G}_{n}(r[\pi_{n}\theta_{n}-\theta_{0},Z])\\
+ & +\mathbb{E}_{0}\left[l'_{\theta_{0}}[\pi_{n}\theta_{n}-\theta_{0},Z_{i}]\right]+\mathbb{E}_{0}\left[r[\pi_{n}\theta_{n}-\theta_{0},Z]\right]
+\end{align*}
+
+\end_inset
+
+Expanding the remainder yields,
+\begin_inset Formula 
+\begin{align*}
+\hat{Q}_{n}(\pi_{n}\theta_{n})= & \hat{Q}_{n}(\theta_{0})+\mathbb{G}_{n}(l'_{\theta_{0}}\left[\pi_{n}\theta_{n}-\theta_{0},Z\right])+\mathbb{G}_{n}(r[\pi_{n}\theta_{n}-\theta_{0},Z])\\
+ & +\mathbb{E}_{0}\left[l'_{\theta_{0}}[\pi_{n}\theta_{n}-\theta_{0},Z_{i}]\right]-\mathbb{E}_{0}\left[l'_{\theta_{0}}[\pi_{n}\theta_{n}-\theta_{0},Z_{i}]\right]\\
+ & +\mathbb{E}_{0}\left[l(\pi_{n}\theta_{n},Z)-l(\theta_{0},Z)\right]
+\end{align*}
+
+\end_inset
+
+Noting that the last term is just the Kullback-Leibler information we see
+ this yields Equation (9.2) in Shen (1997),
+\begin_inset Formula 
+\begin{align}
+\hat{Q}_{n}(\pi_{n}\theta_{n})= & \hat{Q}_{n}(\theta_{0})-K(\theta_{0},\pi_{n}\theta_{n})+\mathbb{G}_{n}(l'_{\theta_{0}}\left[\pi_{n}\theta_{n}-\theta_{0},Z\right])\nonumber \\
+ & +\mathbb{G}_{n}(r[\pi_{n}\theta_{n}-\theta_{0},Z])\label{eq:Criterion Loss}
+\end{align}
+
+\end_inset
+
+Then we substitute 
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+ for 
+\begin_inset Formula $\pi_{n}\theta_{n}$
+\end_inset
+
+ to get,
+\begin_inset Formula 
+\begin{align}
+\hat{Q}_{n}(\hat{\theta}_{n})= & \hat{Q}_{n}(\theta_{0})-K(\theta_{0},\hat{\theta}_{n})+\mathbb{G}_{n}(l'_{\theta_{0}}\left[\hat{\theta}_{n}-\theta_{0},Z\right])\label{eq:Criterion Estimate Loss}\\
+ & +\mathbb{G}_{n}(r[\hat{\theta}_{n}-\theta_{0},Z])\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+Step 2: Plug in Path to 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We want to consider the difference between the criterion of the estimator
+ and the projection of some 
+\begin_inset Formula $\theta$
+\end_inset
+
+ in the 
+\begin_inset Formula $\delta$
+\end_inset
+
+-ball around 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{Q}_{n}(\hat{\theta}_{n})-Q(\pi_{n}\theta_{n})$
+\end_inset
+
+.
+ So we need t plug in some 
+\begin_inset Formula $\theta_{n}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left|\left|\theta_{n}-\theta_{0}\right|\right|\leq\delta$
+\end_inset
+
+ as was our requirement to construct Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Criterion Loss"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ in Step 1.
+ Consider 
+\begin_inset Formula $\theta(\hat{\theta}_{n},\epsilon)=\left(1-\epsilon_{n}\right)\hat{\theta}_{n}+\epsilon_{n}\left(v^{*}+\theta_{0}\right)$
+\end_inset
+
+.
+ Then,
+\begin_inset Formula 
+\begin{align*}
+\left|\left|\left(1-\epsilon_{n}\right)\hat{\theta}_{n}+\epsilon_{n}\left(v^{*}+\theta_{0}\right)-\theta_{0}\right|\right| & =\left|\left|\left(1-\epsilon_{n}\right)\hat{\theta}_{n}+\epsilon_{n}v^{*}+\left(1-\epsilon_{n}\right)\theta_{0}\right|\right|\\
+ & =\left|\left|\left(1-\epsilon_{n}\right)\left(\hat{\theta}_{n}-\theta_{0}\right)+\epsilon_{n}v^{*}\right|\right|\leq\delta_{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Since as we have seen 
+\begin_inset Formula $d(\hat{\theta}_{n},\theta_{0})\overset{p}{\to}0$
+\end_inset
+
+.
+ Now we subtract the two formulations (note we use linearity in the empirical
+ processes) and substitute in 
+\begin_inset Formula $\theta(\theta,\epsilon_{n})$
+\end_inset
+
+ for 
+\begin_inset Formula $\theta_{n}$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+\hat{Q}_{n}(\hat{\theta}_{n})= & \hat{Q}_{n}(\pi_{n}\theta(\theta,\epsilon_{n}))-\left[K(\theta_{0},\hat{\theta}_{n})-K(\theta_{0},\pi_{n}\theta(\theta,\epsilon_{n}))\right]\\
+ & +\mathbb{G}_{n}(l'_{\theta_{0}}\left[\hat{\theta}_{n}-\pi_{n}\theta(\theta,\epsilon_{n}),Z\right])\\
+ & +\mathbb{G}_{n}(r[\hat{\theta}_{n}-\theta_{0},Z]--r[\pi_{n}\theta(\theta,\epsilon_{n})-\theta_{0},Z])\\
+= & \hat{Q}_{n}(\pi_{n}\theta(\theta,\epsilon_{n}))-\frac{1}{2}\left[\left|\left|\theta_{0}-\hat{\theta}_{n}\right|\right|^{2}-\left|\left|\pi_{n}\theta(\theta,\epsilon_{n})-\theta_{0}\right|\right|^{2}\right]\\
+ & +\mathbb{G}_{n}(l'_{\theta_{0}}\left[\hat{\theta}_{n}-\pi_{n}\theta(\theta,\epsilon_{n}),Z\right])\\
+ & +O_{p}(\epsilon_{n}^{2})
+\end{align*}
+
+\end_inset
+
+Where we use Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:stoch-equi"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to kill the last term and use Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:KL-conv"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to substitute out the Kullback-Leibler information criterion loss.
+ Now we notice that from the definition of the estimator,
+\begin_inset Formula 
+\[
+\hat{Q}_{n}(\hat{\theta}_{n})-\hat{Q}_{n}\left(\pi_{n}\theta(\theta,\epsilon_{n})\right)\geq Q_{n}(\hat{\theta}_{n})-\sup_{\theta\in\Theta_{n}}\hat{Q}_{n}(\theta)\geq-O(\epsilon_{n}^{2})
+\]
+
+\end_inset
+
+Since by Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:proj-error"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we have at most 
+\begin_inset Formula $\left|\left|\theta(\theta,\epsilon_{n})-\pi_{n}\theta(\theta,\epsilon_{n})\right|\right|=O(\epsilon_{n}\delta_{n}^{-1})$
+\end_inset
+
+.
+ So we have,
+\begin_inset Formula 
+\begin{align*}
+-O(\epsilon_{n}^{2})\leq & -\frac{1}{2}\left[\left|\left|\theta_{0}-\hat{\theta}_{n}\right|\right|^{2}-\left|\left|\pi_{n}\theta(\theta,\epsilon_{n})-\theta_{0}\right|\right|^{2}\right]\\
+ & +\mathbb{G}_{n}(l'_{\theta_{0}}\left[\hat{\theta}_{n}-\theta(\hat{\theta}_{n},\epsilon_{n}),Z\right])+O_{p}(\epsilon_{n}^{2})
+\end{align*}
+
+\end_inset
+
+Plugging in our linear path from earlier,
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+\hat{\theta}_{n}-\pi_{n}\theta(\theta,\epsilon_{n}) & =\hat{\theta}_{n}-\left(1-\epsilon_{n}\right)\hat{\theta}_{n}-\epsilon_{n}\left(v^{*}+\theta_{0}\right)\\
+ & =\hat{\theta}_{n}\left(1-\left(1-\epsilon_{n}\right)\right)-\epsilon_{n}\left(v^{*}+\theta_{0}\right)\\
+ & =\epsilon_{n}\hat{\theta}_{n}-\epsilon_{n}v^{*}-\epsilon\theta_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Multiplying by 
+\begin_inset Formula $-1$
+\end_inset
+
+ we can get,
+\begin_inset Formula 
+\[
+=\epsilon_{n}\left(v^{*}-\left(\hat{\theta}_{n}-\theta_{0}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+-O(\epsilon_{n}^{2})\leq & -\frac{1}{2}\left[\left|\left|\theta_{0}-\hat{\theta}_{n}\right|\right|^{2}-\left|\left|\pi_{n}\theta(\hat{\theta}_{n},\epsilon_{n})-\theta_{0}\right|\right|^{2}\right]\\
+ & +\mathbb{G}_{n}(l'_{\theta_{0}}\left[\epsilon_{n}(v^{*}-\left(\hat{\theta}_{n}-\theta_{0}\right),Z\right])+O_{p}(\epsilon_{n}^{2})
+\end{align*}
+
+\end_inset
+
+Next we want to expand the projection in the norm and apply the polarization
+ identity.
+ Notice that by the polarization identity,
+\begin_inset Formula 
+\begin{align*}
+\left|\left|\pi_{n}\theta(\hat{\theta}_{n},\epsilon_{n})-\theta_{0}\right|\right|^{2} & =\left|\left|\left(1-\epsilon\right)\left(\hat{\theta}_{n}-\theta_{0}\right)+\epsilon_{n}v^{*}\right|\right|^{2}\\
+ & =\left|\left|\left(1-\epsilon\right)\left(\hat{\theta}_{n}-\theta_{0}\right)\right|\right|^{2}+\left|\left|\epsilon_{n}v^{*}\right|\right|^{2}+2\left\langle \left(1-\epsilon\right)\left(\hat{\theta}_{n}-\theta_{0}\right),\epsilon_{n}v^{*}\right\rangle 
+\end{align*}
+
+\end_inset
+
+So,
+\begin_inset Formula 
+\begin{align*}
+-O(\epsilon_{n}^{2})\leq & -\frac{1}{2}\left[1-\left(1-\epsilon_{n}\right)^{2}\right]\left|\left|\theta_{0}-\hat{\theta}_{n}\right|\right|+\frac{1}{2}\left|\left|\epsilon_{n}v^{*}\right|\right|^{2}\\
+ & +\left(1-\epsilon\right)\left\langle \left(\hat{\theta}_{n}-\theta_{0}\right),\epsilon_{n}v^{*}\right\rangle \\
+ & +\mathbb{G}_{n}(l'_{\theta_{0}}\left[\epsilon_{n}(v^{*}-\left(\hat{\theta}_{n}-\theta_{0}\right),Z\right])+O_{p}(\epsilon_{n}^{2})\\
+\leq & -\epsilon_{n}\left|\left|\theta_{0}-\hat{\theta}_{n}\right|\right|+\frac{1}{2}\epsilon_{n}^{2}\left|\left|\theta_{0}-\hat{\theta}_{n}\right|\right|\\
+ & +\left(1-\epsilon\right)\left\langle \hat{\theta}_{n}-\theta_{0},\epsilon_{n}v^{*}\right\rangle \\
+ & +\mathbb{G}_{n}(l'_{\theta_{0}}\left[\epsilon_{n}v^{*},Z\right])+O_{p}(\epsilon_{n}^{2})\\
+\leq & \left(1-\epsilon\right)\left\langle \hat{\theta}_{n}-\theta_{0},\epsilon_{n}v^{*}\right\rangle +\mathbb{G}_{n}(l'_{\theta_{0}}\left[\epsilon_{n}v^{*},Z\right])+O_{p}(\epsilon_{n}^{2})
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Want to somehow get,
+\begin_inset Formula 
+\begin{align*}
+-\frac{1}{2}\left[\left|\left|\theta_{0}-\hat{\theta}_{n}\right|\right|^{2}-\left|\left|\pi_{n}\theta(\hat{\theta}_{n},\epsilon_{n})-\theta_{0}\right|\right|^{2}\right]\leq & -\frac{1}{2}\left[1-\left(1-\epsilon_{n}\right)^{2}\right]\left|\left|\hat{\theta}_{n}-\theta_{0}\right|\right|^{2}\\
+ & +\left(1-\epsilon_{n}\right)\left|\left|\hat{\theta}_{n}-\theta_{0}\right|\right|\left|\left|\pi_{n}\theta(\hat{\theta}_{n},\epsilon)-\theta(\hat{\theta}_{n},\epsilon)\right|\right|\\
+ & +\left(1-\epsilon_{n}\right)\left\langle \hat{\theta}_{n}-\theta_{0},\epsilon_{n}v^{*}\right\rangle 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Note that,
+\begin_inset Formula 
+\[
+\pi_{n}\theta(\hat{\theta}_{n},\epsilon_{n})-\theta_{0}=\left(1-\epsilon_{n}\right)\left(\hat{\theta}_{n}-\theta_{0}\right)+\epsilon_{n}v^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+and 
+\begin_inset Formula 
+\[
+\hat{\theta}_{n}-\theta(\hat{\theta}_{n},\epsilon_{n})=\epsilon_{n}(v^{*}-\left(\hat{\theta}_{n}-\theta_{0}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Also we need to use the polarization identity here which is,
+\begin_inset Formula 
+\[
+\left|\left|x+y\right|\right|^{2}=\left|\left|x\right|\right|^{2}+\left|\left|y\right|\right|^{2}+2\Re\left\langle x,y\right\rangle 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+This implies,-
+\begin_inset Formula 
+\[
+-\left(1-\epsilon\right)\left\langle \hat{\theta}_{n}-\theta_{0},\epsilon_{n}v^{*}\right\rangle -\mathbb{G}_{n}(l'_{\theta_{0}}\left[\epsilon_{n}v^{*},Z\right])\leq O(\epsilon_{n}^{2})+O_{p}(\epsilon_{n}^{2})=o_{p}(n^{-1/2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Thus we can justify the approximation,
+\begin_inset Formula 
+\begin{align*}
+-\left(1-\epsilon\right)\left\langle \hat{\theta}_{n}-\theta_{0},\epsilon_{n}v^{*}\right\rangle  & =\mathbb{G}_{n}(l'_{\theta_{0}}\left[\epsilon_{n}v^{*},Z\right])+o_{p}(n^{-1/2})\\
+-\left\langle \hat{\theta}_{n}-\theta_{0},\epsilon_{n}v^{*}\right\rangle -\mathbb{G}_{n}(l'_{\theta_{0}}\left[\epsilon_{n}v^{*},Z\right]) & =o_{p}(n^{-1/2})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+
+\series bold
+Step 3: Asymptotic Distribution of Functional Loss
+\end_layout
+
+\begin_layout Proof
+By Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:conv-func"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we have,
+\begin_inset Formula 
+\begin{align*}
+\left|f(\hat{\theta}_{n})-f\left(\theta_{0}\right)-f_{\theta_{0}}'\left[\hat{\theta}_{n}-\theta_{0}\right]\right| & \leq a_{n}\left|\left|\hat{\theta}_{n}-\theta_{0}\right|\right|^{\omega}\\
+\iff f(\hat{\theta}_{n})-f(\theta_{0}) & =f_{\theta_{0}}'\left[\hat{\theta}_{n}-\theta_{0}\right]+o_{p}\left(a_{n}\left|\left|\hat{\theta}_{n}-\theta_{0}\right|\right|^{\omega}\right)\\
+ & =\left\langle \hat{\theta}_{n}-\theta_{0},v^{*}\right\rangle +o_{p}(n^{-1/2})\\
+ & =\mathbb{G}_{n}(l'_{\theta_{0}}\left[v^{*},Z\right])++o_{p}(n^{-1/2})
+\end{align*}
+
+\end_inset
+
+Where we use the definition of the sieve Riesz representer from equation
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sieve-riesz-rep"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to get the second equality and we use the approximation from Step 2 for
+ the final equality.
+ The result then follows from classical CLT under i.i.d.
+ data (alternatively in the case of dependent data we require that the data
+ satisfy Condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cond:gauss-score"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ as is the case with 
+\begin_inset Formula $\beta$
+\end_inset
+
+-mixing data as shown in Chen and Shen (1998)).
+\end_layout
+
+\begin_layout Subsection
+Sieve Inference via Sieve QLR
+\end_layout
+
+\begin_layout Standard
+In this section, we will describe the sieve quasi likelihood ratio (QLR)
+ statistic as a generalization of the typical likelihood ratio statistic.
+ An alternative test is the sieve Wald (or t) statistic.
+ We test,
+\begin_inset Formula 
+\[
+H_{0}:f(\theta_{0})=f_{0}\longleftrightarrow H_{1}:f(\theta_{0})\neq f_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define the 
+\series bold
+Sieve quasi likelihood ratio 
+\series default
+statistic as,
+\begin_inset Formula 
+\[
+QLR_{n}(f_{0})\equiv n\left(\inf_{\theta\in\Theta_{k(n)}:f(\theta)=f_{0}}\hat{Q}_{n}(\theta)-\hat{Q}_{n}(\hat{\theta}_{n})\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Irregular Functionals
+\end_layout
+
+\begin_layout Section
+Sieve Minimum Distance Estimation
+\end_layout
+
+\end_body
+\end_document
