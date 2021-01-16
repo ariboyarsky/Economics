@@ -1,0 +1,5074 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass ectaart
+\begin_preamble
+\batchmode
+
+\def\input@path{{\string"C:/Users/abrsk/OneDrive - The George Washington University/Documents/Economics/Economics/Notes/Econometric Theory/Statistical Theory/\string"}}
+
+\usepackage{wasysym}
+
+\usepackage[]{ulem}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams-bytype
+theorems-ams-extended-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-15
+\fontencoding T1
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Minimax Theory
+\end_layout
+
+\begin_layout Author
+Ariel Boyarsky
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ariel.boyarsky@yale.edu
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Notes based and developed from Larry Wasserman's Nonparametric Statistics
+ course at Carnegie Mellon University.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Preliminaries
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Notation: 
+\series default
+Suppose 
+\begin_inset Formula $\left(\Omega,\mathcal{F},P\right)$
+\end_inset
+
+ is a probability space.
+ Let 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ be a set of distributions on the probability space and let 
+\begin_inset Formula $X_{1},\dots,X_{n}$
+\end_inset
+
+ be a sample from distribution 
+\begin_inset Formula $P\in\mathcal{P}.$
+\end_inset
+
+ Let 
+\begin_inset Formula $\theta(P)$
+\end_inset
+
+ be some function of 
+\begin_inset Formula $P$
+\end_inset
+
+, we will sometimes refer to this 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ parameter as 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ For instance this code be the mean of 
+\begin_inset Formula $P$
+\end_inset
+
+ or some other population parameter.
+ We denote an estimator as 
+\begin_inset Formula $\hat{\theta}=\hat{\theta}(X_{1},\dots,X_{n})$
+\end_inset
+
+.
+ We assume that there exists a metric 
+\begin_inset Formula $d(\cdot,\cdot)$
+\end_inset
+
+ that satisfies the triangle inequality on the space of distributions.
+ Furthermore note that we sometimes use 
+\begin_inset Formula $a\wedge b=\min\left\{ a,b\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $a\vee b=\max\left\{ a,b\right\} .$
+\end_inset
+
+ If 
+\begin_inset Formula $P$
+\end_inset
+
+ is a distribution then 
+\begin_inset Formula $p$
+\end_inset
+
+ is it's density.
+ The product distribution is given by 
+\begin_inset Formula $P^{n}$
+\end_inset
+
+ with density 
+\begin_inset Formula $p^{n}=\prod_{i=1}^{n}p(x_{i})$
+\end_inset
+
+.
+ We use the following stochastic convergence notation, 
+\begin_inset Formula $a_{n}\asymp b_{n}$
+\end_inset
+
+ denotes that 
+\begin_inset Formula $0<a_{n}/b_{n}<\infty$
+\end_inset
+
+ for all large 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Furthermore 
+\begin_inset Formula $a_{n}=\Omega(b_{n})$
+\end_inset
+
+ means that there exists 
+\begin_inset Formula $C>0$
+\end_inset
+
+ such that 
+\begin_inset Formula $a_{n}\geq Cb_{n}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Definition
+Given a metric 
+\begin_inset Formula $d$
+\end_inset
+
+ that satisfies triangle inequality we say that the 
+\series bold
+minimax risk 
+\series default
+of an estimator 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is, 
+\begin_inset Formula 
+\[
+R_{n}\equiv R_{n}(\mathcal{P})=\inf_{\hat{\theta}}\sup_{P\in\mathcal{P}}\mathbb{E}_{P}[d(\hat{\theta},\theta(P))]
+\]
+
+\end_inset
+
+where the infimum is taken over all estimators.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+We say that the 
+\series bold
+sample complexity 
+\series default
+is, 
+\begin_inset Formula 
+\[
+n(\epsilon,\mathcal{P})=\min\left\{ n:R_{n}(\mathcal{P})\leq\epsilon\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+We define the 
+\series bold
+Kullback-Leibler 
+\series default
+distance (divergence, since it's between two distributions) between two
+ distributions 
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ with densities 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{1}$
+\end_inset
+
+ as, 
+\begin_inset Formula 
+\[
+KL(P_{0},P_{1})=\int\log\left(\frac{dP_{0}}{dP_{1}}\right)dP_{0}=\int\log\left(\frac{p_{0}(x)}{p_{1}(x)}\right)p_{0}(x)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Suppose that 
+\begin_inset Formula $\mathcal{P}=\left\{ N(\theta,1):\theta\in\mathbb{R}\right\} .$
+\end_inset
+
+ Then let 
+\begin_inset Formula $d(a,b)=\left(a-b\right)^{2}$
+\end_inset
+
+.
+ Then the minimax risk is, 
+\begin_inset Formula 
+\[
+R_{n}=\inf_{\hat{\theta}}\sup_{P}\mathbb{E}_{P}\left[\left(\hat{\theta}-\theta\right)^{2}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+and in fact the sample mean achieves this rate.
+ 
+\end_layout
+
+\begin_layout Standard
+Some other distances and measures between distributions that should be noted
+ are, 
+\end_layout
+
+\begin_layout Definition
+The
+\series bold
+ Total Variation
+\series default
+ 
+\series bold
+metric
+\series default
+, 
+\begin_inset Formula 
+\[
+TV(P,Q)=\sup_{A\in\mathcal{B}\left(\mathbb{R}\right)}\left|P(A)-Q(A)\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+The 
+\series bold
+Hellinger metric, 
+\begin_inset Formula 
+\[
+H(P,Q)=\sqrt{\int\left(\sqrt{p}-\sqrt{q}\right)^{2}}
+\]
+
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+The
+\series bold
+ 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ metric
+\series default
+ is given by, 
+\begin_inset Formula 
+\[
+\chi^{2}(P,Q)=\int\left(\frac{p}{q}-1\right)^{2}dQ=\int\frac{p^{2}}{q}-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+The 
+\series bold
+affinity 
+\series default
+between two distributions, 
+\begin_inset Formula 
+\[
+a(p,q)=\int\left(p\wedge q\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Fact
+The following relationships hold, 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $TV(P,Q)=\frac{1}{2}\left|\left|P-Q\right|\right|_{1}=1-a(p,q)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\frac{1}{2}H^{2}(P,Q)\leq TV(P,Q)\leq\sqrt{KL(P,Q)}\leq\sqrt{\chi^{2}(P,Q)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Bounding the Minimax Risk
+\end_layout
+
+\begin_layout Standard
+It is usually very hard to compute the minimax risk.
+ So instead we try to solve for a lower and upper bound, 
+\begin_inset Formula 
+\[
+L_{n}\leq R_{n}\leq U_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then if we find that both 
+\begin_inset Formula $L_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $U_{n}$
+\end_inset
+
+ decay with the same rate then we have found the minimax rate.
+ For instance if 
+\begin_inset Formula $L_{n}=cn^{-\alpha}$
+\end_inset
+
+ and 
+\begin_inset Formula $U_{n}=Cn^{-\alpha}$
+\end_inset
+
+ then the minimax rate is 
+\begin_inset Formula $n^{-\alpha}.$
+\end_inset
+
+ Typically we can ignore constants (though not always and sometimes they
+ are important) and so we are usually content with speaking in terms of
+ rates.
+\end_layout
+
+\begin_layout Standard
+Usually the upper bound is easy to find, 
+\begin_inset Formula 
+\begin{equation}
+R_{n}=\inf_{\hat{\theta}}\sup_{P}\mathbb{E}_{P}[d(\hat{\theta},\theta(P)]\leq\sup_{P}\mathbb{E}_{P}[d(\hat{\theta},\theta(P))]\equiv U_{n}\label{eq:upperbound}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, the worst error of any estimator provides an upper bound.
+ Finding the lower bound usually takes some work but there are a few common
+ methods that work in most cases: 
+\series bold
+Le Cam's method, Fano's method, and Tsybakov's bound.
+\end_layout
+
+\begin_layout Subsection
+Lower Bound
+\end_layout
+
+\begin_layout Standard
+Getting the lower bound requires a series of simplifications be made to
+ the original problem.
+ To get a lower bound we almost always need to use the following theorem
+ which involves the application of several tricks to prove.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Minimax Lower Bound
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:lowerbound"
+
+\end_inset
+
+Let 
+\begin_inset Formula $M=\left\{ P_{1},\dots,P_{N}\right\} \subset\mathcal{P}$
+\end_inset
+
+ and let 
+\begin_inset Formula $s=\min_{j\neq k}d(\theta_{j},\theta_{k})$
+\end_inset
+
+ where 
+\begin_inset Formula $\theta_{i}=P_{i}(\theta)$
+\end_inset
+
+ and let 
+\begin_inset Formula $\psi^{*}=\arg\min_{j}d(\hat{\theta},\theta_{j})$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\[
+R_{n}=\inf_{\hat{\theta}}\sup_{P\in\mathcal{P}}\mathbb{E}_{P}[d(\hat{\theta},\theta(P))]\geq\frac{s}{2}\inf_{\psi}\max_{P_{j}\in M}P_{j}(\psi\neq j)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+There are three tricks.
+ First, Suppose we choose 
+\begin_inset Formula $M=\left\{ P_{1},\dots,P_{N}\right\} \subset\mathcal{P}$
+\end_inset
+
+.
+ This is a finite set of possible distributions.
+ Then we know, 
+\begin_inset Formula 
+\[
+R_{n}=R_{n}=\inf_{\hat{\theta}}\sup_{P\in\mathcal{P}}\mathbb{E}_{P}[d(\hat{\theta},\theta(P)]\geq\inf_{\hat{\theta}}\max_{P_{j}\in M}\mathbb{E}_{P_{j}}[d(\hat{\theta},\theta_{j}]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\theta_{j}=P_{j}(\theta).$
+\end_inset
+
+ 
+\series bold
+Note: 
+\series default
+This is obvious because the supremum over an infinite set must always be
+ at least as large as the maximum over a finite set that is a subset of
+ the original infinite set.
+ Otherwise the sup of the infinite set would just be the max of the finite
+ set.
+\end_layout
+
+\begin_layout Proof
+But we can simplify this problem further with the second trick.
+ Let 
+\begin_inset Formula $s=\min_{j\neq k}d(\theta_{j},\theta_{k})$
+\end_inset
+
+.
+ The Markov inequality gives, 
+\begin_inset Formula 
+\begin{align*}
+P[d(\hat{\theta},\theta)>t]\leq & \frac{\mathbb{E}[d(\hat{\theta},\theta)]}{t}\\
+\implies\mathbb{E}[d(\hat{\theta},\theta)] & \geq tP[d(\hat{\theta},\theta)>t]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Now set 
+\begin_inset Formula $t=s/2$
+\end_inset
+
+ so that, 
+\begin_inset Formula 
+\[
+R_{n}\geq\frac{s}{2}\inf_{\hat{\theta}}\max_{P_{j}\in M}P_{j}\left(d\left(\hat{\theta},\theta_{j}\right)>s/2\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Finally for the third trick for any 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ define, 
+\begin_inset Formula 
+\[
+\psi^{*}=\arg\min_{j}d(\hat{\theta},\theta_{j})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Now suppose that 
+\begin_inset Formula $\psi^{*}\neq j$
+\end_inset
+
+ in that there exists a closer distribution to our estimator 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ then the true parameter 
+\begin_inset Formula $\theta_{j}$
+\end_inset
+
+.
+ Suppose instead that 
+\begin_inset Formula $\psi^{*}=k$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\begin{align*}
+s & \leq d(\theta_{j},\theta_{k}) & \text{Since \ensuremath{s} is the min distance between \ensuremath{\theta}s}\\
+ & \leq d(\theta_{j},\hat{\theta})+d(\hat{\theta},\theta_{k}) & \text{Trinagle Inequality}\\
+ & \leq d(\theta_{j},\hat{\theta})+d(\hat{\theta},\theta_{j}) & \text{Since \ensuremath{\psi^{*}=k\neq j}\ensuremath{\implies d(\hat{\theta},\theta_{k})\leq}\ensuremath{d(\hat{\theta},\theta_{j})}}\\
+ & =2d(\theta_{j},\hat{\theta})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+So this computation implies that 
+\begin_inset Formula $d(\theta_{j},\hat{\theta})\geq s/2$
+\end_inset
+
+.
+ And so, 
+\begin_inset Formula 
+\[
+P_{j}\left(d\left(\hat{\theta},\theta_{j}\right)>s/2\right)\geq P_{j}(\psi^{*}\neq j)\geq\inf_{\psi}P_{j}(\psi\neq j)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+This is clear because if the estimator and the truth are greater than 
+\begin_inset Formula $s/2$
+\end_inset
+
+ apart then there must be a distribution closer to 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ that 
+\begin_inset Formula $\psi^{*}$
+\end_inset
+
+ then picks up.
+ So that implies that the event in which the distance is greater than 
+\begin_inset Formula $\frac{s}{2}$
+\end_inset
+
+ contains the event where 
+\begin_inset Formula $\psi^{*}\neq j$
+\end_inset
+
+ since 
+\begin_inset Formula $\psi^{*}\neq j\implies d\left(\hat{\theta},\theta_{j}\right)>s/2$
+\end_inset
+
+.
+ That is, 
+\begin_inset Formula 
+\[
+\left\{ d\left(\hat{\theta},\theta_{j}\right)>s/2\right\} \supset\left\{ \psi^{*}\neq j\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Now we can substitute this back into the risk,
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+R_{n} & =\inf_{\hat{\theta}}\sup_{P}\mathbb{E}_{P}[d(\hat{\theta},\theta(P)]\\
+ & \geq\inf_{\hat{\theta}}\max_{P_{j}\in M}\mathbb{E}_{P_{j}}[d(\hat{\theta},\theta_{j}]\\
+ & \geq\frac{s}{2}\inf_{\hat{\theta}}\max_{P_{j}\in M}P_{j}\left(d\left(\hat{\theta},\theta_{j}\right)>s/2\right)\\
+ & \geq\frac{s}{2}\inf_{\psi}\max_{P_{j}\in M}P_{j}(\psi\neq j)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Which yields the result in the theorem.
+ 
+\end_layout
+
+\begin_layout Standard
+Once we have established Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:lowerbound"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we can begin to apply the methods we mentioned earlier to determine the
+ lower bound.
+\end_layout
+
+\begin_layout Subsection
+Le Cam's Method
+\end_layout
+
+\begin_layout Standard
+Perhaps the most widely known and used approach is 
+\series bold
+Le Cam's Method.
+ 
+\series default
+This approach finds the lower bound by averaging over two possible draws
+ 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:LeCam"
+
+\end_inset
+
+ Let 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ be a set of distributions.
+ For any pair 
+\begin_inset Formula $P_{0},P_{1}\in\mathcal{P}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{equation}
+\inf_{\hat{\theta}}\sup_{P}\mathbb{E}_{P}[d(\hat{\theta},\theta(P)]\geq\frac{s}{4}\int\left[p_{0}^{n}(x)\wedge p_{1}^{n}(x)\right]dx=\frac{s}{4}\left[1-TV\left(P_{0}^{n},P_{1}^{n}\right)\right]\label{eq:LeCam}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+where 
+\begin_inset Formula $s=d(\theta(P_{0}),\theta(P_{1}).$
+\end_inset
+
+ Furthermore, 
+\begin_inset Formula 
+\begin{equation}
+\inf_{\hat{\theta}}\sup_{P}\mathbb{E}_{P}[d(\hat{\theta},\theta(P)]\geq\frac{s}{8}e^{-nKL(P_{0},P_{1})}\geq\frac{s}{8}e^{-n\chi^{2}(P_{0}^{n},P_{1}^{n})}\label{eq:LeCam-KL}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+and, 
+\begin_inset Formula 
+\[
+\inf_{\hat{\theta}}\sup_{P}\mathbb{E}_{P}[d(\hat{\theta},\theta(P)]\geq\frac{s}{8}\left(1-\frac{1}{2}\int\left|p_{0}-p1\right|\right)^{2n\halfnote}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary
+\begin_inset CommandInset label
+LatexCommand label
+name "cor:log2n"
+
+\end_inset
+
+Suppose 
+\begin_inset Formula $P_{0},P_{1}\in\mathcal{P}$
+\end_inset
+
+ such that 
+\begin_inset Formula $KL(P_{0},P_{1})\leq\log2$
+\end_inset
+
+/n.
+ Then, 
+\begin_inset Formula 
+\[
+\inf_{\hat{\theta}}\sup_{P}\mathbb{E}_{P}[d(\hat{\theta},\theta(P)]\geq\frac{s}{16}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $s=d(\theta(P_{0}),\theta(P_{1}).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+To prove these results we need the following two lemmas.
+ The first lemma establishes that when 
+\begin_inset Formula $\psi^{*}$
+\end_inset
+
+ is given by the Newman-Pearson test then we are able to bound the probability
+ of 
+\begin_inset Formula $\psi^{*}$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+making a mistake
+\begin_inset Quotes erd
+\end_inset
+
+ from below.
+ Notice how in Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:lowerbound"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we use the fact that 
+\begin_inset Formula $\psi^{*}$
+\end_inset
+
+ chooses the wrong parameter as a way of getting a lower bound.
+ 
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:neymanpearson"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\psi^{*}$
+\end_inset
+
+be the Neyman-Pearson test.
+ Recall this means, 
+\begin_inset Formula 
+\[
+\psi^{*}(x)=\begin{cases}
+0 & \text{if }p_{0}(x)\geq p_{1}(x)\\
+1 & \text{if }p_{0}(x)<p_{1}(x)
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+Then for any test 
+\begin_inset Formula $\psi$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+P_{0}(\psi=1)+P_{1}(\psi=0)\geq P_{0}(\psi^{*}=1)+P_{1}(\psi^{*}=0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Notice that 
+\begin_inset Formula $p_{0}>p_{1}$
+\end_inset
+
+ when 
+\begin_inset Formula $\psi^{*}=0$
+\end_inset
+
+ and that 
+\begin_inset Formula $p_{0}<p_{1}$
+\end_inset
+
+ when 
+\begin_inset Formula $\psi^{*}=1$
+\end_inset
+
+.
+ So, 
+\begin_inset Formula 
+\begin{align*}
+P_{0}(\psi=1)+P_{1}(\psi=0) & =\int_{\left\{ \psi=1\right\} }p_{0}(x)dx+\int_{\left\{ \psi=0\right\} }p_{1}(x)dx\\
+ & =\int_{\left\{ \psi=1,\psi^{*}=1\right\} }p_{0}(x)dx+\int_{\left\{ \psi=1,\psi^{*}=0\right\} }p_{0}(x)dx+\int_{\left\{ \psi=0,\psi^{*}=1\right\} }p_{1}(x)dx+\int_{\left\{ \psi=0,\psi^{*}=0\right\} }p_{1}(x)dx\\
+ & \geq\int_{\left\{ \psi=1,\psi^{*}=1\right\} }p_{0}(x)dx+\int_{\left\{ \psi=1,\psi^{*}=0\right\} }p_{1}(x)dx+\int_{\left\{ \psi=0,\psi^{*}=1\right\} }p_{0}(x)dx+\int_{\left\{ \psi=0,\psi^{*}=0\right\} }p_{1}(x)dx\\
+ & =\int_{\left\{ \psi^{*}=1\right\} }p_{0}(x)dx+\int_{\left\{ \psi^{*}=0\right\} }p_{1}(x)dx\\
+ & =P_{0}(\psi^{*}=1)+P_{1}(\psi^{*}=0)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The next lemma that we prove allows us to form a relationship between the
+ affinity of two distributions and their Kullback-Leibler divergence.
+ This is necessary in achieving the result shown in equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LeCam-KL"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ in theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:LeCam"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:affinity-kl"
+
+\end_inset
+
+ For any distributions 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $Q$
+\end_inset
+
+ we have, 
+\begin_inset Formula 
+\[
+\int p\wedge q\geq\frac{1}{2}e^{-KL(P,Q)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+First notice that 
+\begin_inset Formula $\left(a\wedge b\right)+\left(a\vee b\right)=a+b.$
+\end_inset
+
+ So, 
+\begin_inset Formula 
+\[
+\int p\wedge q+\int p\vee q=2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then, 
+\begin_inset Formula 
+\begin{align*}
+2\int p\wedge q & \geq2\int p\wedge q-\left(\int p\wedge q\right)^{2}\\
+ & =\int p\wedge q\left[2-\int p\wedge q\right] & \text{Factoring out \ensuremath{\int p\wedge q} }\\
+ & =\int p\wedge q\int p\vee q & \text{From Above}\\
+ & \geq\left(\int\sqrt{\left(p\wedge q\right)\left(p\vee q\right)}\right)^{2} & \text{Cauchy-Schwartz}\\
+ & =\left(\int\sqrt{pq}\right)^{2}\\
+ & =\exp(2\log\int\sqrt{pq})\\
+ & =\exp(2\log\int p\sqrt{q/p})\\
+ & \geq\exp(2\int p\log\sqrt{q/p}) & \text{Jensen's Inequality}\\
+ & =\exp\left(\int p\log\sqrt{q/p}+p\log\sqrt{q/p}\right)\\
+ & =\exp\left(\int p\log\frac{q}{p}\right)=\exp\left(\int p\log\left(\frac{p}{q}\right)^{-1}\right)\\
+ & =e^{-KL(P,Q)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Yielding the result.
+ 
+\end_layout
+
+\begin_layout Standard
+Now we are ready to prove Le Cam's theorem.
+ 
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Proof of Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:LeCam"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $\theta_{0}=\theta(P_{0}),\theta_{1}=\theta(P_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $s=d(\theta_{0},\theta_{1})$
+\end_inset
+
+.
+ Let us suppose 
+\begin_inset Formula $n=1$
+\end_inset
+
+.
+ Then we have, 
+\begin_inset Formula 
+\[
+\inf_{\hat{\theta}}\sup_{P\in\mathcal{P}}\mathbb{E}_{P}[d(\hat{\theta},\theta(P))]\geq\frac{s}{2}\pi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+where 
+\begin_inset Formula 
+\[
+\pi=\text{\ensuremath{\inf_{\psi}\max_{j=0,1}P_{j}(\psi\neq j})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Now notice that a maximum of a set is always greater then it's average so
+ we can write, 
+\begin_inset Formula 
+\[
+\pi\geq\inf_{\psi}\frac{P_{1}\left(\psi\neq1\right)+P_{0}\left(\psi\neq0\right)}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Now notice that in Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:neymanpearson"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we know that the Neyman-Pearson test, 
+\begin_inset Formula $\psi^{*}$
+\end_inset
+
+, will minimize the numerator.
+ So, 
+\begin_inset Formula 
+\begin{align*}
+P_{1}\left(\psi\neq1\right)+P_{0}\left(\psi\neq0\right) & =\int_{\left\{ p_{1}>p_{0}\right\} }p_{0}(x)dx+\int_{\left\{ p_{1}<p_{0}\right\} }p_{1}(x)dx\\
+ & =\int_{p_{1>}p_{0}}\left[p_{1}\wedge p_{0}\right]dx+\int_{\left\{ p_{1}<p_{0}\right\} }\left[p_{1}\wedge p_{0}\right]dx\\
+ & =\int\left[p_{1}\wedge p_{0}\right]dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+So, 
+\begin_inset Formula 
+\[
+\frac{P_{1}\left(\psi^{*}\neq1\right)+P_{0}\left(\psi^{*}\neq0\right)}{2}=\frac{1}{2}\int\left[p_{1}\wedge p_{0}\right]dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Thus with a general 
+\begin_inset Formula $n$
+\end_inset
+
+ we have, 
+\begin_inset Formula 
+\[
+R_{n}\geq\frac{s}{4}\int\left[p_{1}^{n}\wedge p_{0}^{n}\right]dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then using the characterization of the affinity as the exponential Kullback-Leib
+ler from lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:affinity-kl"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and the fact that 
+\begin_inset Formula $KL(P^{n},Q^{n})=nKL(P,Q)$
+\end_inset
+
+ we have, 
+\begin_inset Formula 
+\[
+R_{n}\geq\frac{s}{8}e^{-nKL(P_{0},P_{1})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+From here the other results are just functions of the distances as related
+ to the KL divergence.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+General Le Cam
+\end_layout
+
+\end_inset
+
+Suppose 
+\begin_inset Formula $P,Q_{1},\dots,Q_{N}$
+\end_inset
+
+ are distributions such that 
+\begin_inset Formula $d(\theta(P),\theta(Q_{j})\geq s$
+\end_inset
+
+ for all 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\[
+\inf_{\hat{\theta}}\sup_{P\in\mathcal{P}}\mathbb{E}_{P}[d(\hat{\theta},\theta(P))]\geq\frac{s}{4}\int\left(p^{n}\wedge q^{n}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+where 
+\begin_inset Formula $q=\frac{1}{N}\sum_{j=1}^{N}q_{j}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Example
+Suppose we have data 
+\begin_inset Formula $\left(X_{1},Y_{1}\right),\dots,\left(X_{n},Y_{n}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{i}\sim Unif[0,1]$
+\end_inset
+
+.
+ Consider a nonparametric regression, 
+\begin_inset Formula 
+\[
+Y_{i}=m(X_{i})+\epsilon_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+and let 
+\begin_inset Formula $\epsilon_{i}\sim N(0,1)$
+\end_inset
+
+.
+ Suppose that 
+\begin_inset Formula $m$
+\end_inset
+
+ has Lipschitz smoothness.
+ That is, 
+\begin_inset Formula 
+\[
+m\in\mathcal{M}=\left\{ m:\left|m(y)-m(x)\right|\leq L\left|x-y\right|,x,y\in[0,1]\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+So the joint distribution is given by 
+\begin_inset Formula $p(x,y)=p(x)p(y|x)=\phi(y-m(x))$
+\end_inset
+
+ where 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is the normal pdf.
+ We want to know how well we can estimate 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ First define, 
+\begin_inset Formula $d(\theta,\theta')=\left|\theta-\theta'\right|$
+\end_inset
+
+.
+ Next set 
+\begin_inset Formula $m_{0}(x)=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $x$
+\end_inset
+
+ and take the parameter of interest to be 
+\begin_inset Formula $\theta=m(0).$
+\end_inset
+
+ However we could choose any parameter and our choice of 
+\begin_inset Formula $m_{0}$
+\end_inset
+
+ is a kind of baseline on which we will apply Le Cam's method.
+ Next let us define, 
+\begin_inset Formula 
+\[
+m_{1}(x)=\begin{cases}
+L(\epsilon-x) & 0\leq x\leq\epsilon\\
+0 & x\geq\epsilon
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+This construction will ensure Lipschitz continuity but it also very close
+ (but not too close) to 
+\begin_inset Formula $m_{0}$
+\end_inset
+
+ which will make our computation better.
+ Notice, 
+\begin_inset Formula 
+\[
+s=d(m_{0}(0),m_{1}(0))=\left|m_{1}(0)-m_{0}(0)\right|=L\epsilon
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Then let us compute the 
+\begin_inset Formula $KL$
+\end_inset
+
+ divergence, 
+\begin_inset Formula 
+\begin{align*}
+KL(P_{0},P_{1}) & =\int_{0}^{1}\int p_{0}\log\frac{p_{0}}{p_{1}}dydx\\
+ & =\int_{0}^{1}\int p_{0}(x)p_{0}(y|x)\log\frac{p_{0}(x)p_{0}(y|x)}{p_{1}(x)p_{1}(y|x)}dydx\\
+ & =\int_{0}^{1}\int\phi(y-m_{0}(x))\log\frac{\phi(y-m_{0}(x))}{\phi(y-m_{1}(x))}dydx\\
+ & =\int_{0}^{1}\int\phi(y)\log\frac{\phi(y)}{\phi(y-m_{1}(x))}dydx & \text{Since \ensuremath{m_{0}(x)=0\forall x}}\\
+ & =\int_{0}^{\epsilon}\int\phi(y)\log\frac{\phi(y)}{\phi(y-m_{1}(x))}dydx\\
+ & =\int_{0}^{\epsilon}KL(N(0,1),N(m_{1}(x),1))dx
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Notice how the last equality follows by noticing that the inner integral
+ is simply measuring the KL distance between two normal distributions.
+ Furthermore we know that, 
+\begin_inset Formula $KL(N(\mu_{1},1),N(\mu_{2},1))=\frac{\left(\mu_{1}-\mu_{2}\right)^{2}}{2}$
+\end_inset
+
+ such that, 
+\begin_inset Formula 
+\[
+KL(P_{0},P_{1})=\int_{0}^{\epsilon}\frac{m_{1}(x)^{2}}{2}dx=\frac{1}{2}\int\left(L(\epsilon-x)\right)^{2}dx=\frac{L^{2}}{2}\int\left(\epsilon-x\right)^{2}dx=\frac{L^{2}\epsilon^{3}}{6}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Now recall corollary 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cor:log2n"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ which says if we can get the KL distance to be less than or equal to 
+\begin_inset Formula $\log2/n$
+\end_inset
+
+ then we can bound 
+\begin_inset Formula $R_{n}$
+\end_inset
+
+ from below byty 
+\begin_inset Formula $\frac{s}{2}$
+\end_inset
+
+.
+ With this goal in mind we can try letting 
+\begin_inset Formula $\epsilon=\left(6\log2/L^{2}n\right)^{1/3}$
+\end_inset
+
+ which yields, 
+\begin_inset Formula 
+\[
+KL(P_{0},P_{1})=\frac{L^{2}\left(6\log2/L^{2}n\right)}{6}=\frac{\log2}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Thus for some 
+\begin_inset Formula $c$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+R_{n}\geq\frac{s}{16}=\frac{L\epsilon}{16}=\frac{L}{16}\left(\frac{6\log2}{L^{2}n}\right)^{1/3}=\left(\frac{c}{n}\right)^{1/3}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Thus we have the lower bound rate.
+ Furthermore notice that by bounding from above by the MSE we can get an
+ upper bound of 
+\begin_inset Formula $\left(\frac{C}{n}\right)^{1/3}$
+\end_inset
+
+ hence, 
+\begin_inset Formula 
+\[
+\inf_{\hat{\theta}}\sup_{P\in\mathcal{P}}\mathbb{E}_{P}[d(\hat{\theta},\theta(P))]\asymp n^{-1/3}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fano's Method
+\end_layout
+
+\begin_layout Standard
+Suppose instead we are interested in minimizing some integrated metric.
+ For instance the 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ metric.
+ Then it turns out that Le Cam's method may not give the best lower bound.
+ Instead we can use Fano's method which in a way generalized Le Cam's method
+ from looking at just two distributions to a finite set, 
+\begin_inset Formula $P_{1},\dots,P_{N}\in\mathcal{P}$
+\end_inset
+
+ of distributions.
+\end_layout
+
+\begin_layout Standard
+The method begins with Fano's Inequality which is a widely used theorem
+ in statistics, information theory, and computer science.
+ 
+\end_layout
+
+\begin_layout Lemma
+(Fano Inequality) 
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:(Fano-Inequality)"
+
+\end_inset
+
+Let 
+\begin_inset Formula $X_{1},\dots,X_{n}\sim P$
+\end_inset
+
+ where 
+\begin_inset Formula $P\in\left\{ P_{1},\dots,P_{N}\right\} \subset\mathcal{P}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\psi$
+\end_inset
+
+ be any function of 
+\begin_inset Formula $X_{1},\dots,X_{n}$
+\end_inset
+
+ that takes values in 
+\begin_inset Formula $\left\{ 1,\dots,N\right\} .$
+\end_inset
+
+ Let 
+\begin_inset Formula $\beta=\max_{j\neq k}KL(P_{j},P_{k})$
+\end_inset
+
+.
+ Then.
+ 
+\begin_inset Formula 
+\[
+\frac{1}{N}\sum_{j=1}^{N}P_{j}(\psi\neq j)\geq\left(1-\frac{n\beta+\log2}{\log N}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To prove this lemma we need to develop some extra tools.
+ 
+\end_layout
+
+\begin_layout Definition
+For 
+\begin_inset Formula $0<p<1$
+\end_inset
+
+ we define the 
+\series bold
+entropy
+\series default
+ 
+\begin_inset Formula $h(p)=-p\log p-\left(1-p\right)\log\left(1-p\right)$
+\end_inset
+
+ and note that 
+\begin_inset Formula $\dot{0<h(p)<\log2}.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Suppose 
+\begin_inset Formula $\left(Y,Z\right)$
+\end_inset
+
+ are random variables taking values in 
+\begin_inset Formula $\left\{ 1,\dots,N\right\} $
+\end_inset
+
+ with joint distribution 
+\begin_inset Formula $P_{Y,Z}=P(\left(Y,Z\right)\in D)$
+\end_inset
+
+ then their 
+\series bold
+mutual information 
+\series default
+is defined as, 
+\begin_inset Formula 
+\[
+I(Y,Z)=KL(P_{Y,Z},P_{Y}\times P_{Z})=H(Y)-H(Y|Z)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+where 
+\begin_inset Formula $H(Y)=-\sum_{j}P[Y=j]\log\left(P[Y=j]\right)$
+\end_inset
+
+ is the entropy of 
+\begin_inset Formula $Y$
+\end_inset
+
+ and 
+\begin_inset Formula $H(Y|Z)$
+\end_inset
+
+ is the entropy of 
+\begin_inset Formula $Y$
+\end_inset
+
+ conditioned on 
+\begin_inset Formula $Z$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Fact
+\begin_inset CommandInset label
+LatexCommand label
+name "fact:func loss"
+
+\end_inset
+
+ For any measurable function 
+\begin_inset Formula $h$
+\end_inset
+
+ we have that 
+\begin_inset Formula $I(Y,h(Z))\leq I(Y,Z)$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Fact
+Suppose 
+\begin_inset Formula $Y$
+\end_inset
+
+ uniform on 
+\begin_inset Formula $\left\{ 1,\dots,N\right\} $
+\end_inset
+
+, then 
+\begin_inset Formula $H(Y)=-\sum_{j}P[Y=j]\log\left(P[Y=j]\right)=-\sum_{j}\frac{1}{N}\log\left(\frac{1}{N}\right)=-\sum_{j}\frac{1}{N}\left(-\log\left(N\right)\right)=\log N$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Lemma
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:entropy lemma"
+
+\end_inset
+
+Let 
+\begin_inset Formula $Y$
+\end_inset
+
+ be a random variable taking values in 
+\begin_inset Formula $\left\{ 1,\dots,N\right\} $
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\left\{ P_{1},\dots,P_{N}\right\} \subset\mathcal{P}$
+\end_inset
+
+ be a set of distributions.
+ Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be drawn from 
+\begin_inset Formula $P_{j}$
+\end_inset
+
+ for some 
+\begin_inset Formula $j\in\left\{ 1,\dots,N\right\} $
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $P(X\in A|Y=j)=P_{j}(A)$
+\end_inset
+
+ .
+ Let 
+\begin_inset Formula $Z=g(X)$
+\end_inset
+
+ be an estimate of 
+\begin_inset Formula $Y$
+\end_inset
+
+ taking values in 
+\begin_inset Formula $\left\{ 1,\dots,N\right\} .$
+\end_inset
+
+ Then, 
+\begin_inset Formula 
+\[
+H(Y|Z)\leq P(Z\neq Y)\log\left(N-1\right)+h(P(Z=Y))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $E=\mathbb{I}_{\left\{ Z\neq Y\right\} }$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\[
+H(E,Y|X)=H(Y|X)+H(E|X,Y)=H(Y|X)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $H(E|X,Y)=0$
+\end_inset
+
+.
+ Also,
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\[
+H(E,Y|X)=H(E|X)+H(Y|E,X)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+And, 
+\begin_inset Formula $H(E|X)\leq H(E)=h(P(Z=Y)).$
+\end_inset
+
+ So, 
+\begin_inset Formula 
+\begin{align*}
+H(Y|E,X) & =P(E=0)H(Y|X,E=0)+P(E=1)H(Y|X,E=1)\\
+ & \leq P(E=0)\times0+h(P(E=1))\log(N-1)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Proof of Fano's Inequality, Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:(Fano-Inequality)"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Let us assume that 
+\begin_inset Formula $n=1$
+\end_inset
+
+.
+ Then the general case will follow by noting that 
+\begin_inset Formula $KL(P^{n},Q^{n})=nKL(P,Q)$
+\end_inset
+
+.
+ Suppose 
+\begin_inset Formula $Y$
+\end_inset
+
+ is uniform on 
+\begin_inset Formula $\left\{ 1,\dots,N\right\} .$
+\end_inset
+
+ Assume that if 
+\begin_inset Formula $Y=j$
+\end_inset
+
+ then 
+\begin_inset Formula $X\sim P_{j}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $P$
+\end_inset
+
+ is the joint distribution of 
+\begin_inset Formula $Y$
+\end_inset
+
+ and 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+P(X\in A,Y=j)=P(X\in A|Y=j)P(Y=j)=\frac{1}{N}P_{j}(A)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Sine 
+\begin_inset Formula $P(Y=j)=1/N$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\[
+\frac{1}{N}\sum_{i=1}^{N}P(Z\neq j|Y=j)=P(Z\neq j)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then from Lemma 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:entropy lemma"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+H(Y|Z) & \leq P(Z\neq Y)\log\left(N-1\right)+h(P(Z=Y))\\
+ & \leq P(Z\neq Y)\log\left(N-1\right)+h(1/2)\\
+ & =P(Z\neq Y)\log\left(N-1\right)+\log2
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then we have, 
+\begin_inset Formula 
+\begin{align*}
+P(Z\neq Y)\log\left(N-1\right) & \geq H(Y|Z)-\log2=H(Y)-I(Y,Z)-\log2\\
+ & =\log N-I(Y,Z)-\log2\geq\log N-\beta-\log2
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Where we apply Fact 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fact:func loss"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to get the last inequality, 
+\begin_inset Formula 
+\[
+I(Y,Z)\leq I(Y,X)=\frac{1}{N}\sum_{j=1}^{N}KL(P_{j},\bar{P})\leq\frac{1}{N^{2}}\sum_{j,k}^{N}KL(P_{j},P_{k})\leq\beta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+where 
+\begin_inset Formula $\bar{P}=N^{-1}\sum_{j=1}^{N}P_{j}$
+\end_inset
+
+ .
+ Then the result follows from, 
+\begin_inset Formula 
+\[
+P(Z\neq Y)\log\left(N-1\right)\geq\log N-\beta-\log2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now with Fano's Inequality established we can derive Fano's minimax lower
+ bound.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Fano's Minimax Bound
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $F=\left\{ P_{1},\dots,P_{N}\right\} \subset\mathcal{P}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\theta(P)$
+\end_inset
+
+ be a parameter taking values in a metric space equipped with a metric 
+\begin_inset Formula $d(\cdot,\cdot)$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\[
+R_{n}\geq\frac{s}{2}\left(1-\frac{n\beta+\log2}{\log N}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+where 
+\begin_inset Formula $s=\min_{j\neq k}d(\theta(P_{j}),\theta(P_{k}))$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta=\max_{j\neq k}KL(P_{j},P_{k}).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Proof
+Recall that we can write the minimax bound as, 
+\begin_inset Formula 
+\[
+R_{n}\geq\inf_{\hat{\theta}}\sup_{P\in\mathcal{P}}\mathbb{E}_{P}[d(\hat{\theta},\theta(P))]\geq\frac{s}{2}\inf_{\psi}\max_{P_{j}\in F}P_{j}[\psi\neq j]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then since the max is always bigger than an average of a finite set we have,
+ 
+\begin_inset Formula 
+\[
+R_{n}\geq\frac{s}{2}\frac{1}{N}\sum_{j=1}^{N}P_{j}(\psi\neq j)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Now applying Fano's Inequality we have, 
+\begin_inset Formula 
+\[
+R_{n}\geq\frac{s}{2}\frac{1}{N}\sum_{j=1}^{N}\left(1-\frac{n\beta+\log2}{\log N}\right)=\frac{s}{2}\left(1-\frac{n\beta+\log2}{\log N}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary
+Suppose 
+\begin_inset Formula $F=\left\{ P_{1},\dots,P_{N}\right\} \subset\mathcal{P}$
+\end_inset
+
+ and 
+\begin_inset Formula $N\geq16$
+\end_inset
+
+.
+ If, 
+\begin_inset Formula 
+\[
+\beta=\max_{j\neq k}KL(P_{j},P_{k})\leq\frac{\log N}{4n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Corollary
+Then, 
+\begin_inset Formula 
+\[
+R_{n}\geq\frac{s}{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tsybakov's Method
+\end_layout
+
+\begin_layout Standard
+A newer approach that is essentially a simplification of Fano's method is
+ Tsybakov's bound.
+ 
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $X_{1},\dots,X_{n}\sim P\in\mathcal{P}$
+\end_inset
+
+.
+ Then let 
+\begin_inset Formula $\left\{ P_{0},P_{1},\dots,P_{N}\right\} \subset\mathcal{P}$
+\end_inset
+
+ where 
+\begin_inset Formula $N\geq3$
+\end_inset
+
+.
+ Then if , 
+\begin_inset Formula 
+\[
+\frac{1}{N}\sum_{j=1}^{N}KL(P_{j},P_{0})\leq\frac{\log N}{16}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Then, 
+\begin_inset Formula 
+\[
+R_{n}\geq\frac{s}{16}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+where 
+\begin_inset Formula $s=\max_{0\leq j<k\leq N}d(\theta(P_{j}),\theta(P_{k}))$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+See Appendix of Wasserman's Minimax Notes.
+ 
+\end_layout
+
+\begin_layout Subsection
+Hypercubes
+\end_layout
+
+\begin_layout Standard
+Notice that when we are using Fano's and Tsybakov's methods we must construct
+ finite sets of distributions, call this 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+.
+ That is, 
+\begin_inset Formula 
+\[
+\mathcal{F}=\left\{ P_{\omega}:\omega\in\Omega\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula 
+\[
+\Omega=\left\{ \omega=\left(\omega_{1},\dots,\omega_{m}\right):\omega_{i}\in[0,1],i=1,\dots,m\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+which we call a hypercube.
+ Thus there are 
+\begin_inset Formula $N=2^{m}$
+\end_inset
+
+ distributions in 
+\begin_inset Formula $\mathcal{F}.$
+\end_inset
+
+ We also want to define a difference metrics between the sequnces 
+\begin_inset Formula $\omega,\nu\in\Omega$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Definition
+The 
+\series bold
+Hamming metric 
+\series default
+is given by 
+\begin_inset Formula $H(\omega,\nu)=\sum_{j=1}^{m}\mathbb{I}_{\left\{ \omega_{j}\neq\nu_{j}\right\} }$
+\end_inset
+
+.
+ Not to be confused with entropy above or the Hellinger metric.
+\end_layout
+
+\begin_layout Definition
+When we are picking distributions in the hypercube a major problem that
+ may come up is if we just pick 
+\begin_inset Formula $P,Q\in\mathcal{F}$
+\end_inset
+
+ there is a good chance they are so close together that 
+\begin_inset Formula $s$
+\end_inset
+
+ will be too small to get a good bound.
+ Imagine them varying by just one coordinate 
+\begin_inset Formula $\omega_{k}$
+\end_inset
+
+.
+ So instead we want to 
+\begin_inset Quotes eld
+\end_inset
+
+prune
+\begin_inset Quotes erd
+\end_inset
+
+ the hypercube so that all the distributions are the right distance apart.
+ We can do this with the following lemma.
+ 
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Varshamov-Gilbert
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $\Omega=\left\{ \omega=\left(\omega_{1},\dots,\omega_{m}\right):\omega_{i}\in[0,1],i=1,\dots,m\right\} $
+\end_inset
+
+.
+ Suppose that 
+\begin_inset Formula $m\geq8$
+\end_inset
+
+.
+ There exists 
+\begin_inset Formula $\omega^{1},\dots,\omega^{N}\in\Omega$
+\end_inset
+
+ such that, 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\omega^{0}=(0,\dots,0)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $N\geq2^{m/8}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $H(\omega^{j},\omega^{k})\geq m/8$
+\end_inset
+
+ for all 
+\begin_inset Formula $0\leq j<k\leq N$
+\end_inset
+
+ where 
+\begin_inset Formula $H$
+\end_inset
+
+ is the Hamming metric.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Lemma
+We call 
+\begin_inset Formula $\Omega'=\left\{ \omega^{0},\dots,\omega^{N}\right\} $
+\end_inset
+
+ a pruned hypercube.
+ 
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $D=\lfloor m/8\rfloor$
+\end_inset
+
+ and set 
+\begin_inset Formula $\omega^{0}=\left(0,\dots,0\right)$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $\Omega_{0}=\Omega$
+\end_inset
+
+ and 
+\begin_inset Formula $\Omega_{1}=\left\{ \omega\in\Omega:H(\omega,\omega^{0})>D\right\} $
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\omega^{1}$
+\end_inset
+
+ be any element in 
+\begin_inset Formula $\Omega_{1}.$
+\end_inset
+
+ Thus we have already eliminated any 
+\begin_inset Formula $\omega$
+\end_inset
+
+ in which 
+\begin_inset Formula $H(\omega^{0},\omega)\leq D$
+\end_inset
+
+.
+ Now we just continue this process recursively such that at the 
+\begin_inset Formula $j$
+\end_inset
+
+-th step we define 
+\begin_inset Formula $\Omega_{j}=\left\{ \omega\in\Omega_{j-1}:H(\omega,\omega^{j-1})>D\right\} $
+\end_inset
+
+.
+ At this point we have already satisfied 1 and 3.
+ We can show 2 but a little combonotorics.
+ Now let 
+\begin_inset Formula $n_{j}$
+\end_inset
+
+ be the number of elements eliminated at step 
+\begin_inset Formula $j$
+\end_inset
+
+ it follows that, 
+\begin_inset Formula 
+\[
+n_{j}\leq\sum_{i=1}^{D}{m \choose i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+and define, 
+\begin_inset Formula 
+\[
+A_{j}=\left\{ \omega\in\Omega_{j}:H(\omega,\omega^{j})\leq D\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+so that 
+\begin_inset Formula $n_{j}=\left|A_{j}\right|.$
+\end_inset
+
+Then we have that 
+\begin_inset Formula $A_{0},\dots,A_{N}$
+\end_inset
+
+ partition 
+\begin_inset Formula $\Omega.$
+\end_inset
+
+ This means that 
+\begin_inset Formula $n_{0}+\cdots+n_{N}=2^{m}$
+\end_inset
+
+ .
+ Then we have, 
+\begin_inset Formula 
+\[
+\left(N+1\right)\sum_{i=0}^{D}{m \choose i}\geq2^{N}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then, 
+\begin_inset Formula 
+\[
+N+1\geq\frac{1}{\sum_{i=0}^{D}2^{-m}{m \choose i}}=\frac{1}{P[\sum_{i=1}^{m}Z_{i}\leq D]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then 
+\begin_inset Formula $Z_{1},\dots,Z_{m}$
+\end_inset
+
+ are Bernoulli-1/2 random variables and by Hoeffding's inequality we have,
+ 
+\begin_inset Formula 
+\[
+P[\sum_{i=1}^{m}Z_{i}\leq D]\leq e^{-9m/32}<2^{-m/4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+But then 
+\begin_inset Formula $N\geq2^{m/8}$
+\end_inset
+
+when 
+\begin_inset Formula $m\geq8.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Another approach to getting a lower bound using Hypercubes is Assouad's
+ Lemma.
+ 
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Assouad's Lemma
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $\left\{ P_{\omega}:\omega\in\Omega\right\} $
+\end_inset
+
+ be the set of distributions indexed by 
+\begin_inset Formula $\omega$
+\end_inset
+
+ and let 
+\begin_inset Formula $\theta(P)$
+\end_inset
+
+ be some parameter.
+ Then for any 
+\begin_inset Formula $p>0$
+\end_inset
+
+ and any metric 
+\begin_inset Formula $d$
+\end_inset
+
+ that satisfies the triangle inequality we have, 
+\begin_inset Formula 
+\[
+\max_{\omega\in\Omega}\mathbb{E}_{\omega}\left(d^{p}(\hat{\theta},\theta(P_{\omega}))\right)\geq\frac{N}{2^{p+1}}\left(\min_{\left\{ \omega,\nu:H(\omega,\nu)\neq0\right\} }\frac{d^{p}(\theta(P_{\omega}),\theta(P_{\nu}))}{h(\omega,\nu)}\right)\left(\min_{\left\{ \omega,\nu:H(\omega,\nu)=1\right\} }\left|\left|P_{\omega}\wedge P_{\nu}\right|\right|\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Examples and Further Results
+\end_layout
+
+\begin_layout Standard
+In this section we provide a variety of examples in which we compute minimax
+ bounds and introduce other related results.
+\end_layout
+
+\begin_layout Subsection
+Parametric Likelihood
+\end_layout
+
+\begin_layout Standard
+It is well known that the typical MLE under weak regularity conditions is
+ minimax.
+ That is, 
+\begin_inset Formula 
+\[
+R(\theta,\hat{\theta})=Var_{\theta}(\hat{\theta})+\left(b(\hat{\theta})\right)^{2}\approx Var(\hat{\theta})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $Var(\hat{\theta})\approx\frac{1}{nI(\theta)}$
+\end_inset
+
+ where 
+\begin_inset Formula $I(\theta)$
+\end_inset
+
+ is the Fisher information.
+ Since the bias is usually of order 
+\begin_inset Formula $O(n^{-2})$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula 
+\[
+nR(\theta,\hat{\theta})\approx\frac{1}{I(\theta)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For any other estimator 
+\begin_inset Formula $\theta'$
+\end_inset
+
+ we can show 
+\begin_inset Formula $R(\theta,\theta')\geq R(\theta,\hat{\theta})$
+\end_inset
+
+.
+ In the 
+\begin_inset Formula $d$
+\end_inset
+
+-dimensional case we have, 
+\begin_inset Formula $R=O(d/n)$
+\end_inset
+
+.
+ In particular this is summarized by a famous theorem of Hajek and Le Cam.
+ 
+\end_layout
+
+\begin_layout Definition
+We say that the family of distributions 
+\begin_inset Formula $\left\{ P_{\theta}:\theta\in\Theta\right\} $
+\end_inset
+
+ with density given by 
+\begin_inset Formula $p_{\theta}$
+\end_inset
+
+ is 
+\series bold
+differentiable in quadratic mean 
+\series default
+if there exists a functional 
+\begin_inset Formula $l'_{\theta}$
+\end_inset
+
+ such that, 
+\begin_inset Formula 
+\[
+\int\left(\sqrt{p_{\theta+h}}-\sqrt{p_{\theta}}-\frac{1}{2}h^{T}l'_{\theta}\sqrt{p_{\theta}}\right)^{2}d\mu=o\left(||h||^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+We say that a function 
+\begin_inset Formula $g$
+\end_inset
+
+ is 
+\series bold
+bowl-shaped 
+\series default
+if the 
+\emph on
+hypograph
+\emph default
+ which is given by the 
+\begin_inset Formula $\left\{ x:g(x)\leq c\right\} $
+\end_inset
+
+ is convex and symmetric about the origin.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Hajek and Le Cam Theorem
+\end_layout
+
+\end_inset
+
+Suppose 
+\begin_inset Formula $\left\{ P_{\theta}:\theta\in\Theta\right\} $
+\end_inset
+
+ is differentiable in quadratic mean at 
+\begin_inset Formula $\theta$
+\end_inset
+
+ with non-singular Fisher information matrix 
+\begin_inset Formula $I_{\theta}.$
+\end_inset
+
+ Furthermore suppose 
+\begin_inset Formula $\psi$
+\end_inset
+
+ is differentiable at 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\psi(\hat{\theta}_{n})$
+\end_inset
+
+ where the MLE estimator 
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+ is asymptotically locally uniformly minimax in the sense that for any estimator
+ 
+\begin_inset Formula $T_{n}$
+\end_inset
+
+ and any bowl-shaped loss function, 
+\begin_inset Formula $l$
+\end_inset
+
+, we have that, 
+\begin_inset Formula 
+\[
+\sup_{I\in\mathcal{I}}\liminf_{n\to\infty}\sup_{h\in I}\mathbb{E}_{\theta+h/\sqrt{n}}\left[l\left(\sqrt{n}\left(T_{n}-\psi\left(\theta+\frac{h}{\sqrt{n}}\right)\right)\right)\right]\geq\mathbb{E}[l(U)]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathcal{I}$
+\end_inset
+
+is the class of all finite subsets of 
+\begin_inset Formula $\mathbb{R}^{k}$
+\end_inset
+
+and 
+\begin_inset Formula $U\sim N(0,\dot{\psi_{\theta}I_{\theta}^{-1}\dot{\psi_{\theta}^{T})}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Proof Sketch
+\end_layout
+
+\end_inset
+
+The idea behind the proof is to note that the left hand side is bigger than,
+ 
+\begin_inset Formula 
+\[
+R=\lim_{k\to\infty}\liminf_{n\to\infty}\sup_{h\in I_{k}}\mathbb{E}_{\theta+h/\sqrt{n}}\left[l\left(\sqrt{n}\left(T_{n}-\psi\left(\theta+\frac{h}{\sqrt{n}}\right)\right)\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Where we place the rationals in some order and let 
+\begin_inset Formula $I_{k}$
+\end_inset
+
+ be the first few vectors in this sequence.
+ Then there is some subsequence of 
+\begin_inset Formula $\left\{ n\right\} $
+\end_inset
+
+ 
+\begin_inset Formula $\left\{ n_{k}\right\} $
+\end_inset
+
+ such that, 
+\begin_inset Formula 
+\[
+\lim_{k\to\infty}\sup\mathbb{E}_{\theta+h/\sqrt{n}}\left[l\left(\sqrt{n_{k}}\left(T_{n_{k}}-\psi\left(\theta+\frac{h}{\sqrt{n_{k}}}\right)\right)\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then to simplify the problem if we apply tightness and lower semi-continuity
+ then we know there exists a convergent subsequence 
+\begin_inset Formula $\left\{ n_{k}\right\} $
+\end_inset
+
+ so that 
+\begin_inset Formula $\sqrt{n}\left(T_{n}-\psi(\theta)\right)$
+\end_inset
+
+ converge in law and that because 
+\begin_inset Formula $\psi$
+\end_inset
+
+ is differentiable 
+\begin_inset Formula $\sqrt{n}\left(T_{n}-\psi(\theta+h/\sqrt{n})\right)$
+\end_inset
+
+ also converges in law.
+ So, 
+\begin_inset Formula 
+\[
+\sup_{h\in\mathbb{R}^{k}}\mathbb{E}_{h}l(T-\dot{\dot{\psi}_{\theta}h)\geq\mathbb{E}_{0}l(\dot{\psi_{\theta}X)=\mathbb{E}[l(U)]}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Where we apply Le Cam's third lemma to 
+\begin_inset Formula $\left(\sqrt{n}(T_{n}-\psi(\theta)),\frac{1}{\sqrt{n}}\sum\dot{l}_{\theta}(X_{i})\right)$
+\end_inset
+
+ to get the limiting distribution.
+ Then, we combine these two results to get, 
+\begin_inset Formula 
+\[
+\liminf_{n\to\infty}\mathbb{E}_{\theta+h/\sqrt{n}}\left[l\left(\sqrt{n}\left(T_{n}-\psi\left(\theta+\frac{h}{\sqrt{n}}\right)\right)\right)\right]\geq\mathbb{E}[l(U)]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+And, 
+\begin_inset Formula 
+\[
+R\geq\sup_{h\in\mathbb{Q}^{k}}\mathbb{E}[l(U)]=\sup_{h\in\mathbb{Q}^{k}}\mathbb{E}_{h}l(T-\dot{\dot{\psi}_{\theta}h)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then the result follows by noticing this will not change when replacing
+ rationals with reals.
+ 
+\end_layout
+
+\begin_layout Subsection
+Estimating Smooth Densities
+\end_layout
+
+\begin_layout Standard
+In this section we show how to use the general strategy to derive the minimax
+ rate for the estimation of a smooth density.
+ Let 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ be all the probability densities 
+\begin_inset Formula $f$
+\end_inset
+
+ on 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ such that, 
+\begin_inset Formula 
+\begin{align*}
+0 & <c_{0}\leq f(x)\leq c_{1}<\infty
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left|f''(x)\right|\leq c_{2}<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose we observe 
+\begin_inset Formula $X_{1},\dots,X_{n}\sim P$
+\end_inset
+
+ where 
+\begin_inset Formula $P$
+\end_inset
+
+ has density 
+\begin_inset Formula $f\in\mathcal{F}$
+\end_inset
+
+.
+ Let us use the squared Hellinger metric, 
+\begin_inset Formula $d^{2}(f,g)=\int_{0}^{1}\left(\sqrt{f(x)}-\sqrt{g(x)}\right)^{2}dx$
+\end_inset
+
+ as a loss function.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Upper Bound: 
+\series default
+Suppose 
+\begin_inset Formula $\hat{f_{n}}$
+\end_inset
+
+ is a Kernel estimator with bandwidth 
+\begin_inset Formula $n^{-1/5}.$
+\end_inset
+
+ Then using bias-variance calculation we get, 
+\begin_inset Formula 
+\[
+\sup_{f}\mathbb{E}_{f}\left(\int\left(\hat{f}-f\right)^{2}\right)dx\leq Cn^{-4/5}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So that, 
+\begin_inset Formula 
+\[
+\int_{0}^{1}\left(\sqrt{f(x)}-\sqrt{g(x)}\right)^{2}dx=\int_{0}^{1}\left(\frac{f(x)-g(x)}{\sqrt{f(x)}-\sqrt{g(x)}}\right)^{2}dx\leq C_{1}\int\left(\hat{f(x)}-f(x)\right)^{2}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So we have 
+\begin_inset Formula $R_{n}\leq Cn^{-4/5}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Lower Bound: 
+\series default
+We will use Fano's method to get the lower bound.
+ Suppose that 
+\begin_inset Formula $g$
+\end_inset
+
+ is a bounded twice differentiable function on 
+\begin_inset Formula $\dot{[-1/2,1/2]}$
+\end_inset
+
+ such that, 
+\begin_inset Formula 
+\[
+\int_{-1/2}^{1/2}g(x)dx=0\text{ and }\int_{-1/2}^{1/2}g^{2}(x)dx=a>0\text{ and }\int_{-1/2}^{1/2}\left(g'(x)\right)^{2}dx=b>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Fix an integer 
+\begin_inset Formula $m$
+\end_inset
+
+ and for 
+\begin_inset Formula $j=1,\dots,m$
+\end_inset
+
+ define 
+\begin_inset Formula $x_{j}=\left(j-0.5\right)/m$
+\end_inset
+
+ and, 
+\begin_inset Formula 
+\[
+g_{j}(x)=\frac{c}{m^{2}}g(m(x-x_{j}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for 
+\begin_inset Formula $x\in[0,1]$
+\end_inset
+
+ and 
+\begin_inset Formula $c>0$
+\end_inset
+
+.
+ Then let 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ denote the Varshamov-Gilbert pruned version of the set, 
+\begin_inset Formula 
+\[
+\left\{ f_{\tau}=1+\sum_{j=1}^{m}\tau_{j}g_{j}(x):\tau=\left(\tau_{1},\dots,\tau_{m}\right)\in\left\{ -1,+1\right\} ^{m}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f_{\tau}\in\mathcal{M}$
+\end_inset
+
+ let 
+\begin_inset Formula $f_{\tau}^{n}$
+\end_inset
+
+be the product density.
+ Consider, 
+\begin_inset Formula 
+\[
+nKL(f_{\tau},f_{\tau'})=n\int f_{\tau}\log\frac{f_{\tau}}{f_{\tau'}}\leq\frac{C_{1}n}{m^{4}}=\beta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We know by Varshamov Gilbert that there are 
+\begin_inset Formula $N=2^{m/8}.$
+\end_inset
+
+ Now if we choose 
+\begin_inset Formula $m=cn^{9/5}$
+\end_inset
+
+ and plug this into 
+\begin_inset Formula $\beta$
+\end_inset
+
+ we get 
+\begin_inset Formula $\beta=\frac{C_{1}n}{c^{4}n^{4/5}}$
+\end_inset
+
+ and so we can apply the corollary of Fano's minimax bound to get, 
+\begin_inset Formula 
+\[
+R_{n}\geq\frac{C}{n^{4/5}}\implies R_{n}\asymp\frac{C}{n^{4/5}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Normal Means and Pinsker
+\end_layout
+
+\begin_layout Standard
+Recall the definition of a bowl shaped function.
+ We say a loss function is bowl-shaped if 
+\begin_inset Formula $l(\theta,\theta')=g(\theta-\theta')$
+\end_inset
+
+ for some bowl-shaped function 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Theorem
+Suppose the random vector 
+\begin_inset Formula $X$
+\end_inset
+
+ has a normal distribution.
+ The measure zero unique estimator that is minimax for every bowl-shaped
+ loss function is the sample mean 
+\begin_inset Formula $\bar{X_{n}}.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Example
+(Normal Means Problem) Let 
+\begin_inset Formula $X_{j}=\theta_{j}+\epsilon_{j}/\sqrt{n}$
+\end_inset
+
+ and we want to estimate 
+\begin_inset Formula $\theta=\left(\theta_{1},\dots,\theta_{n}\right)$
+\end_inset
+
+ with loss function 
+\begin_inset Formula $l(\hat{\theta},\theta)=\sum_{j=1}^{n}\left(\hat{\theta_{j}}-\theta_{j}\right)^{2}$
+\end_inset
+
+and let 
+\begin_inset Formula $\epsilon_{j}\sim N(0,\sigma^{2})$
+\end_inset
+
+ for each 
+\begin_inset Formula $j=1,\dots,n$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Remark
+There is a lot of similarity between normal means and nonparametric estimation.
+ For instance consider the model 
+\begin_inset Formula $Z_{i}=f(i/n)+\delta_{i}$
+\end_inset
+
+ where 
+\begin_inset Formula $\delta_{i}\sim N(0,1)$
+\end_inset
+
+ and then expand 
+\begin_inset Formula $f$
+\end_inset
+
+ using a basis expansion so that: 
+\begin_inset Formula $f(x)=\sum_{j}\theta_{j}\psi_{j}(x)$
+\end_inset
+
+.
+ An estimate of 
+\begin_inset Formula $\theta_{j}$
+\end_inset
+
+ is then 
+\begin_inset Formula $X_{j}=\frac{1}{n}\sum_{i=1}^{n}Z_{i}\psi_{i}(i/n)$
+\end_inset
+
+ and then 
+\begin_inset Formula $X_{j}\approx N(\theta_{j},\sigma^{2}/n)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In fact in these kinds of estimators with normal random variables we have
+ the following minimax theorem.
+ 
+\end_layout
+
+\begin_layout Definition
+We say that a parametric estimator 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ is minimax if, 
+\begin_inset Formula 
+\[
+\sup_{\theta}R(\theta,\hat{\theta})=\inf_{\hat{\theta}}\sup_{\theta}R(\theta,\hat{\theta})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+The 
+\series bold
+James-Stein 
+\series default
+estimator is given by, 
+\begin_inset Formula 
+\[
+\hat{\theta}_{JS}=\left(1-\frac{\left(n-2\right)\sigma^{2}}{\frac{1}{n}\sum_{j=1}^{n}X_{j}^{2}}\right)X
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Pinsker
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $\Theta_{n}=\mathbb{R}^{n}$
+\end_inset
+
+ then 
+\begin_inset Formula $R_{n}=\sigma^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\theta}=X=\left(X_{1},\dots,X_{n}\right)$
+\end_inset
+
+ is minimax.
+ 
+\end_layout
+
+\begin_layout Enumerate
+If the parameter 
+\begin_inset Quotes eld
+\end_inset
+
+sieve space
+\begin_inset Quotes erd
+\end_inset
+
+ is given by 
+\begin_inset Formula $\Theta_{n}=\left\{ \theta:\sum_{j=1}^{n}\theta_{j}^{2}\leq C^{2}\right\} $
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\liminf_{n\rightarrow\infty}\inf_{\hat{\theta}}\sup_{\theta\in\Theta_{n}}R(\hat{\theta},\theta)=\frac{\sigma^{2}C^{2}}{\sigma^{2}+C^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+This implies that the James-Stein estimator 
+\begin_inset Formula $\hat{\theta}_{JS}$
+\end_inset
+
+ is asymptotically minimax since, 
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}\sup_{\theta\in\Theta_{n}}R(\hat{\theta}_{JS},\theta)=\frac{\sigma^{2}C^{2}}{\sigma^{2}+C^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $X_{j}=\theta_{j}+\epsilon_{j}$
+\end_inset
+
+ for 
+\begin_inset Formula $j=1,2,\dots$
+\end_inset
+
+ where 
+\begin_inset Formula $\epsilon_{j}\sim N(0,\sigma^{2}/n).$
+\end_inset
+
+ Let the parameter space be 
+\series bold
+Sobelov ellipsoid
+\series default
+, 
+\begin_inset Formula 
+\[
+\Theta=\left\{ \theta:\sum_{j=1}^{\infty}\theta_{j}^{2}a_{j}^{2}\leq C^{2}\right\} 
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $a_{j}^{2}=\left(\pi j\right)^{2p}.$
+\end_inset
+
+ Then, 
+\begin_inset Formula 
+\[
+\min_{n\rightarrow\infty}n^{\frac{2p}{2p+1}}R_{n}=\left(\frac{\sigma}{n}\right)^{\frac{2p}{2p+1}}C^{\frac{2}{2p+1}}\left(\frac{p}{p+1}\right)^{\frac{2p}{2p+1}}\left(2p+1\right)^{\frac{1}{2p+1}}
+\]
+
+\end_inset
+
+Hence, 
+\begin_inset Formula $R_{n}\asymp n^{\frac{-2p}{2p+1}}.$
+\end_inset
+
+ One type of asymptotically minimax estimator is the 
+\series bold
+Pinkser estimator
+\series default
+ defined by 
+\begin_inset Formula $\hat{\theta}=\left(w_{1}X_{1},w_{2}X_{2},\dots,\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $w_{j}=\left[1-\left(a_{j}/\mu\right)_{+}\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is determined by the equation, 
+\begin_inset Formula 
+\[
+\frac{\sigma^{2}}{n}\sum_{j}a_{j}\left(\mu-a_{j}\right)_{+}=C^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+The Pinsker estimator is the estimation of a function by smoothing.
+ In fact the Sobelov ellipsoid corresponds to smooth functions.
+ The point here is that if we want to estiamte a smooth function at a minimax
+ rate wee need to shrink the data.
+\end_layout
+
+\begin_layout Subsection
+Hypothesis Testing
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $Y_{1},\dots,Y_{n}\sim P$
+\end_inset
+
+ where 
+\begin_inset Formula $P\in\mathcal{P}$
+\end_inset
+
+ and let 
+\begin_inset Formula $P_{0}\in\mathcal{P}$
+\end_inset
+
+.
+ We want to test, 
+\begin_inset Formula 
+\[
+H_{0}:P=P_{0}\text{ vs. }H_{1}:P\neq P_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recall that a size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ test is a function 
+\begin_inset Formula $\phi(y_{1},\dots,y_{n})\in\left\{ 0,1\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $P_{0}^{n}(\phi=1)\leq\alpha$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ be the 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ level set based on 
+\begin_inset Formula $n$
+\end_inset
+
+ observations where 
+\begin_inset Formula $0<\alpha<1$
+\end_inset
+
+ is fixed.
+ Our goal is to find the minimax type II error, 
+\begin_inset Formula 
+\[
+\beta_{n}(\epsilon)=\inf_{\phi\in\Phi_{n}}\sup_{P\in\mathcal{P}(\epsilon)}P^{n}(\phi=0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where we define 
+\begin_inset Formula $P(\epsilon)=\left\{ P\in\mathcal{P}:d(P_{0},P)>\epsilon\right\} .$
+\end_inset
+
+ The 
+\series bold
+minimax testing rate 
+\series default
+is then, 
+\begin_inset Formula 
+\[
+\epsilon_{n}=\inf\left\{ \epsilon:\beta_{n}(\epsilon)\leq\delta\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Lower Bound: 
+\series default
+To get a lower bound let us define a new distribution 
+\begin_inset Formula $Q$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+Q(A)=\int P^{n}(A)d\mu(P)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is any distribution whose support is in 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\mu$
+\end_inset
+
+ be uniform on 
+\begin_inset Formula $P_{1},\dots,P_{N}$
+\end_inset
+
+ then, 
+\begin_inset Formula 
+\[
+Q(A)=\frac{1}{N}\sum_{j}P_{j}^{n}(A)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now let us define a likelihood ratio, 
+\begin_inset Formula 
+\[
+L_{n}=\frac{dQ}{dP_{0}^{n}}=\int\frac{q(y^{n})}{p_{0}(y^{n})}d\mu(q)=\int\prod_{j}\frac{q(y_{j})}{p_{0}(y_{j})}d\mu(p)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+Let 
+\begin_inset Formula $0<\delta<1-\delta$
+\end_inset
+
+.
+ If, 
+\begin_inset Formula 
+\[
+\mathbb{E}_{0}\left[L_{n}^{2}\right]\leq1+4(1-\alpha-\delta)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+then 
+\begin_inset Formula $\beta_{n}(\epsilon)\geq\delta.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $P_{0}^{n}(\phi=1)\leq\alpha$
+\end_inset
+
+ for each 
+\begin_inset Formula $\phi$
+\end_inset
+
+ it follows that 
+\begin_inset Formula $P_{0}^{n}(\phi=0)\geq1-\alpha$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{align*}
+\beta_{n}(\epsilon) & =\inf_{\phi\in\Phi_{n}}\sup_{P\in\mathcal{P}(\epsilon)}P^{n}(\phi=0)\geq\inf_{\phi}Q(\phi=0)\geq\inf_{\phi}\left(P_{0}^{n}(\phi=0)+\left[Q(\phi=0)-P_{0}^{n}(\phi=0)\right]\right)\\
+ & \geq\left(1-\alpha+\left[Q(\phi=0)-P_{0}^{n}(\phi=0)\right]\right)\geq1-\alpha-\sup_{A}\left|Q(A)-P_{0}^{n}(A)\right|\\
+ & =1-\alpha-\frac{1}{2}\left|\left|Q-P_{0}^{n}\right|\right|_{1}=1-\alpha-\frac{1}{2}\int_{\Omega}\left|Q(\omega)-P_{0}^{n}(\omega)\right|dP_{0}(\omega)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then, 
+\begin_inset Formula 
+\begin{align*}
+||Q-P_{0}^{n}||_{1} & =\int\left|L_{n}(y^{n})-1\right|dP_{0}(y^{n})=\mathbb{E}_{0}[\left|L_{n}(y^{n})-1\right|]\leq\sqrt{\mathbb{E}_{0}[L_{n}^{2}]-1}=\sqrt{4(1-\alpha-\delta)^{2}}\\
+ & =2\sqrt{(1-\alpha-\delta)^{2}}=2\left|\alpha+\delta-1\right|
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+So, 
+\begin_inset Formula 
+\[
+\beta_{n}(\epsilon)\geq1-\alpha+2\delta\implies\beta_{n}(\epsilon)\geq\delta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Upper Bound: 
+\series default
+Notice for any size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ test 
+\begin_inset Formula $\phi$
+\end_inset
+
+ we have, 
+\begin_inset Formula 
+\[
+\beta_{n}(\epsilon)\leq\sup_{P\in\mathcal{P}(\epsilon)}P^{n}(\phi=0)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Testing Densities
+\end_layout
+
+\begin_layout Standard
+Let us now provide an example of how this may work when testing densities.
+ Let 
+\begin_inset Formula $Y_{1},\dots,Y_{n}\sim P$
+\end_inset
+
+ where 
+\begin_inset Formula $Y_{i}\in[0,1]^{d}$
+\end_inset
+
+ and let 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ be the uniform density.
+ Let us test, 
+\begin_inset Formula 
+\[
+H_{0}:P=P_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define, 
+\begin_inset Formula 
+\[
+\mathcal{P}(\epsilon,s,L)=\left\{ f:\int\left|f_{0}-f\right|\geq\epsilon\right\} \cap\mathcal{H}_{s}(L)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $f\in\mathcal{H}_{s}(L)$
+\end_inset
+
+ implies it inside a Holder defined as for all 
+\begin_inset Formula $x,y$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\left|f^{(t-1)}(y)-f^{\left(t-1\right)}(x)\right|\leq L\left|x-y\right|^{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $\left|\left|f^{\left(t-1\right)}\right|\right|_{\infty}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Theorem
+Fix 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+ and define 
+\begin_inset Formula $\epsilon_{n}$
+\end_inset
+
+ by 
+\begin_inset Formula $\beta(\epsilon_{n})=\delta$
+\end_inset
+
+.
+ Then, there exists 
+\begin_inset Formula $c_{1},c_{2}>0$
+\end_inset
+
+ such that, 
+\begin_inset Formula 
+\[
+c_{1}n^{\frac{-2s}{4s+d}}\leq\epsilon_{n}\leq c_{2}n^{\frac{-2s}{4s+d}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We begin by dividing the space into 
+\begin_inset Formula $k=n^{2/\left(4s+d\right)}$
+\end_inset
+
+ equal sized bins.
+ We let 
+\begin_inset Formula $\eta$
+\end_inset
+
+ be a sequence of Radamacher random variables.
+ That is, 
+\begin_inset Formula $\eta$
+\end_inset
+
+ has density given by 
+\begin_inset Formula $f(k)=\begin{cases}
+1/2 & k=1\\
+1/2 & k=-1\\
+0 & o.w.
+\end{cases}$
+\end_inset
+
+.
+ The let 
+\begin_inset Formula $\psi$
+\end_inset
+
+ be a smooth function such that 
+\begin_inset Formula $\int\psi=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\int\psi^{2}=1$
+\end_inset
+
+.
+ For the 
+\begin_inset Formula $j$
+\end_inset
+
+-th bin 
+\begin_inset Formula $B_{j}$
+\end_inset
+
+ let 
+\begin_inset Formula $\psi_{j}$
+\end_inset
+
+ be the function 
+\begin_inset Formula $\psi$
+\end_inset
+
+ rescaled and recentered to be supported on 
+\begin_inset Formula $B_{j}$
+\end_inset
+
+ with 
+\begin_inset Formula $\int\psi_{j}^{2}=1$
+\end_inset
+
+.
+ Define, 
+\begin_inset Formula 
+\[
+p_{\eta}(y)=p_{0}(y)+\gamma\sum_{j}\eta_{j}\psi_{j}(y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+where 
+\begin_inset Formula $\gamma=cn^{-\left(2s+d\right)/\left(4s+d\right)}.$
+\end_inset
+
+ It may be verified 
+\begin_inset Formula $p_{\eta}$
+\end_inset
+
+ is a density in 
+\begin_inset Formula $\mathcal{H}_{s}(L)$
+\end_inset
+
+ and that 
+\begin_inset Formula $\int\left|p_{0}-p_{\eta}\right|\geq\epsilon$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $N$
+\end_inset
+
+ be the number Rademacher sequences.
+ Then, 
+\begin_inset Formula 
+\[
+L_{n}=\frac{1}{N}\sum_{\eta}\prod_{i}\frac{p_{\eta}(Y_{i})}{p_{0}(Y_{i})}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+With this defined we want to verify the inequality in the above lemma.
+ With this satisfied we achieve the lower bound 
+\begin_inset Formula $\beta_{n}(\epsilon)=\inf_{\phi\in\Phi_{n}}\sup_{P\in\mathcal{P}(\epsilon)}P^{n}(\phi=0)\geq\delta$
+\end_inset
+
+.
+ So,
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula 
+\begin{align*}
+L_{n}^{2} & =\frac{1}{N^{2}}\sum_{\eta}\sum_{\nu}\prod_{i}\frac{p_{\eta}(Y_{i})p_{\nu}(Y_{i})}{p_{0}(Y_{i})p_{0}(Y_{i})}\\
+ & =\frac{1}{N^{2}}\sum_{\eta}\sum_{\nu}\prod_{i}\frac{p_{0}(y)+\gamma\sum_{j}\eta_{j}\psi_{j}(y)}{p_{0}(Y_{i})}\times\frac{p_{0}(y)+\gamma\sum_{j}\nu_{j}\psi_{j}(y)}{p_{0}(Y_{i})}\\
+ & =\frac{1}{N^{2}}\sum_{\eta}\sum_{\nu}\prod_{i}\left(1+\frac{\gamma\sum_{j}\eta_{j}\psi_{j}(y)}{p_{0}(Y_{i})}\right)\times\left(1+\frac{\gamma\sum_{j}\nu_{j}\psi_{j}(y)}{p_{0}(Y_{i})}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Taking the expected value over 
+\begin_inset Formula $Y_{1},\dots,Y_{n}$
+\end_inset
+
+ and using the fact the 
+\begin_inset Formula $\psi_{j}$
+\end_inset
+
+ are constructed to be orthonormal, 
+\begin_inset Formula 
+\[
+\mathbb{E}_{0}[L_{n}^{2}]=\frac{1}{N^{2}}\sum_{\eta}\sum_{\nu}\left(1+\gamma^{2}\sum_{j}\eta_{j}\nu_{j}\right)^{n}\leq\frac{1}{N^{2}}\sum_{\eta}\sum_{\nu}\exp\left(n\gamma^{2}\sum_{j}\eta_{j}\nu_{j}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Thus 
+\begin_inset Formula $\mathbb{E}_{0}\left[L_{n}^{2}\right]\leq\mathbb{E}_{\eta,\nu}e^{n\left\langle \eta,\nu\right\rangle }$
+\end_inset
+
+ using the inner product 
+\begin_inset Formula $\left\langle \eta,\nu\right\rangle =\gamma^{2}\sum_{j}\eta_{j}\nu_{j}$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}_{0}[L_{n}^{2}] & \leq\mathbb{E}_{\eta,\nu}e^{n\left\langle \eta,\nu\right\rangle }=\prod_{j}\mathbb{E}e^{n\eta_{j}\nu_{j}}\\
+ & =\prod_{j}\cosh\left(n\rho_{j}^{2}\right)\leq\prod_{j}\left(1+n^{2}\rho_{j}^{4}\right)\leq\prod_{j}e^{n^{2}\gamma^{4}}=e^{kn^{2}\gamma^{4}}\leq C_{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Hence we can apply the lower bound from the previous lemma such that, 
+\begin_inset Formula $\beta_{n}\left(\mathcal{P}\left(\epsilon,L\right)\right)\geq\delta$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Bayesian Risk
+\end_layout
+
+\begin_layout Standard
+It is also possible to determine the minimax risk is to use a Bayes estimator.
+ In this section we assume a parametric family of estimators 
+\begin_inset Formula $\left\{ p(x;\theta):\theta\in\Theta\right\} $
+\end_inset
+
+ and the goal is to estimate 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Then we write the risk 
+\begin_inset Formula $R(\theta,\hat{\theta}_{n})$
+\end_inset
+
+ and the maximum risk is 
+\begin_inset Formula $\sup_{\theta\in\Theta}R(\theta,\hat{\theta}_{n}).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $Q$
+\end_inset
+
+ be the prior distribution for 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ The
+\series bold
+ Bayes risk
+\series default
+ (w.r.t 
+\begin_inset Formula $Q$
+\end_inset
+
+) is defined as, 
+\begin_inset Formula 
+\[
+B_{Q}(\hat{\theta}_{n})=\int R(\theta,\hat{\theta}_{n})dQ(\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+The 
+\series bold
+Bayes estimator with respect to Q 
+\series default
+is the estimator 
+\begin_inset Formula $\bar{\theta}_{n}$
+\end_inset
+
+ that minimized 
+\begin_inset Formula $B_{Q}(\hat{\theta}_{n}).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+The 
+\series bold
+posterior density 
+\series default
+is given by, 
+\begin_inset Formula 
+\[
+q(\theta|X^{n})=\frac{p(X_{1},\dots,X_{n};\theta)q(\theta)}{\int p(X_{1},\dots,X_{n};\theta)q(\theta)d\theta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Lemma
+The Bayes risk can be written as, 
+\begin_inset Formula 
+\[
+\int\left(\int L(\theta,\hat{\theta}_{n})q(\theta|x_{1},\dots,x_{n})d\theta\right)\int p(x_{1},\dots,x_{n};\theta)q(\theta)d\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+From this lemma it follows that we can find the minimax estimator 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ by just minimizing the inner integral, 
+\begin_inset Formula $\int L(\theta,\hat{\theta}_{n})q(\theta|x_{1},\dots,x_{n})d\theta$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Example
+Suppose 
+\begin_inset Formula $L(\theta,\hat{\theta}_{n})=\left(\theta-\hat{\theta}_{n}\right)^{2}.$
+\end_inset
+
+ Then the Bayes estimator is the posterior mean 
+\begin_inset Formula $\bar{\theta}_{Q}=\int\theta q(\theta|x_{1},\dots,x_{n})d\theta$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+ be an estimator.
+ Suppose, 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The risk function 
+\begin_inset Formula $R(\theta,\hat{\theta}_{n})$
+\end_inset
+
+ is constant as a function of 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+ is the Bayes estimator for some prior 
+\begin_inset Formula $Q$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Theorem
+Then, 
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+ is minimax.
+ 
+\end_layout
+
+\begin_layout Proof
+Suppose by way of contradiction that 
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+ is not minimax.
+ Then there is some other estimator 
+\begin_inset Formula $\theta'$
+\end_inset
+
+ such that, 
+\begin_inset Formula 
+\[
+\sup_{\theta\in\Theta}R(\theta,\theta')<\sup_{\theta\in\Theta}R(\theta,\hat{\theta}_{n})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then, 
+\begin_inset Formula 
+\begin{align*}
+B_{Q}(\theta') & =\int R(\theta,\theta')dQ(\theta)\\
+ & \leq\sup_{\theta\in\Theta}R(\theta,\theta')\\
+ & <\sup_{\theta\in\Theta}R(\theta,\hat{\theta}_{n})\\
+ & =\int R(\theta,\hat{\theta}_{n})dQ(\theta)\\
+ & =B_{Q}(\hat{\theta}_{n})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+But then this implies that 
+\begin_inset Formula $B_{Q}(\theta')\leq B_{Q}(\hat{\theta}_{n})$
+\end_inset
+
+ which would be a contradiction since 
+\begin_inset Formula $\hat{\theta}_{n}$
+\end_inset
+
+ cannot then be the Bayes estimator otherwise it would minimize 
+\begin_inset Formula $B_{Q}.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Example
+We show that the sample mean is minimax for the Normal model.
+ Let 
+\begin_inset Formula $X\sim N_{p}(\theta,I)$
+\end_inset
+
+ be a multivariate normal.
+ Let 
+\begin_inset Formula $L(\theta,\hat{\theta_{n}})=\left|\left|\hat{\theta}_{n}-\theta\right|\right|^{2}.$
+\end_inset
+
+ Assign 
+\begin_inset Formula $Q=N(0,c^{2}I)$
+\end_inset
+
+.
+ Then the posterior is, 
+\begin_inset Formula 
+\[
+N(\frac{c^{2}x}{1+c^{2}},\frac{c^{2}}{1+c^{2}}I)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+The posterior mean 
+\begin_inset Formula $\tilde{\theta}=c^{2}X/\left(1+c^{2}\right).$
+\end_inset
+
+ The Bayes risk is then 
+\begin_inset Formula $B_{Q}(\theta)=\frac{pc^{2}}{1+c^{2}}.$
+\end_inset
+
+ Furthermore for any other estimator 
+\begin_inset Formula $\theta^{*}$
+\end_inset
+
+ then, 
+\begin_inset Formula 
+\[
+\frac{pc^{2}}{1+c^{2}}=B_{Q}(\tilde{\theta})\leq B_{Q}(\theta^{*})=\int R(\theta^{*},\theta)dQ(\theta)\leq\sup_{\theta}R(\theta^{*},\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+So 
+\begin_inset Formula $R(\Theta)\geq pc^{2}/\left(1+c^{2}\right)\implies R(\Theta)\geq p$
+\end_inset
+
+.
+ But the risk 
+\begin_inset Formula $\hat{\theta}_{n}=X$
+\end_inset
+
+ is 
+\begin_inset Formula $p$
+\end_inset
+
+ and so 
+\begin_inset Formula $\hat{\theta}_{n}=X$
+\end_inset
+
+ is minimax.
+ 
+\end_layout
+
+\begin_layout Section
+Nonparametric Maximum Likelihood
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $H(\epsilon)=\log N(\epsilon)$
+\end_inset
+
+ where 
+\begin_inset Formula $N(\epsilon)$
+\end_inset
+
+ is the smallest number of balls of size 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ needed to cover 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ in the Hellinger metric.
+ We call 
+\begin_inset Formula $H(\epsilon)$
+\end_inset
+
+ the 
+\series bold
+Hellinger entropy
+\series default
+ of 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Then the 
+\series bold
+Le Cam 
+\series default
+equation is given by, 
+\begin_inset Formula 
+\begin{equation}
+H(\epsilon_{n})=n\epsilon_{n}^{2}\label{eq:LeCamHellingerEqn}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sometimes the minimax rate may be obtained by solving this equation.
+ This is the case with the nonparametric maximum likelihood estimator in
+ which we want to estimate a density function using maximum likelihood.
+ We use the Hellinger metric 
+\begin_inset Formula $H(P,Q)=h(p,q)=\sqrt{\frac{1}{2}\int\left(\sqrt{p}-\sqrt{q}\right)^{2}}$
+\end_inset
+
+ as our loss function.
+ Let 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ be the space of probability density functions and let us assume this is
+ a infinite dimensional space.
+ We need the following assumptions:
+\end_layout
+
+\begin_layout Assumption
+\begin_inset CommandInset label
+LatexCommand label
+name "assu:boundedness"
+
+\end_inset
+
+We assume there exists 
+\begin_inset Formula $0<c_{1}<c_{2}<\infty$
+\end_inset
+
+ such that 
+\begin_inset Formula $c_{1}<p(x)<c_{2}$
+\end_inset
+
+ for all 
+\begin_inset Formula $x$
+\end_inset
+
+ and all 
+\begin_inset Formula $p\in\mathcal{P}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+This assumption is very strong and is not needed but it will help simplify
+ the proof.
+ 
+\end_layout
+
+\begin_layout Assumption
+\begin_inset CommandInset label
+LatexCommand label
+name "assu:localentropy"
+
+\end_inset
+
+We assume there exists 
+\begin_inset Formula $\alpha>0$
+\end_inset
+
+ such that, 
+\begin_inset Formula 
+\[
+H(\alpha\epsilon,\mathcal{P},h)\leq\sup_{p\in\mathcal{P}}H(\epsilon,B(p,4\epsilon),h)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Assumption
+where 
+\begin_inset Formula $B(p,\delta)=\left\{ q:h(p,q)\leq\delta\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+This assumption implies that the global entropy is of the same order as
+ the local entropy the right hand side.
+ 
+\end_layout
+
+\begin_layout Assumption
+\begin_inset CommandInset label
+LatexCommand label
+name "assu:rate"
+
+\end_inset
+
+Let 
+\begin_inset Formula $\sqrt{n}\epsilon_{n}\rightarrow\infty$
+\end_inset
+
+ as 
+\begin_inset Formula $n\rightarrow\infty$
+\end_inset
+
+ where 
+\begin_inset Formula $H(\epsilon_{n})\asymp n\epsilon_{n}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+This assumption implies that the convergence rate is slower than 
+\begin_inset Formula $O(n^{-1/2})$
+\end_inset
+
+ which is normal in a nonparametric setting.
+ 
+\end_layout
+
+\begin_layout Example
+An example of a class that would satisfy assumptions 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "assu:boundedness"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "assu:localentropy"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "assu:rate"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is, 
+\begin_inset Formula 
+\[
+\mathcal{P}=\left\{ p:[0,1]\to[c_{1},c_{2}]:\int_{0}^{1}p(x)dx=1,\int_{0}^{1}\left(p(x)\right)^{2}dx\leq C^{2}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+There are also some important implications of these assumptions.
+ In particular assumption 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "assu:boundedness"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ gives us, 
+\begin_inset Formula 
+\begin{align*}
+KL(p,q) & \leq\chi^{2}(p,q)=\int\frac{\left(p-q\right)^{2}}{p}\leq\frac{1}{c_{1}}\int\left(p-q\right)^{2} & \text{Using \ensuremath{c_{1}<p}}\\
+ & =\frac{1}{c_{1}}\int\left(\sqrt{p}-\sqrt{q}\right)^{2}\left(\sqrt{p}-\sqrt{q}\right)^{2}\\
+ & \leq\frac{4c_{2}}{c_{1}}\int\left(\sqrt{p}-\sqrt{q}\right)^{2}=Ch^{2}\left(p,q\right) & \text{Setting \ensuremath{C=\frac{4c_{2}}{c_{1}}}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Now let 
+\begin_inset Formula $\epsilon_{n}$
+\end_inset
+
+ solve the Le Cam equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LeCamHellingerEqn"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ That is, 
+\begin_inset Formula 
+\begin{equation}
+\epsilon_{n}=\min\left\{ \epsilon:H\left(\frac{\epsilon}{\sqrt{2C}}\right)\leq\frac{n\epsilon^{2}}{16C}\right\} \label{eq:epsn}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Then we will show that 
+\begin_inset Formula $\epsilon_{n}$
+\end_inset
+
+ is the minimax rate.
+ 
+\end_layout
+
+\begin_layout Standard
+We now proceed to prove an upper bound.
+ In particular let 
+\begin_inset Formula $\mathcal{P}=\left\{ p_{1},\dots,p_{N}\right\} $
+\end_inset
+
+ be a 
+\begin_inset Formula $\epsilon_{n}/\sqrt{2C}$
+\end_inset
+
+ covering of the set where 
+\begin_inset Formula $N=N(\epsilon_{n}/\sqrt{2C})$
+\end_inset
+
+.
+ The set 
+\begin_inset Formula $\mathcal{P}_{n}$
+\end_inset
+
+ will be a 
+\series bold
+sieve space 
+\series default
+in that it will approximate 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ better and better as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+ be the sieve maximum likelihood estimator defined by, 
+\begin_inset Formula 
+\[
+\hat{p}=\arg\max_{p\in\mathcal{P}_{n}}L(p)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $L(p)=\prod_{i=1}^{n}p(X_{i})$
+\end_inset
+
+ is the likelihood function.
+ The sieve approach is essentially a type of regularization and allows us
+ to maximize over a finite dimensional space greatly simplifying the problem.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Upper Bound:
+\end_layout
+
+\begin_layout Standard
+Achieving an upper bound can be done with the following inequality from
+ Wong and Shen 1995.
+ 
+\end_layout
+
+\begin_layout Lemma
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Wong and Shen
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lem:wongshen"
+
+\end_inset
+
+Let 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $p$
+\end_inset
+
+ be two densities and let 
+\begin_inset Formula $\delta=h(p_{0},p)$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $Z_{1},\dots,Z_{n}$
+\end_inset
+
+ be an 
+\strikeout on
+iid
+\strikeout default
+ sample from 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\[
+\Pr[\frac{L(p)}{L(p_{0})}>e^{-n\delta^{2}/2}]\leq e^{-n\delta^{2/4}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We compute, 
+\begin_inset Formula 
+\begin{align*}
+\Pr[\frac{L(p)}{L(p_{0})}>e^{-n\delta^{2}/2}] & =\Pr[\prod_{i=1}^{n}\sqrt{\frac{p(Z_{i})}{p_{0}(Z_{i})}}\sqrt{\frac{p(Z_{i})}{p_{0}(Z_{i})}}>e^{-n\delta^{2}/2}]\\
+ & =\Pr[\prod_{i=1}^{n}\sqrt{\frac{p(Z_{i})}{p_{0}(Z_{i})}}>e^{-n\delta^{2}/4}]\\
+ & \leq e^{n\delta^{2}/4}\mathbb{E}[\prod_{i=1}^{n}\sqrt{\frac{p(Z_{i})}{p_{0}(Z_{i})}}] & \text{Markov}\\
+ & =e^{n\delta^{2}/4}\left(\mathbb{E}[\left(\sqrt{\frac{p(Z_{i})}{p_{0}(Z_{i})}}\right)]\right)^{n}\\
+ & =e^{n\delta^{2}/4}\left(\int\left(\sqrt{p(Z_{i})p_{0}(Z_{i})}\right)]\right)^{n} & \text{Noting by indep/density \ensuremath{\int\sqrt{p/q}=\int q\sqrt{p/q}}}\\
+ & =e^{n\delta^{2}/4}\left(1-\frac{h^{2}(p_{0},p)}{2}\right)^{n} & h^{2}(P,Q)=2(1-\int\sqrt{pq})\\
+ & =e^{n\delta^{2}/4}\exp\left(n\log\left(1-\frac{h^{2}(p_{0},p)}{2}\right)\right)\\
+ & \leq e^{n\delta^{2}/4}e^{-nh^{2}(p_{0},p)/2}=e^{n\delta^{2}/4-n\delta^{2}/2} & \text{First order Taylor}\\
+ & =e^{-n\delta^{2}/4}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we are ready to compute the upper bound.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Formula $\sup_{P\in\mathcal{P}}\mathbb{E}_{p}\left(h(p,\hat{p})\right)=O(\epsilon_{n})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Suppose 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ is the true density.
+ Let 
+\begin_inset Formula $p'\in\mathcal{P}_{n}$
+\end_inset
+
+ be the element of 
+\begin_inset Formula $\mathcal{P}_{n}$
+\end_inset
+
+ that minimizes the KL divergence.
+ That is, 
+\begin_inset Formula 
+\[
+p'=\arg\min_{p\in\mathcal{P}_{n}}KL(p_{0},p)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Thus, 
+\begin_inset Formula 
+\begin{equation}
+KL(p_{0},p')\leq Ch^{2}(p_{0},p')\leq C\left(\epsilon_{n}^{2}/2C\right)=\epsilon_{n}^{2}/2\label{eq:KL}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Since 
+\begin_inset Formula $N=N(\epsilon_{n}/\sqrt{2C})$
+\end_inset
+
+ so that 
+\begin_inset Formula $h(p,q)\leq\sqrt{\epsilon_{n}^{2}/2C}$
+\end_inset
+
+.
+ Let, 
+\begin_inset Formula 
+\[
+B=\left\{ p\in\mathcal{P}_{n}:d(p',p)>A\epsilon_{n}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+where 
+\begin_inset Formula $A=1/\sqrt{2C}$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\begin{align*}
+\Pr[h(\hat{p},p_{0})>\epsilon_{n}] & \leq\Pr[h(\hat{p},p_{0})+h(p_{0},p')>\epsilon_{n}]\leq\Pr[h(\hat{p},p_{0})+\epsilon_{n}/\sqrt{2C}>\epsilon_{n}]\\
+ & =\Pr[h(\hat{p},p_{0})>A\epsilon_{n}]=\Pr\left(\hat{p}\in B\right)\leq\Pr[\sup_{p\in B}\frac{L(p)}{L(p')}>1]\\
+ & \leq\Pr[\sup_{p\in B}\frac{L(p)}{L(p')}>e^{-n\epsilon_{n}^{2}\left(A^{2}/2+1\right)}]\\
+ & \leq\Pr[\sup_{p\in B}\frac{L(p)}{L(p')}>e^{-n\epsilon_{n}^{2}\left(A^{2}/2\right)}]+\Pr[\sup_{p\in B}\frac{L(p)}{L(p')}>e^{n\epsilon_{n}^{2}}]\equiv P_{1}+P_{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Next, 
+\begin_inset Formula 
+\[
+P_{1}\leq\sum_{p\in B}\Pr[\frac{L(p)}{L(p')}>e^{-n\epsilon_{n}^{2}\left(A^{2}/2\right)}]\leq N(\epsilon/\sqrt{2C})e^{-n\epsilon_{n}^{2}A^{2}/4}\leq e^{\frac{n\epsilon_{n}^{2}}{16C}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Using Lemma (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lem:wongshen"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) with 
+\begin_inset Formula $\delta=\epsilon_{n}A$
+\end_inset
+
+ multiplied by the number of Balls needed to cover 
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+ to get the second inequality.
+ And then noting that this covering number is 
+\begin_inset Formula $e^{\frac{n\epsilon^{2}}{16C}}$
+\end_inset
+
+ as per the definition of epsilon in equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:epsn"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Proof
+Now to bound 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ define 
+\begin_inset Formula $K_{n}=\frac{1}{2}\sum_{i=1}^{n}\log\frac{p_{0}(Z_{i})}{p'(Z_{i})}$
+\end_inset
+
+ as a kind of KL analogue such that 
+\begin_inset Formula $\mathbb{E}[K_{n}]=KL(p_{0},p')\leq\epsilon^{2}/2$
+\end_inset
+
+ from equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:KL"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Furthermore, 
+\begin_inset Formula 
+\begin{align*}
+\sigma^{2} & \equiv Var\left(\log\frac{p_{0}(Z)}{p'(Z)}\right)\leq\mathbb{E}[\left(\log\frac{p_{0}(Z)}{p'(Z)}\right)^{2}]\leq\log\left(\frac{c_{2}}{c_{1}}\right)\mathbb{E}[\left(\log\frac{p_{0}(Z)}{p'(Z)}\right)]\\
+ & =\log\left(\frac{c_{2}}{c_{1}}\right)KL(p_{0},p')\leq\log\left(\frac{c_{2}}{c_{1}}\right)\frac{\epsilon_{n}^{2}}{2}\equiv c_{3}\epsilon_{n}^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Now we apply the non mean zero Bernstein's inequality to 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ under log, 
+\begin_inset Formula 
+\begin{align*}
+P_{2} & =\Pr[\sup_{p\in B}\frac{L(p)}{L(p')}>e^{n\epsilon_{n}^{2}}]=\Pr[K_{n}>\epsilon_{n}^{2}]=\Pr[K_{n}-KL(p_{0},p'>\epsilon_{n}^{2}-KL(p_{0},p')]\\
+ & \leq\Pr[K_{n}-KL(p_{0},p')>\frac{\epsilon_{n}^{2}}{2}]=\Pr[K_{n}-\mathbb{E}[K_{n}]>\frac{\epsilon_{n}^{2}}{2}]\leq e^{\frac{-\epsilon_{n}^{4}}{8\sigma^{2}+c_{4}\epsilon_{n}^{2}}}\\
+ & \leq\exp(-c_{5}\epsilon_{n}^{2})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then 
+\begin_inset Formula $P_{1}+P_{2}\leq\exp(-c_{6}n\epsilon_{n}^{2})$
+\end_inset
+
+.
+ So finally, 
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left(h(p_{0},\hat{p})\right) & =\int_{0}^{1}\Pr[h(p_{0},\hat{p})>t]dt\\
+ & =\int_{0}^{\epsilon_{n}}\Pr[h(p_{0},\hat{p})>t]dt+\int_{\epsilon_{n}}^{1}\Pr[h(p_{0},\hat{p})>t]dt\\
+ & \leq\epsilon_{n}+\exp\left(-c_{6}n\epsilon_{n}^{2}\right)\leq c_{7}\epsilon_{n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Hence we have a bound from above.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Lower Bound:
+\end_layout
+
+\begin_layout Standard
+The lower bound is an application of Fano's method.
+ 
+\end_layout
+
+\begin_layout Theorem
+Let 
+\begin_inset Formula $\epsilon_{n}$
+\end_inset
+
+ be the smallest 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ such that 
+\begin_inset Formula $H(\alpha\epsilon)\geq64C^{2}n\epsilon^{2}$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\[
+\inf_{\hat{p}}\sup_{P\in\mathcal{P}}\mathbb{E}_{P}[h(p,\hat{p})]=\Omega(\epsilon_{n})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Recall 
+\begin_inset Formula $a=\Omega$
+\end_inset
+
+(
+\begin_inset Formula $\epsilon_{n})$
+\end_inset
+
+ means that 
+\begin_inset Formula $a\geq C\epsilon_{n}$
+\end_inset
+
+ for some 
+\begin_inset Formula $C>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+Take any 
+\begin_inset Formula $p\in\mathcal{P}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $B=\left\{ q:h(p,q)\leq4\epsilon_{n}\right\} .$
+\end_inset
+
+ Let 
+\begin_inset Formula $F=\left\{ p_{1},\dots,p_{N}\right\} $
+\end_inset
+
+ be a 
+\begin_inset Formula $\epsilon_{n}$
+\end_inset
+
+ packing set for 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\[
+N=\log P(\epsilon_{n},B,h)\geq\log H(\epsilon_{n},B,h)\geq\log H(\alpha\epsilon_{n})\geq64C^{2}n\epsilon^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Then for 
+\begin_inset Formula $P_{j},P_{k}\in F$
+\end_inset
+
+ we have, 
+\begin_inset Formula 
+\[
+KL(P_{j}^{n},P_{k}^{n})=nKL(P_{j},P_{k})\leq Cnh^{2}(P_{j},P_{k})\leq16Cn\epsilon_{n}^{2}\leq\frac{N}{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+So since we can bound the KL divergence we can just use the corollary to
+ Fano's method to get, 
+\begin_inset Formula 
+\[
+\inf_{\hat{p}}\sup_{P\in\mathcal{P}}\mathbb{E}_{P}[h(p,\hat{p})]\geq\frac{1}{4}\min_{j\neq k}h(p_{j},p_{k})\geq\frac{\epsilon_{n}}{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Together with the upper bound we have, 
+\begin_inset Formula 
+\[
+R_{n}\asymp\epsilon_{n}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can now use Le Cam's equation to compute rates for different spaces.
+ 
+\end_layout
+
+\begin_layout Example
+Neural Networks
+\end_layout
+
+\begin_layout Example
+In the neural net we have that 
+\begin_inset Formula $f(x)=c_{0}+\sum_{i}c_{i}\sigma(v_{i}^{T}x+b_{i})$
+\end_inset
+
+ where 
+\begin_inset Formula $\left|\left|c\right|\right|_{1}\leq C$
+\end_inset
+
+, 
+\begin_inset Formula $\left|\left|v_{i}\right|\right|\leq1$
+\end_inset
+
+, and 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is a step function or a sigmoidal function that is Lipschitz.
+ Le Cam's equation is, 
+\begin_inset Formula 
+\[
+H(\epsilon_{n})\asymp n\epsilon_{n}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Notice, 
+\begin_inset Formula 
+\[
+\left(\frac{1}{\epsilon}\right)^{1/2+1/d}\leq H(\epsilon)\leq\left(\frac{1}{\epsilon}\right)^{1/2+1/2d}\log(1/\epsilon)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Solving this for 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ gives the rate.
+ 
+\end_layout
+
+\end_body
+\end_document
