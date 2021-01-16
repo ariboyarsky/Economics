@@ -2598,7 +2598,12 @@ Also we need to use the polarization identity here which is,
 
 \end_inset
 
-This implies,
+Recall that we define 
+\begin_inset Formula $\epsilon_{n}=o(n^{-1/2})$
+\end_inset
+
+.
+ This implies,
 \begin_inset Formula 
 \[
 -\left(1-\epsilon\right)\left\langle \hat{\theta}_{n}-\theta_{0},\epsilon_{n}v^{*}\right\rangle -\mathbb{G}_{n}(l'_{\theta_{0}}\left[\epsilon_{n}v^{*},Z\right])\leq O(\epsilon_{n}^{2})+O_{p}(\epsilon_{n}^{2})=o_{p}(n^{-1/2})
@@ -2620,7 +2625,7 @@ Thus we can justify the approximation,
 \end_layout
 
 \begin_layout Proof
-since we can always swap 
+The last line follows because we can always swap 
 \begin_inset Formula $v^{*}$
 \end_inset
 

@@ -1,0 +1,719 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+theorems-ams-bytype
+theorems-ams-extended-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+A Personal Note on Directed Acylic Graphs for Causal Inference
+\end_layout
+
+\begin_layout Author
+Ariel Boyarsky
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+ariel.boyarsky@yale.edu.
+ This note is purely for educational purposes, all errors are my own.
+ This note is a work in progress.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Preface to Notes
+\end_layout
+
+\begin_layout Standard
+The following is a collection of results on Bayesian networks and DAGs as
+ they are used to model causal relationships.
+ This note is for the author's edification and is not meant to be a research
+ work.
+ Furthermore, these results are not novel and an overview may be found 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://bayes.cs.ucla.edu/PRIMER/"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Bayesian Network
+\end_layout
+
+\begin_layout Definition
+A 
+\series bold
+Bayesian Network
+\series default
+ is a 
+\series bold
+directed acyclic graph
+\series default
+, 
+\begin_inset Formula $G(E,\mathcal{N})$
+\end_inset
+
+, where each node in 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+ corresponds to a random variable and each edge corresponds to a dependency.
+\end_layout
+
+\begin_layout Standard
+For example if we have a graph with A–>B then we must consider 
+\begin_inset Formula $\Pr[B|A]$
+\end_inset
+
+ in the joint probability distribution over the graph.
+ In particular, we have the relationship,
+\begin_inset Formula 
+\[
+\Pr[X_{1},\dots,X_{n}]=\prod_{i=1}\Pr[X_{i}|parents(X_{i})]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can also represent a DAG as a structural equation model.
+ For instance consider the graph Y–>X–>Z<–A this could be written as,
+\begin_inset Formula 
+\begin{align*}
+X & =g_{y}(Y)\\
+Z & =g_{x,a}(Y,A)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+The 
+\series bold
+parents 
+\series default
+of some set are the nodes that directly sink into a that set of nodes.
+ Sometimes this is denoted as 
+\begin_inset Formula $pa(X)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Fact
+It is not generally possible to reconstruct a causal graph from data.
+\end_layout
+
+\begin_layout Section
+Modeling Causal Relationships
+\end_layout
+
+\begin_layout Standard
+We use directed edges to define dependence.
+ This can take on several forms.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Direct
+\end_layout
+
+\end_inset
+
+ X–>Y information is transmitted from X to Y.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+That is X and Y are dependent.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Serial
+\end_layout
+
+\end_inset
+
+ X–>Z–>Y Suppose here that Z is unobserved.
+ Information can still be transmitted through Z regardless.
+ That is,
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Z unobserved.
+ Then 
+\begin_inset Formula $X\not\perp Y$
+\end_inset
+
+ (dependent)
+\end_layout
+
+\begin_layout Enumerate
+Z observed.
+ Then 
+\begin_inset Formula $X\perp Y|Z$
+\end_inset
+
+.
+ That is observing 
+\begin_inset Formula $Z$
+\end_inset
+
+ blocks the information path between 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Diverging
+\end_layout
+
+\end_inset
+
+ X<–Z–>Y
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Z unobserved.
+ Then 
+\begin_inset Formula $X\not\perp Y$
+\end_inset
+
+ (dependent).
+\end_layout
+
+\begin_layout Enumerate
+Z observed.
+ Then 
+\begin_inset Formula $X\perp Y|Z$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Converging
+\end_layout
+
+\end_inset
+
+ X–>Z<–Y and Z–>W
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Z and W unobserved.
+ Then 
+\begin_inset Formula $X\perp Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Z or W observed.
+ Then 
+\begin_inset Formula $X\not\perp Y|Z$
+\end_inset
+
+ or 
+\begin_inset Formula $X\not\perp Y|W$
+\end_inset
+
+(dependent).
+ Because knowing 
+\begin_inset Formula $W$
+\end_inset
+
+ tells us something about 
+\begin_inset Formula $Z$
+\end_inset
+
+ which in turn tells us something about both 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ and so those two are dependent through 
+\begin_inset Formula $Z$
+\end_inset
+
+ (or in this case a proxy for 
+\begin_inset Formula $Z$
+\end_inset
+
+, 
+\begin_inset Formula $W$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Note that we have seen there are two ways to knowing something about a variable.
+ We might either observe it directly.
+ This is called 
+\series bold
+Hard evidence.
+ 
+\series default
+Or as in the case of Z–>W knowing 
+\begin_inset Formula $W$
+\end_inset
+
+ tells us something about 
+\begin_inset Formula $Z$
+\end_inset
+
+ which is not directly observed but rather the value of a 
+\shape italic
+descendant 
+\shape default
+is observed.
+ This is called 
+\series bold
+soft evidence.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Rules:
+\end_layout
+
+\begin_layout Enumerate
+Hard evidence blocks information in the case of a Diverging or Serial connection
+s.
+\end_layout
+
+\begin_layout Enumerate
+Hard or Soft evidence are enough to send information in the of converging
+ connections.
+\end_layout
+
+\begin_layout Definition
+We say that a path between 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ is 
+\series bold
+blocked 
+\series default
+by a set of nodes 
+\begin_inset Formula $\textbf{Z}$
+\end_inset
+
+ if either,
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The path contains some 
+\begin_inset Formula $Z\in\textbf{Z}$
+\end_inset
+
+ and the path is either serial or diverging.
+ That is, X–>Z–>Y (serial).
+ Or X<–Z–>Y (diverging).
+\end_layout
+
+\begin_layout Enumerate
+That path contains some node 
+\begin_inset Formula $W$
+\end_inset
+
+ where 
+\begin_inset Formula $W$
+\end_inset
+
+ and it's descendants are not in 
+\begin_inset Formula $\textbf{Z}$
+\end_inset
+
+ but 
+\begin_inset Formula $W$
+\end_inset
+
+ is a converging connection.
+ That is, X–>W<–Y.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+We say that a path between 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are 
+\series bold
+d-separated 
+\series default
+by a set of nodes 
+\begin_inset Formula $\textbf{Z}$
+\end_inset
+
+ if every path between 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ is blocked by 
+\begin_inset Formula $\textbf{Z}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+D-Separation Theorem
+\end_layout
+
+\begin_layout Standard
+In this section we prove the following theorem sometimes called the d-separation
+ theorem.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+D-separation Theorem
+\end_layout
+
+\end_inset
+
+ Suppose 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are d-separated by 
+\begin_inset Formula $\mathbf{Z}$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula 
+\[
+X\perp Y|\mathbf{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The conclusion is intuitive but proving it rigorously requires some work.
+ We begin by defining some graph theoretic notions.
+\end_layout
+
+\begin_layout Definition
+The 
+\series bold
+ancestral set 
+\series default
+or 
+\begin_inset Formula $an(\left\{ X\right\} )$
+\end_inset
+
+ is the set of all the parents and ancestors of 
+\begin_inset Formula $X$
+\end_inset
+
+ as well as 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ Furthermore, if 
+\begin_inset Formula $X=an(\left\{ X\right\} )$
+\end_inset
+
+ we say that 
+\begin_inset Formula $X$
+\end_inset
+
+ is 
+\series bold
+ancestral
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+A 
+\series bold
+leaf node 
+\series default
+is a vertex with no children.
+\end_layout
+
+\begin_layout Lemma
+Suppose that 
+\begin_inset Formula $G\left(E,X\right)$
+\end_inset
+
+ is a Bayesian network and 
+\begin_inset Formula $Y$
+\end_inset
+
+ is a leaf node.
+ Suppose 
+\begin_inset Formula $G'\left(E',X'\right)$
+\end_inset
+
+ is the network after we have removed 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ Then,
+\begin_inset Formula 
+\[
+\Pr_{G}\left[X\right]=\Pr_{G'}\left[X'\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Begin by summing over each node,
+\begin_inset Formula 
+\begin{align*}
+\Pr_{G}[X] & =\sum_{Y}\Pr_{G}[X,Y]\\
+ & =\sum_{Y}\prod_{Z\in X}\Pr[Z|pa(Z)]\Pr[Y|pa(Y)]\\
+ & =\prod_{Z\in X}\Pr[Z|pa(Z)]\sum_{Y}\Pr[Y|pa(Y)]\\
+ & =\prod_{Z\in X}\Pr[Z|pa(Z)]\\
+ & =\Pr_{G'}[X']
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Equality 1 and 2 is just taking advantage of the joint distribution over
+ 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ Equality 3 is true because 
+\begin_inset Formula $Y$
+\end_inset
+
+ is a leaf node and so cannot be a parent.
+ Equality 4 is true because summing the probability of 
+\begin_inset Formula $Y$
+\end_inset
+
+ given it's parents must be 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+do-Calculus
+\end_layout
+
+\begin_layout Section
+Examples
+\end_layout
+
+\end_body
+\end_document

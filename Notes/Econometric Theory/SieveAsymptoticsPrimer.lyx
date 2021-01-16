@@ -2659,7 +2659,7 @@ noprefix "false"
 \left|f(\hat{\theta}_{n})-f\left(\theta_{0}\right)-f_{\theta_{0}}'\left[\hat{\theta}_{n}-\theta_{0}\right]\right| & \leq a_{n}\left|\left|\hat{\theta}_{n}-\theta_{0}\right|\right|^{\omega}\\
 \iff f(\hat{\theta}_{n})-f(\theta_{0}) & =f_{\theta_{0}}'\left[\hat{\theta}_{n}-\theta_{0}\right]+o_{p}\left(a_{n}\left|\left|\hat{\theta}_{n}-\theta_{0}\right|\right|^{\omega}\right)\\
  & =\left\langle \hat{\theta}_{n}-\theta_{0},v^{*}\right\rangle +o_{p}(n^{-1/2})\\
- & =\mathbb{G}_{n}(l'_{\theta_{0}}\left[v^{*},Z\right])++o_{p}(n^{-1/2})
+ & =\mathbb{G}_{n}(l'_{\theta_{0}}\left[v^{*},Z\right])+o_{p}(n^{-1/2})
 \end{align*}
 
 \end_inset
