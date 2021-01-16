@@ -3,18 +3,10 @@
 A collection of notes and quasi-formal projects from coursework, research, and individual study. This repository is very much a work in progress.  
 
 
-Specifically, these are notes that I have decided to type up whilst studying for Economics courses at the University of Chicago. Mistakes are certainly present, and are very much my own. Please do not attempt to use this as a replacement for a good textbook in Microeconomics. Otherwise, you will find these notes shockingly defficiant.
+Specifically, these are notes that I have decided to type up whilst studying for Economics courses at the University of Chicago. Mistakes are certainly present and are very much my own. None of this work is original rather it is based on papers, textbooks, and courses in statistics and economics and is purely for my own edification and reference. 
 
-If you notice any errors or have other suggestion or additions, feel free to open an issue or pull request. Feel free to alsosend me an email: aboyarsky@uchicago.edu. 
+If you notice any errors or have other suggestion or additions, feel free to open an issue or pull request. Feel free to also send me an email: ariel.boyarsky@yale.edu. 
 
-Much of the content comes from Microeconomic Theory by Mas-Collel, Whinston, and Green (MWG), Advanced Microeconomic Theory by Jehle and Reny (JR), and in class lecture notes.
+The notes in Econometrics are based on various papers in Econometric Theory as well as notes from courses in statistics and econometrics at the University of Chicago and Yale University.
 
-
-# Todo
-1. Finish Reg Notes
-2. Add sequential equiloibrium approach + extensive form games
-3. Complete proof of WE existence with production
-4. Add notes on Rawls, and Gibbard-Satterwaithe
-5. Complete MWG notes, and include some solutions -- very much a long term goal!
-6. Consider adding solutions to selected problems from JR
-
+Many of the notes in Microeconomics are based on the books Microeconomic Theory by Mas-Collel, Whinston, and Green (MWG), Advanced Microeconomic Theory by Jehle and Reny (JR). These notes are also based on in class lectures from courses at the University of Chicago and Yale University.
